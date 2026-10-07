@@ -4,6 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Haritans Newsletter - September 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT90273SEF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-NT90273SEF");
+  </script>
   <style>
     :root { --green:#0a7f2e; --deep:#173421; --gold:#d6a12a; --ink:#171717; --soft:#f4faf4; }
     * { box-sizing:border-box; }
@@ -308,9 +316,14 @@
   <section><div class="content"><h2>Quick Feedback</h2><form class="feedback-form" name="interactive-newsletter-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="feedbackForm"><input type="hidden" name="form-name" value="interactive-newsletter-feedback"><p hidden><label>Do not fill this <input name="bot-field"></label></p><p><b>How much do you like this interactive newsletter compared with the classic newsletter?</b></p><label>Preference rating</label><div class="rating-row"><label><input type="radio" name="rating" value="1 - Prefer classic"><span>1</span></label><label><input type="radio" name="rating" value="2"><span>2</span></label><label><input type="radio" name="rating" value="3"><span>3</span></label><label><input type="radio" name="rating" value="4"><span>4</span></label><label><input type="radio" name="rating" value="5 - Love interactive" required><span>5</span></label></div><label for="feedbackText">What should we improve next?</label><textarea id="feedbackText" name="comments" placeholder="Share one suggestion..."></textarea><button class="submit-btn" type="submit">Submit Feedback</button><div class="form-status" id="formStatus"></div></form></div><footer>Thank you for reading</footer></section>
 </main>
 <script>
+  function trackEvent(name, parameters = {}) {
+    if (typeof window.gtag === "function") window.gtag("event", name, parameters);
+  }
+
   const totalSeconds = 300;
   let remaining = totalSeconds;
   let timerId = null;
+  let timerStartTracked = false;
   const timerTime = document.getElementById("timerTime");
   const timerRing = document.getElementById("timerRing");
   const phaseLabel = document.getElementById("phaseLabel");
@@ -364,6 +377,10 @@
   }
   function startTimer() {
     if (timerId) return;
+    if (!timerStartTracked) {
+      trackEvent("wellbeing_timer_started");
+      timerStartTracked = true;
+    }
     timerId = window.setInterval(() => {
       remaining = Math.max(0, remaining - 1);
       renderTimer();
@@ -384,6 +401,26 @@
   document.getElementById("startTimer").addEventListener("click", startTimer);
   document.getElementById("pauseTimer").addEventListener("click", pauseTimer);
   document.getElementById("resetTimer").addEventListener("click", resetTimer);
+  document.querySelector(".pdf-link")?.addEventListener("click", () => {
+    trackEvent("pf_update_opened");
+  });
+  document.querySelectorAll(".reference-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      trackEvent("technology_reference_opened", { reference_host: new URL(link.href).hostname });
+    });
+  });
+  const viewedSections = new WeakSet();
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting || viewedSections.has(entry.target)) return;
+      viewedSections.add(entry.target);
+      const heading = entry.target.querySelector("h1, h2");
+      trackEvent("newsletter_section_viewed", {
+        section_name: heading ? heading.textContent.trim().replace(/\s+/g, " ") : "Newsletter section"
+      });
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll("main.deck > section").forEach((section) => sectionObserver.observe(section));
   document.querySelectorAll(".answer-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const answer = button.nextElementSibling;
@@ -438,6 +475,8 @@
         body: data.toString()
       });
       if (!response.ok) throw new Error("Submit failed");
+      const rating = feedbackForm.querySelector('input[name="rating"]:checked')?.value.split(" ")[0];
+      trackEvent("feedback_submitted", rating ? { preference_rating: rating } : {});
       feedbackForm.reset();
       formStatus.textContent = "Thank you - your feedback has been recorded.";
     } catch (error) {
