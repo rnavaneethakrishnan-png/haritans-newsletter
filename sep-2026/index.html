@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Haritans Newsletter - September 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT90273SEF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-NT90273SEF");
+  </script>
+  <style>
+    :root { --green:#0a7f2e; --deep:#173421; --gold:#d6a12a; --ink:#171717; --soft:#f4faf4; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:#eef5ef; }
+    .deck { height:100vh; overflow-y:auto; scroll-snap-type:y mandatory; }
+    section { min-height:100vh; scroll-snap-align:start; padding:46px 6vw; position:relative; overflow:hidden; background:linear-gradient(135deg,#fbfdfb,#e9f5ec); }
+    section:before { content:""; position:absolute; inset:-20%; background:repeating-linear-gradient(120deg,rgba(10,127,46,.07) 0 2px,transparent 2px 82px); animation:drift 18s linear infinite; }
+    .content { position:relative; z-index:1; max-width:1180px; margin:auto; }
+    .cover-section { position:relative; }
+    .logo { width:clamp(190px,20vw,280px); height:auto; position:absolute; top:32px; right:clamp(28px,5vw,80px); z-index:3; display:block; margin:0; }
+    h1 { font-size:clamp(48px,8vw,110px); line-height:.95; color:var(--deep); margin:90px 0 16px; letter-spacing:0; }
+    h2 { font-size:clamp(34px,5vw,64px); color:var(--deep); margin:0 0 24px; letter-spacing:0; }
+    p { font-size:clamp(18px,2vw,25px); line-height:1.35; }
+    .tag { display:inline-block; background:#fff5d9; color:#10224c; border-radius:999px; padding:12px 20px; font-weight:700; margin:8px 10px 8px 0; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:22px; }
+    .card { background:white; border:1px solid #d9e8db; border-radius:8px; padding:26px; box-shadow:0 18px 40px rgba(23,52,33,.08); transform:translateY(20px); opacity:.2; animation:rise .8s ease forwards; }
+    .card:nth-child(2) { animation-delay:.18s; } .card:nth-child(3) { animation-delay:.36s; } .card:nth-child(4) { animation-delay:.54s; }
+    .stat { font-size:52px; font-weight:800; color:var(--green); }
+    .feature-section { padding-top:30px; padding-bottom:34px; }
+    .feature-section .content, .teaser-section .content { max-width:1280px; }
+    .lede { max-width:1080px; font-size:clamp(20px,2.2vw,30px); color:#314338; margin-top:-10px; }
+    .feature-section h2 { margin-bottom:12px; }
+    .feature-section .lede { font-size:clamp(18px,1.7vw,23px); margin:0 0 18px; }
+    .tech-board { display:grid; grid-template-columns:1.08fr .92fr; gap:20px; margin-top:16px; align-items:stretch; }
+    .feature-card, .impact-card, .teaser-card { background:white; border:1px solid #d9e8db; border-radius:8px; padding:24px; box-shadow:0 18px 40px rgba(23,52,33,.08); }
+    .feature-card h3, .impact-card h3, .teaser-card h3 { color:var(--deep); margin:0 0 10px; font-size:26px; }
+    .feature-card p, .impact-card p, .teaser-card p { font-size:18px; margin:0; color:#4d5a50; }
+    .news-photo-card { background:#fff; border:1px solid #d9e8db; border-radius:8px; overflow:hidden; box-shadow:0 18px 40px rgba(23,52,33,.09); }
+    .news-photo-card img { display:block; width:100%; height:285px; object-fit:cover; object-position:center; }
+    .photo-caption { padding:12px 16px 14px; color:#526057; font-size:14px; line-height:1.35; }
+    .photo-caption strong { color:var(--deep); }
+    .story-panel { background:#fff; border:1px solid #d9e8db; border-radius:8px; padding:20px 22px; box-shadow:0 18px 40px rgba(23,52,33,.08); }
+    .date-kicker { display:inline-block; color:#fff; background:var(--green); border-radius:999px; padding:7px 11px; font-size:13px; font-weight:800; margin-bottom:10px; }
+    .story-panel h3 { color:var(--deep); font-size:clamp(24px,2.2vw,31px); line-height:1.05; margin:0 0 10px; }
+    .story-panel p { font-size:16px; line-height:1.38; color:#4d5a50; margin:0 0 12px; }
+    .signal-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:14px 0; }
+    .signal-step { background:#f1f8f2; border:1px solid #d4e6d7; border-radius:6px; padding:10px 8px; text-align:center; font-size:13px; font-weight:800; color:var(--deep); }
+    .signal-step span { display:block; color:var(--green); font-size:22px; margin-bottom:3px; }
+    .pov { border-left:4px solid var(--gold); padding:8px 0 8px 12px; color:var(--deep) !important; }
+    .reference-link { display:inline-flex; align-items:center; gap:6px; color:#075d25; font-size:13px; font-weight:800; text-decoration:underline; text-underline-offset:3px; }
+    .chip-stack { display:grid; gap:12px; }
+    .chip { background:#f4faf4; border:1px solid #d9e8db; border-radius:8px; padding:16px; }
+    .chip strong { color:var(--green); font-size:22px; display:block; margin-bottom:6px; }
+    .impact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px; }
+    .impact-card { padding:14px 16px; }
+    .impact-card h3 { font-size:18px; margin-bottom:5px; }
+    .impact-card p { font-size:14px; line-height:1.35; }
+    .source-note { font-size:14px; color:#647066; margin-top:14px; }
+    .event-section { padding-top:32px; padding-bottom:34px; background:linear-gradient(135deg,#fbfdfb,#e7f3ea); }
+    .event-section .content { max-width:1280px; }
+    .event-section h2 { margin-bottom:16px; }
+    .event-layout { display:grid; grid-template-columns:1.42fr .58fr; gap:24px; align-items:center; }
+    .event-collage { display:block; width:100%; height:430px; object-fit:cover; border-radius:8px; border:1px solid #cfe1d2; box-shadow:0 20px 46px rgba(23,52,33,.14); }
+    .event-story { border-left:5px solid var(--gold); padding:4px 0 4px 20px; }
+    .event-meta { color:var(--green); font-size:13px; font-weight:800; text-transform:uppercase; margin-bottom:10px; }
+    .event-story h3 { color:var(--deep); font-size:26px; line-height:1.12; margin:0 0 12px; }
+    .event-story p { color:#45564b; font-size:17px; line-height:1.42; margin:0 0 14px; }
+    .event-hook { color:var(--deep) !important; font-weight:800; }
+    .customer-list { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+    .customer-list span { padding:7px 10px; border-radius:999px; background:#fff5d9; color:#3d310d; font-size:12px; font-weight:800; }
+    .pf-section { background:linear-gradient(135deg,#f8fbfa,#e5f1ef); }
+    .pf-section .content { max-width:1180px; }
+    .pf-layout { display:grid; grid-template-columns:1.08fr .92fr; gap:28px; align-items:center; }
+    .pf-kicker { display:inline-block; color:#075d55; font-weight:800; font-size:15px; text-transform:uppercase; margin-bottom:10px; }
+    .pf-summary { font-size:clamp(18px,1.8vw,24px); line-height:1.45; color:#33483f; max-width:700px; }
+    .pf-effective { display:inline-block; margin-top:12px; padding:9px 13px; border-left:4px solid var(--gold); background:#fff7df; color:#49380b; font-weight:800; }
+    .pf-change { background:#fff; border:1px solid #cfe1dc; border-radius:8px; padding:24px; box-shadow:0 18px 40px rgba(23,52,33,.09); }
+    .pf-change h3 { margin:0 0 18px; color:var(--deep); font-size:21px; }
+    .pf-numbers { display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:center; }
+    .pf-number { padding:18px 12px; text-align:center; background:#edf7f4; border-radius:7px; }
+    .pf-number span { display:block; color:#58685f; font-size:13px; font-weight:800; margin-bottom:6px; }
+    .pf-number strong { display:block; color:#067a6e; font-size:clamp(29px,3.3vw,46px); }
+    .pf-arrow { color:var(--gold); font-size:30px; font-weight:900; }
+    .pf-benefit { margin:16px 0 0; color:#43544b; font-size:16px; line-height:1.4; }
+    .pdf-link { display:inline-flex; align-items:center; gap:10px; margin-top:18px; padding:13px 18px; border-radius:7px; background:var(--green); color:#fff; font-weight:800; text-decoration:none; }
+    .pdf-link .pdf-badge { display:inline-grid; place-items:center; width:35px; height:27px; border-radius:4px; background:#fff; color:var(--green); font-size:11px; }
+    .hr-note { margin-top:14px; color:#4c5c53; font-size:15px; }
+    .hr-article { padding-top:30px; padding-bottom:32px; }
+    .hr-article .content { max-width:1240px; }
+    .hr-byline { display:flex; align-items:center; gap:18px; width:max-content; max-width:100%; margin-bottom:20px; padding:10px 20px 10px 10px; color:#526057; font-size:13px; background:rgba(255,255,255,.78); border-left:5px solid var(--gold); border-radius:7px; box-shadow:0 12px 28px rgba(23,52,33,.08); }
+    .hr-avatar { width:92px; height:92px; display:block; flex:0 0 92px; object-fit:cover; object-position:center; border:4px solid var(--green); border-radius:50%; background:#fff; box-shadow:0 9px 22px rgba(23,52,33,.18); }
+    .hr-byline strong, .hr-byline span { display:block; }
+    .hr-byline strong { margin:3px 0 2px; color:var(--deep); font-size:22px; }
+    .hr-credit { color:var(--green); font-size:12px; font-weight:900; text-transform:uppercase; }
+    .hr-story-grid { display:grid; grid-template-columns:1.08fr .92fr; gap:34px; align-items:center; }
+    .hr-kicker { display:block; margin-bottom:8px; color:var(--green); font-size:12px; font-weight:900; text-transform:uppercase; }
+    .hr-article h2 { margin-bottom:12px; }
+    .hr-lede { margin:0 0 12px; color:var(--deep); font-size:clamp(22px,2.3vw,31px); font-weight:800; }
+    .hr-copy > p:not(.hr-lede) { margin:0 0 14px; color:#46564c; font-size:18px; }
+    .rest-quote { margin:18px 0 0; padding:14px 18px; border-left:5px solid var(--gold); background:#fff8e5; color:var(--deep); font-size:clamp(18px,1.8vw,24px); font-weight:800; line-height:1.3; }
+    .disconnect-stage { min-height:430px; position:relative; display:grid; place-items:center; }
+    .laptop { width:270px; height:185px; position:relative; perspective:800px; }
+    .laptop-lid { width:230px; height:145px; position:absolute; left:20px; top:12px; border:9px solid var(--deep); border-radius:8px; background:#eef7f0; transform-origin:50% 100%; box-shadow:inset 0 0 0 3px #fff; }
+    .laptop-lid:before { content:"OFF"; position:absolute; inset:0; display:grid; place-items:center; color:var(--green); font-size:30px; font-weight:900; }
+    .laptop-base { width:270px; height:18px; position:absolute; bottom:10px; left:0; border-radius:4px 4px 11px 11px; background:var(--deep); }
+    .hr-article-opening.in-view .laptop-lid { animation:closeLaptop 1.35s .9s cubic-bezier(.45,0,.2,1) both; }
+    .notification { position:absolute; padding:8px 11px; border-radius:6px; background:#fff; border:1px solid #d7e5d9; box-shadow:0 10px 24px rgba(23,52,33,.12); color:#4f5c53; font-size:12px; font-weight:800; }
+    .notification.one { top:28px; right:4px; } .notification.two { top:105px; left:0; } .notification.three { top:176px; right:12px; }
+    .hr-article-opening.in-view .notification { animation:notificationAway .55s ease forwards; }
+    .hr-article-opening.in-view .notification.one { animation-delay:.2s; } .hr-article-opening.in-view .notification.two { animation-delay:.45s; } .hr-article-opening.in-view .notification.three { animation-delay:.7s; }
+    .self-check { position:absolute; left:50%; bottom:0; width:min(420px,100%); transform:translateX(-50%); padding:16px 18px; background:#fff; border:1px solid #d6e6d8; border-radius:8px; box-shadow:0 14px 30px rgba(23,52,33,.09); }
+    .self-check h3 { margin:0 0 8px; color:var(--deep); font-size:18px; }
+    .self-check ul { margin:0; padding-left:19px; color:#536057; font-size:14px; line-height:1.45; }
+    .hr-challenge { background:linear-gradient(135deg,#f8fbf8,#e5f1e8); }
+    .challenge-intro { max-width:900px; margin:-10px 0 18px; color:#45564b; font-size:20px; }
+    .habit-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+    .habit-card { min-height:230px; padding:18px 16px; text-align:left; background:#fff; border:1px solid #d4e5d7; color:#4d5a50; box-shadow:0 12px 28px rgba(23,52,33,.07); opacity:0; transform:translateY(24px); transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease; }
+    .hr-challenge.in-view .habit-card { animation:habitEnter .58s ease forwards; animation-delay:var(--habit-delay,0s); }
+    .habit-card:nth-child(1) { --habit-delay:.06s; } .habit-card:nth-child(2) { --habit-delay:.14s; } .habit-card:nth-child(3) { --habit-delay:.22s; } .habit-card:nth-child(4) { --habit-delay:.30s; } .habit-card:nth-child(5) { --habit-delay:.38s; }
+    .habit-card:hover, .habit-card.selected { transform:translateY(-7px); border-color:var(--green); box-shadow:0 18px 36px rgba(10,127,46,.16); }
+    .habit-number { width:34px; height:34px; display:grid; place-items:center; margin-bottom:20px; border-radius:50%; background:#e8f5eb; color:var(--green); font-weight:900; }
+    .habit-card.selected .habit-number { background:var(--green); color:#fff; }
+    .habit-card h3 { margin:0 0 8px; color:var(--deep); font-size:18px; }
+    .habit-card p { margin:0; color:#58655c; font-size:14px; line-height:1.4; }
+    .challenge-banner { display:grid; grid-template-columns:auto 1fr; gap:4px 18px; align-items:center; margin-top:18px; padding:15px 18px; border-left:6px solid var(--gold); background:var(--deep); color:#fff; border-radius:7px; }
+    .challenge-banner strong { grid-row:1 / 3; color:#f5ce6d; font-size:20px; }
+    .challenge-banner span { font-size:15px; }
+    .habit-status { color:#cfe5d5; font-size:13px; font-weight:800; }
+    .appreciation-section { padding-top:28px; padding-bottom:30px; background:linear-gradient(135deg,#f9fcfa,#e7f3ea); }
+    .appreciation-section .content { max-width:1280px; }
+    .appreciation-section h2 { margin-bottom:8px; }
+    .appreciation-intro { margin-bottom:18px; }
+    .appreciation-intro p { max-width:850px; margin:0; color:#43544b; font-size:clamp(16px,1.45vw,20px); }
+    .appreciation-grid { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:16px; }
+    .appreciation-grid .people-card { grid-column:span 2; }
+    .appreciation-grid .people-card:nth-child(5) { grid-column:2 / span 2; }
+    .people-card { min-width:0; overflow:hidden; background:#fff; border:1px solid #d2e4d5; border-radius:8px; box-shadow:0 14px 32px rgba(23,52,33,.08); opacity:0; transform:translateY(28px) scale(.97); transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease; }
+    .appreciation-section.in-view .people-card { animation:recognitionEnter .7s cubic-bezier(.2,.72,.2,1) forwards; animation-delay:var(--delay,0s); }
+    .appreciation-section.in-view .people-card:hover, .appreciation-section.in-view .people-card:focus-visible, .appreciation-section.in-view .people-card.spotlight { transform:translateY(-9px) scale(1.025); border-color:var(--green); box-shadow:0 24px 48px rgba(10,127,46,.22); outline:none; z-index:2; }
+    .people-card:nth-child(1) { --delay:.05s; } .people-card:nth-child(2) { --delay:.13s; } .people-card:nth-child(3) { --delay:.21s; } .people-card:nth-child(4) { --delay:.29s; } .people-card:nth-child(5) { --delay:.37s; } .people-card:nth-child(6) { --delay:.45s; } .people-card:nth-child(7) { --delay:.53s; }
+    .people-photo { width:100%; height:300px; display:block; object-fit:cover; object-position:center 20%; background:#edf5ef; transition:transform .35s ease,filter .35s ease; }
+    .people-card:hover .people-photo, .people-card:focus-visible .people-photo, .people-card.spotlight .people-photo { transform:scale(1.045); filter:saturate(1.06) contrast(1.03); }
+    .people-caption { min-height:72px; padding:11px 10px 12px; border-top:4px solid var(--gold); }
+    .people-name { color:var(--deep); font-size:15px; font-weight:900; line-height:1.15; overflow-wrap:anywhere; }
+    .people-id { margin-top:5px; color:#657168; font-size:11px; font-weight:800; text-transform:uppercase; }
+    .word-spotlight { display:grid; grid-template-columns:.72fr 1.15fr 1.35fr; gap:18px; align-items:center; margin:16px 0 14px; padding:15px 18px; background:#173421; color:#fff; border-left:7px solid var(--gold); border-radius:7px; }
+    .word-kicker { display:block; color:#f4ca63; font-size:12px; font-weight:800; text-transform:uppercase; margin-bottom:3px; }
+    .word-name { font-size:clamp(23px,2.5vw,34px); font-weight:800; }
+    .word-pronunciation { margin-top:3px; color:#cfe5d5; font-size:12px; }
+    .word-block { font-size:14px; line-height:1.38; color:#e9f5ec; }
+    .word-block strong { display:block; color:#f4ca63; font-size:12px; text-transform:uppercase; margin-bottom:3px; }
+    .mini-challenge { display:block; margin-top:6px; color:#fff; font-weight:800; }
+    .teaser-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:14px; }
+    .teaser-visual { height:118px; border-radius:8px; background:#f2faf3; border:1px solid #d9e8db; margin-bottom:14px; position:relative; overflow:hidden; }
+    .gear-diagram { width:100%; height:100%; display:block; }
+    .gear-shape { transform-box:fill-box; transform-origin:center; }
+    .gear-a { animation:spin 4s linear infinite; }
+    .gear-b { animation:spinReverse 12s linear infinite; }
+    .gear-label { font:800 16px Arial, sans-serif; fill:var(--deep); text-anchor:middle; }
+    .gear-count { font:700 11px Arial, sans-serif; fill:#4d5a50; text-anchor:middle; }
+    .route-dot { width:18px; height:18px; border-radius:50%; background:var(--green); position:absolute; top:50px; }
+    .route-dot.start { left:42px; } .route-dot.mid { left:calc(50% - 9px); } .route-dot.end { right:42px; background:var(--gold); }
+    .route-line { position:absolute; left:50px; right:50px; top:58px; height:4px; background:var(--deep); }
+    .route-label { position:absolute; top:76px; color:#4d5a50; font-size:11px; font-weight:800; }
+    .route-label.start { left:25px; } .route-label.mid { left:calc(50% - 20px); } .route-label.end { right:25px; }
+    .pattern-bars { display:flex; align-items:flex-end; gap:10px; height:100%; padding:18px 26px; }
+    .pattern-bars span { flex:1; border-radius:5px 5px 0 0; background:var(--green); }
+    .pattern-bars span:nth-child(2) { height:44px; } .pattern-bars span:nth-child(3) { height:64px; } .pattern-bars span:nth-child(4) { height:88px; background:var(--gold); }
+    .answer-btn { background:#fff5d9; color:#10224c; margin-top:14px; }
+    .answer { display:none; margin-top:12px; padding:12px; background:#e9f6ed; border-radius:8px; color:var(--deep); font-weight:800; font-size:16px; }
+    .answer.show { display:block; }
+    .award { max-width:430px; width:40vw; min-width:260px; border-radius:10px; box-shadow:0 22px 60px rgba(0,0,0,.2); animation:float 4s ease-in-out infinite; }
+    .pulse { width:140px; height:140px; border:5px solid var(--gold); border-radius:50%; display:grid; place-items:center; font-weight:800; color:var(--deep); animation:pulse 2.2s ease-in-out infinite; }
+    .wellbeing-section { padding-top:30px; padding-bottom:30px; }
+    .wellbeing-section .content { max-width:1320px; }
+    .wellbeing-section h2 { margin-bottom:14px; }
+    .wellbeing { display:grid; grid-template-columns:300px 1fr; gap:18px; align-items:stretch; }
+    .timer-panel { background:white; border:1px solid #d9e8db; border-radius:8px; padding:18px; box-shadow:0 18px 40px rgba(23,52,33,.08); }
+    .timer-panel p { font-size:17px; margin:10px 0 16px; }
+    .timer-ring { width:152px; height:152px; margin:2px auto 12px; border-radius:50%; display:grid; place-items:center; background:conic-gradient(var(--green) var(--progress,0deg), #e6efe7 0); position:relative; }
+    .timer-ring:after { content:""; position:absolute; inset:12px; border-radius:50%; background:white; }
+    .timer-time { position:relative; z-index:1; font-size:36px; font-weight:800; color:var(--deep); }
+    .phase-label { text-align:center; font-weight:800; color:var(--deep); min-height:22px; margin-bottom:8px; }
+    .rest-popup { display:none; background:#fff5d9; color:#10224c; border:2px solid var(--gold); border-radius:8px; padding:10px 12px; margin:0 0 12px; font-weight:800; text-align:center; box-shadow:0 12px 30px rgba(214,161,42,.22); animation:popRest .35s ease both; }
+    .rest-popup.show { display:block; }
+    .timer-buttons { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    button { border:0; border-radius:8px; padding:12px 14px; font-weight:800; cursor:pointer; font-size:15px; }
+    .start-btn { background:var(--green); color:white; grid-column:1 / -1; }
+    .pause-btn { background:#fff5d9; color:#10224c; }
+    .reset-btn { background:#e9f6ed; color:var(--deep); }
+    .move-grid { display:grid; grid-template-columns:repeat(5,minmax(130px,1fr)); gap:12px; }
+    .move-card { background:white; border:1px solid #d9e8db; border-radius:8px; padding:14px; min-height:360px; position:relative; overflow:hidden; box-shadow:0 18px 40px rgba(23,52,33,.06); }
+    .move-card.active { border-color:var(--green); box-shadow:0 20px 44px rgba(10,127,46,.18); }
+    .move-title { font-weight:800; color:var(--deep); margin:0 0 8px; font-size:18px; }
+    .move-card p { font-size:15px; margin:0; color:#536056; }
+    .feedback-form { background:white; border:1px solid #d9e8db; border-radius:8px; padding:26px; max-width:820px; box-shadow:0 18px 40px rgba(23,52,33,.08); }
+    .feedback-form label { display:block; font-weight:800; color:var(--deep); margin:18px 0 8px; }
+    .rating-row { display:flex; flex-wrap:wrap; gap:10px; }
+    .rating-row label { margin:0; }
+    .rating-row input { position:absolute; opacity:0; }
+    .rating-row span { display:inline-grid; place-items:center; min-width:48px; height:44px; border-radius:8px; border:1px solid #cfe3d2; background:#f5fbf6; color:var(--deep); cursor:pointer; font-weight:800; }
+    .rating-row input:checked + span { background:var(--green); color:white; border-color:var(--green); }
+    textarea { width:100%; min-height:90px; border:1px solid #cfe3d2; border-radius:8px; padding:12px; font:inherit; resize:vertical; }
+    .submit-btn { background:var(--green); color:white; margin-top:16px; }
+    .form-status { margin-top:12px; color:var(--deep); font-weight:800; min-height:22px; }
+    .demo { height:150px; margin:0 auto 12px; position:relative; display:grid; place-items:center; }
+    .torso { width:48px; height:62px; border-radius:22px 22px 12px 12px; background:var(--green); position:absolute; bottom:18px; left:50%; transform:translateX(-50%); }
+    .head { width:34px; height:34px; border-radius:50%; background:var(--deep); position:absolute; left:50%; top:22px; margin-left:-17px; transform-origin:50% 56px; }
+    .neck-demo .head { transform:rotate(0); }
+    .move-card.is-animating .neck-demo .head { animation:neckTilt 2.8s ease-in-out infinite; }
+    .neck-demo:before, .neck-demo:after { content:""; position:absolute; top:40px; width:38px; height:3px; background:var(--gold); opacity:.9; }
+    .neck-demo:before { left:34px; transform:rotate(-25deg); }
+    .neck-demo:after { right:34px; transform:rotate(25deg); }
+    .shoulder-line { width:112px; height:12px; border-radius:999px; background:var(--green); position:absolute; top:72px; left:50%; margin-left:-56px; }
+    .shoulder-demo .head, .wrist-demo .head { top:14px; }
+    .shoulder-demo .torso, .wrist-demo .torso { bottom:12px; }
+    .shoulder-demo .shoulder-line { top:72px; }
+    .circle-arrow { width:42px; height:42px; border:4px solid var(--gold); border-right-color:transparent; border-radius:50%; position:absolute; top:56px; }
+    .circle-arrow.left { left:16px; }
+    .circle-arrow.right { right:16px; }
+    .move-card.is-animating .circle-arrow { animation:shoulderCircle 1.6s linear infinite; }
+    .move-card.is-animating .circle-arrow.right { animation-direction:reverse; }
+    .forearm { width:70px; height:12px; border-radius:999px; background:var(--green); position:absolute; top:72px; }
+    .wrist-demo .forearm { top:84px; transform-origin:12px 50%; }
+    .forearm.left { left:30px; transform:rotate(14deg); }
+    .forearm.right { right:30px; transform:rotate(-14deg); }
+    .hand { width:30px; height:30px; border-radius:50%; border:5px solid var(--gold); position:absolute; top:76px; }
+    .hand.left { left:88px; }
+    .hand.right { right:88px; }
+    .move-card.is-animating .hand { animation:wristCircle 1.35s linear infinite; }
+    .move-card.is-animating .hand.right { animation-direction:reverse; }
+    .twist-demo .torso { transform-origin:50% 80%; }
+    .twist-demo .shoulder-line { transform-origin:50% 50%; }
+    .move-card.is-animating .twist-demo .torso { animation:torsoTwist 2.2s ease-in-out infinite; }
+    .move-card.is-animating .twist-demo .shoulder-line { animation:shoulderTwist 2.2s ease-in-out infinite; }
+    .eye { width:104px; height:58px; border-radius:55% 55% 50% 50%; border:5px solid var(--deep); position:absolute; top:42px; background:#fff; }
+    .pupil { width:20px; height:20px; border-radius:50%; background:var(--green); position:absolute; top:61px; left:52px; }
+    .move-card.is-animating .pupil { animation:eyeShift 2.4s ease-in-out infinite; }
+    .focus-point { position:absolute; color:#8a6816; font-size:11px; font-weight:800; }
+    .focus-point:before { content:""; display:block; width:10px; height:10px; border-radius:50%; background:var(--gold); margin:0 auto 3px; }
+    .focus-point.near { left:14px; bottom:14px; }
+    .focus-point.far { right:14px; top:14px; }
+    @keyframes neckTilt { 0%,100%{ transform:rotate(-18deg); } 50%{ transform:rotate(18deg); } }
+    @keyframes shoulderCircle { to { transform:rotate(360deg); } }
+    @keyframes wristCircle { to { transform:rotate(360deg); } }
+    @keyframes torsoTwist { 0%,100%{ transform:translateX(-50%) rotateY(-28deg); } 50%{ transform:translateX(-50%) rotateY(28deg); } }
+    @keyframes shoulderTwist { 0%,100%{ transform:rotate(-14deg); } 50%{ transform:rotate(14deg); } }
+    @keyframes eyeShift { 0%,100%{ transform:translateX(-22px) scale(1.15); } 50%{ transform:translateX(34px) scale(.72); } }
+    @keyframes popRest { from { transform:scale(.94); opacity:0; } to { transform:scale(1); opacity:1; } }
+    @media (max-width:1100px) { .appreciation-grid { grid-template-columns:repeat(4,1fr); } .appreciation-grid .people-card, .appreciation-grid .people-card:nth-child(5) { grid-column:auto; } .people-photo { height:240px; } }
+    @media (max-width:980px) { .tech-board, .impact-grid, .teaser-grid, .wellbeing, .pf-layout, .word-spotlight, .event-layout, .hr-story-grid { grid-template-columns:1fr; } .event-collage { height:auto; } .habit-grid { grid-template-columns:repeat(2,1fr); } .appreciation-grid { grid-template-columns:repeat(2,1fr); } .appreciation-intro { align-items:flex-start; } .move-grid { grid-template-columns:repeat(2,minmax(160px,1fr)); } .logo { width:clamp(165px,42vw,230px); top:22px; right:22px; } .cover-section h1 { margin-top:120px; } footer { position:relative; left:auto; bottom:auto; margin-top:32px; } }
+    @media (max-width:560px) {
+      section { min-height:auto; padding:34px 18px 72px; }
+      h2 { font-size:34px; }
+      .hr-article { padding-top:26px; padding-bottom:28px; }
+      .hr-byline { align-items:flex-start; margin-bottom:20px; }
+      .hr-byline { gap:13px; width:100%; padding:9px 12px 9px 9px; }
+      .hr-avatar { width:72px; height:72px; flex-basis:72px; }
+      .hr-byline strong { font-size:18px; }
+      .hr-credit { font-size:10px; }
+      .hr-article h2 { font-size:38px; line-height:1.02; }
+      .hr-lede { font-size:23px; }
+      .hr-copy > p:not(.hr-lede) { font-size:16px; }
+      .rest-quote { font-size:18px; }
+      .disconnect-stage { min-height:420px; overflow:hidden; }
+      .laptop { width:240px; height:170px; transform:scale(.88); }
+      .laptop-lid { left:5px; }
+      .laptop-base { width:240px; }
+      .notification.one { right:2px; } .notification.two { left:2px; } .notification.three { right:4px; }
+      .self-check { padding:14px 15px; }
+      .challenge-intro { margin-top:-4px; font-size:17px; }
+      .habit-grid { grid-template-columns:1fr; }
+      .habit-card { min-height:0; padding:16px; }
+      .habit-number { margin-bottom:12px; }
+      .challenge-banner { grid-template-columns:1fr; gap:7px; }
+      .challenge-banner strong { grid-row:auto; }
+      .appreciation-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+      .people-photo { height:220px; }
+      .people-caption { min-height:68px; padding:10px 8px; }
+      .people-name { font-size:14px; }
+      .people-id { font-size:10px; }
+      footer { margin-top:24px; font-size:14px; }
+    }
+    footer { position:absolute; left:6vw; bottom:24px; color:#3d4b31; font-size:18px; z-index:1; }
+    @keyframes drift { from { transform:translateX(0); } to { transform:translateX(180px); } }
+    @keyframes rise { to { transform:translateY(0); opacity:1; } }
+    @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-14px); } }
+    @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(214,161,42,.45); } 50% { box-shadow:0 0 0 28px rgba(214,161,42,0); } }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes spinReverse { to { transform:rotate(-360deg); } }
+    @keyframes pulseArc { 0%,100% { transform:scale(.82); opacity:.55; } 50% { transform:scale(1.08); opacity:1; } }
+    @keyframes armPick { 0%,100% { transform:rotate(-18deg); } 50% { transform:rotate(22deg); } }
+    @keyframes partMove { from { left:20px; } to { left:calc(100% - 54px); } }
+    @keyframes recognitionEnter { to { opacity:1; transform:translateY(0) scale(1); } }
+    @keyframes closeLaptop { 0% { transform:rotateX(0); } 100% { transform:rotateX(-76deg) translateY(16px); } }
+    @keyframes notificationAway { to { opacity:0; transform:translateY(-12px) scale(.94); } }
+    @keyframes habitEnter { to { opacity:1; transform:translateY(0); } }
+    @media (prefers-reduced-motion:reduce) { .people-card, .appreciation-section.in-view .people-card, .habit-card, .hr-challenge.in-view .habit-card { opacity:1; transform:none; animation:none; } .hr-article-opening.in-view .laptop-lid, .hr-article-opening.in-view .notification { animation:none; } }
+  </style>
+</head>
+<body>
+<main class="deck">
+  <section class="cover-section"><img class="logo" src="assets_sep_2026/harita_logo_cropped.png" alt="Harita Techserv logo"><div class="content"><h1>HARITANS<br>SEPTEMBER'26</h1><p><b>Technology In Motion</b> - Mechanical Intelligence, Automobile Transformation, AI Integration, Wellbeing, and Harita Highlights.</p><span class="tag">Edition 07</span><span class="tag">Internal Circulation</span></div><footer>www.harita.in</footer></section>
+  <section class="feature-section"><div class="content"><h2>September Tech Signal</h2><p class="lede"><b>Physical AI entered the automobile factory.</b> This is not a concept sketch: it is a live training programme announced in September 2026.</p><div class="tech-board"><figure class="news-photo-card"><img src="assets_sep_2026/atlas_rmac_sep_2026.jpg" alt="Atlas humanoid robots training inside Hyundai Motor Group Metaplant America"><figcaption class="photo-caption"><strong>Atlas at RMAC:</strong> humanoid robots train on real automobile-production workflows. Photo: Boston Dynamics.</figcaption></figure><article class="story-panel"><span class="date-kicker">21 SEPTEMBER 2026</span><h3>Robots are learning the job inside the factory</h3><p>Boston Dynamics opened its Robotics Metaplant Application Center inside Hyundai Motor Group Metaplant America. Atlas robots are being trained to sequence automotive parts for assembly; heavier and more repetitive tasks are planned as the programme grows.</p><div class="signal-flow"><div class="signal-step"><span>1</span>Observe the task</div><div class="signal-step"><span>2</span>Learn with people</div><div class="signal-step"><span>3</span>Validate safely</div></div><p class="pov"><b>Our POV:</b> the breakthrough is not a human-shaped machine. It is the training loop around it. Mechanical design, controls, shop-floor knowledge and AI now have to improve together.</p><a class="reference-link" href="https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks/" target="_blank" rel="noopener">Reference: Boston Dynamics announcement, 21 Sep 2026</a></article></div><div class="impact-grid"><div class="impact-card"><h3>Human impact</h3><p>Move strenuous, repetitive work away from people while keeping human judgement at the centre.</p></div><div class="impact-card"><h3>Engineering impact</h3><p>The job expands from programming one motion to training, validating and continuously improving a production skill.</p></div><div class="impact-card"><h3>Also this month</h3><p>Hitachi and FANUC announced a 30 September partnership to test physical AI in real factories. <a class="reference-link" href="https://www.fanuc.co.jp/en/profile/pr/newsrelease/2026/notice20260930.html" target="_blank" rel="noopener">Read the source</a></p></div></div></div><footer>www.harita.in</footer></section>
+  <section class="event-section"><div class="content"><h2>Engineering Beyond Boundaries</h2><div class="event-layout"><img class="event-collage" src="assets_sep_2026/engineering_beyond_boundaries_collage.png" alt="Engineering Beyond Boundaries customer event in Coimbatore"><article class="event-story"><div class="event-meta">Coimbatore | 3 September 2026</div><h3>When customer challenges meet engineering possibility</h3><p>Harita Techserv brought customers and engineering leaders together for a focused exchange across industrial equipment and automotive engineering, including digital engineering, CAD automation and evolving vehicle architectures.</p><p class="event-hook">The most valuable outcome was not a slide. It was the conversation: real operating challenges, practical ideas and new possibilities discussed in the same room.</p><div class="customer-list"><span>Velan</span><span>Bradken</span><span>Proper</span><span>ELGI</span><span>Messer</span><span>and more</span></div></article></div></div><footer>Customer Connect - Coimbatore</footer></section>
+  <section><div class="content"><h2>Harita Highlights</h2><div class="grid"><div><p>Harita Techserv Private Limited has been honoured with the <b>Statutory Governance Excellence Award</b> at the Partners in Progress 8th Annual Meet - 2026 by TVS Motor Company Limited.</p><span class="tag">Compliance First</span><span class="tag">People Centricity</span><span class="tag">Process Excellence</span><span class="tag">Business Enablement</span></div><img class="award" src="assets_sep_2026/hr_award_details.png" alt="HR award details"></div></div><footer>www.harita.in</footer></section>
+  <section class="pf-section"><div class="content"><div class="pf-layout"><div><span class="pf-kicker">Employee Update</span><h2>Update on PF Contribution Sep 2026</h2><p class="pf-summary">From <b>17 September 2026</b>, the EPF wage ceiling increased from <b>₹15,000 to ₹25,000 per month</b> under Notification S.O. 5109(E). For employees contributing at the revised statutory ceiling, the monthly employee PF contribution moves from <b>₹1,800 to ₹3,000</b>, strengthening long-term PF savings and family social security.</p><div class="pf-effective">The change applies prospectively from 17 September 2026.</div><br><a class="pdf-link" href="assets_sep_2026/update_on_pf_contribution_sep_2026.pdf" target="_blank" rel="noopener"><span class="pdf-badge">PDF</span>View September and October contribution details</a><p class="hr-note">Please contact the HR team for clarification.</p></div><aside class="pf-change"><h3>Monthly contribution at the statutory ceiling</h3><div class="pf-numbers"><div class="pf-number"><span>Earlier</span><strong>₹1,800</strong></div><div class="pf-arrow">→</div><div class="pf-number"><span>Revised</span><strong>₹3,000</strong></div></div><p class="pf-benefit"><b>September is a transition month:</b> the attached presentation explains the old and revised ceiling periods, followed by the full-month October calculation.</p></aside></div></div><footer>HR Update - September 2026</footer></section>
+  <section class="hr-article hr-article-opening"><div class="content"><div class="hr-byline"><img class="hr-avatar" src="assets_sep_2026/parasuraman_s_head_hr.png" alt="Parasuraman S, Head - HR"><div><span class="hr-credit">From the desk of our Head - HR</span><strong>Parasuraman S</strong><span>1 October 2026</span></div></div><div class="hr-story-grid"><article class="hr-copy"><span class="hr-kicker">Work, Rest & Sustainable Performance</span><h2>Logging Off Is Part of the Job</h2><p class="hr-lede">When did you last close your laptop and truly switch off?</p><p>With work only a notification away, the line between office and home can quietly disappear. Rest is not time taken away from performance. It is how we return sharper, calmer and more creative.</p><blockquote class="rest-quote">Rest is not a reward for finishing the work. It is part of how good work gets done.</blockquote></article><div class="disconnect-stage"><span class="notification one">One more message</span><span class="notification two">Quick check?</span><span class="notification three">Can this wait?</span><div class="laptop" aria-label="Laptop closing animation"><div class="laptop-lid"></div><div class="laptop-base"></div></div><aside class="self-check"><h3>A quick self-check</h3><ul><li>Messages are the first and last thing you check.</li><li>You feel tired even after a full night's sleep.</li><li>Friends and hobbies keep moving to next week.</li></ul></aside></div></div></div><footer>HR Perspective | Parasuraman S, Head - HR</footer></section>
+<section class="hr-article hr-challenge"><div class="content"><span class="hr-kicker">This Month's Challenge</span><h2>One Habit. Four Weeks.</h2><p class="challenge-intro">A sustainable workday rarely changes through one grand decision. Choose one small boundary and practise it consistently for the next four weeks.</p><div class="habit-grid"><button class="habit-card" type="button" data-habit="Set an end time"><span class="habit-number">1</span><h3>Set an end time</h3><p>Decide when work finishes and mute non-urgent notifications after that.</p></button><button class="habit-card" type="button" data-habit="Pick your top three"><span class="habit-number">2</span><h3>Pick your top three</h3><p>Protect attention for the tasks that matter most. Let the rest wait.</p></button><button class="habit-card" type="button" data-habit="Take real breaks"><span class="habit-number">3</span><h3>Take real breaks</h3><p>Step away for lunch, stretch or take a short walk without the screen.</p></button><button class="habit-card" type="button" data-habit="Use your leave"><span class="habit-number">4</span><h3>Use your leave</h3><p>Time away is recovery, not lost momentum. Return genuinely refreshed.</p></button><button class="habit-card" type="button" data-habit="Book time for you"><span class="habit-number">5</span><h3>Book time for you</h3><p>Protect family, friends, health and hobbies just as you would a meeting.</p></button></div><div class="challenge-banner"><strong>Make it yours</strong><span>Select one habit above and keep it visible for four weeks.</span><div class="habit-status" id="habitStatus">Choose the habit that would make the biggest difference to your day.</div></div></div><footer>Look after yourselves | HR Team</footer></section><section class="appreciation-section"><div class="content"><h2>Client Appreciation</h2><div class="appreciation-intro"><p><b>Congratulations to our engineers</b> whose work earned appreciation from our clients. Their ownership, engineering discipline and responsiveness turn everyday delivery into lasting customer confidence.</p></div><div class="appreciation-grid"><article class="people-card"><img class="people-photo" src="assets_sep_2026/client_appreciation_vishal_n_12249_uniform.png" alt="Vishal N"><div class="people-caption"><div class="people-name">Vishal N</div><div class="people-id">12249</div></div></article><article class="people-card"><img class="people-photo" src="assets_sep_2026/client_appreciation_dinesh_kumar_ms_12489_uniform.png" alt="Dinesh Kumar MS"><div class="people-caption"><div class="people-name">Dinesh Kumar MS</div><div class="people-id">12489</div></div></article><article class="people-card"><img class="people-photo" src="assets_sep_2026/client_appreciation_basavaraju_m_12895_uniform.png" alt="Basavaraju M"><div class="people-caption"><div class="people-name">Basavaraju M</div><div class="people-id">12895</div></div></article><article class="people-card"><img class="people-photo" src="assets_sep_2026/client_appreciation_kumaresan_s_12569_uniform.png" alt="Kumaresan S"><div class="people-caption"><div class="people-name">Kumaresan S</div><div class="people-id">12569</div></div></article><article class="people-card"><img class="people-photo" src="assets_sep_2026/client_appreciation_suryaprakash_12459_uniform.png" alt="Suryaprakash"><div class="people-caption"><div class="people-name">Suryaprakash</div><div class="people-id">12459</div></div></article><article class="people-card"><img class="people-photo" src="assets_sep_2026/client_appreciation_tamilselvan_kalisamy_12890_uniform.png" alt="Tamilselvan Kalisamy"><div class="people-caption"><div class="people-name">Tamilselvan Kalisamy</div><div class="people-id">12890</div></div></article><article class="people-card"><img class="people-photo" src="assets_sep_2026/client_appreciation_vigneshwaran_p_12775_uniform.png" alt="Vigneshwaran P"><div class="people-caption"><div class="people-name">Vigneshwaran P</div><div class="people-id">12775</div></div></article></div></div><footer>Celebrating Engineering Excellence</footer></section>
+  <section class="teaser-section"><div class="content"><h2>Brain Teaser Lab</h2><p class="lede">Three quick problems for mechanical thinking, range awareness and pattern recognition. Make your choice before revealing the answer.</p><div class="word-spotlight"><div><span class="word-kicker">Word of the Month</span><div class="word-name">Proprioception</div><div class="word-pronunciation">pro-pree-oh-SEP-shun</div></div><div class="word-block"><strong>Meaning</strong>Your body's hidden sense of where its parts are and how they are moving, even when you cannot see them.</div><div class="word-block"><strong>In a sentence</strong>“Artificial proprioception helps a humanoid robot place its feet and maintain balance without constantly looking down.”<span class="mini-challenge">Try it: close your eyes and touch your nose. That is proprioception at work.</span></div></div><div class="teaser-grid"><article class="teaser-card"><div class="teaser-visual"><svg class="gear-diagram" viewBox="0 0 320 120" role="img" aria-label="Meshed Gear A with 12 teeth and Gear B with 36 teeth"><g class="gear-shape gear-a"><circle cx="104" cy="55" r="23" fill="#0a7f2e" stroke="#0a7f2e" stroke-width="14" stroke-dasharray="8.1 3.95"></circle><circle cx="104" cy="55" r="9" fill="#f2faf3"></circle></g><g class="gear-shape gear-b"><circle cx="177" cy="55" r="37" fill="#d6a12a" stroke="#d6a12a" stroke-width="14" stroke-dasharray="3.7 2.76"></circle><circle cx="177" cy="55" r="12" fill="#f2faf3"></circle></g><text class="gear-label" x="52" y="31">A</text><text class="gear-count" x="52" y="48">12 teeth</text><text class="gear-label" x="257" y="31">B</text><text class="gear-count" x="257" y="48">36 teeth</text></svg></div><h3>Gear Logic</h3><p>Gear A has 12 teeth and drives Gear B with 36 teeth. If Gear A turns 3 full rotations, how many rotations does Gear B make?</p><button class="answer-btn" type="button">Reveal Answer</button><div class="answer">Gear B makes 1 rotation in the opposite direction. A 3:1 tooth ratio trades speed for torque.</div></article><article class="teaser-card"><div class="teaser-visual"><span class="route-line"></span><span class="route-dot start"></span><span class="route-dot mid"></span><span class="route-dot end"></span><span class="route-label start">START</span><span class="route-label mid">150 km</span><span class="route-label end">250 km</span></div><h3>EV Range Check</h3><p>An EV starts at 80 percent charge. It uses 12 percentage points every 50 km. After 250 km, what charge remains?</p><button class="answer-btn" type="button">Reveal Answer</button><div class="answer">20 percent remains: five 50 km stages use 60 percentage points.</div></article><article class="teaser-card"><div class="teaser-visual"><div class="pattern-bars"><span style="height:24px"></span><span></span><span></span><span></span></div></div><h3>Pattern Pulse</h3><p>What comes next in this sequence: 3, 8, 15, 24, 35, __ ?</p><button class="answer-btn" type="button">Reveal Answer</button><div class="answer">48. The gaps are +5, +7, +9 and +11; the next gap is +13.</div></article></div></div><footer>www.harita.in</footer></section>
+  <section class="wellbeing-section"><div class="content"><h2>Wellbeing Reset</h2><div class="wellbeing"><div class="timer-panel"><div class="timer-ring" id="timerRing"><div class="timer-time" id="timerTime">05:00</div></div><div class="phase-label" id="phaseLabel">Ready: Neck Release</div><div class="rest-popup" id="restPopup">10 sec rest</div><p><b>Five-minute guided desk reset.</b> Each action runs for 52 seconds, with a 10-second rest popup between switches.</p><div class="timer-buttons"><button class="start-btn" id="startTimer">Start Timer</button><button class="pause-btn" id="pauseTimer">Pause</button><button class="reset-btn" id="resetTimer">Reset</button></div></div><div class="move-grid" id="moveGrid"><div class="move-card active"><div class="demo neck-demo"><span class="head"></span><span class="torso"></span></div><div class="move-title">1. Neck Release</div><p>Tilt ear toward shoulder, hold, return to centre, then switch sides.</p></div><div class="move-card"><div class="demo shoulder-demo"><span class="head"></span><span class="torso"></span><span class="shoulder-line"></span><span class="circle-arrow left"></span><span class="circle-arrow right"></span></div><div class="move-title">2. Shoulder Rolls</div><p>Make smooth shoulder circles backward, then forward.</p></div><div class="move-card"><div class="demo wrist-demo"><span class="head"></span><span class="torso"></span><span class="forearm left"></span><span class="forearm right"></span><span class="hand left"></span><span class="hand right"></span></div><div class="move-title">3. Wrist Reset</div><p>Circle both wrists slowly. Open and close your hands between rounds.</p></div><div class="move-card"><div class="demo twist-demo"><span class="shoulder-line"></span><span class="torso"></span><span class="head"></span></div><div class="move-title">4. Seated Twist</div><p>Sit tall, rotate chest gently to one side, breathe, then switch.</p></div><div class="move-card"><div class="demo eye-demo"><span class="eye"></span><span class="pupil"></span><span class="focus-point near">NEAR</span><span class="focus-point far">FAR</span></div><div class="move-title">5. Eye Break</div><p>Shift your focus between the near and far markers. Blink slowly and keep the head still.</p></div></div></div></div><footer>For Internal Circulation Only - Edition 07, September 2026</footer></section>
+  <section><div class="content"><h2>Quick Feedback</h2><form class="feedback-form" name="interactive-newsletter-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="feedbackForm"><input type="hidden" name="form-name" value="interactive-newsletter-feedback"><p hidden><label>Do not fill this <input name="bot-field"></label></p><p><b>How much do you like this interactive newsletter compared with the classic newsletter?</b></p><label>Preference rating</label><div class="rating-row"><label><input type="radio" name="rating" value="1 - Prefer classic"><span>1</span></label><label><input type="radio" name="rating" value="2"><span>2</span></label><label><input type="radio" name="rating" value="3"><span>3</span></label><label><input type="radio" name="rating" value="4"><span>4</span></label><label><input type="radio" name="rating" value="5 - Love interactive" required><span>5</span></label></div><label for="feedbackText">What should we improve next?</label><textarea id="feedbackText" name="comments" placeholder="Share one suggestion..."></textarea><button class="submit-btn" type="submit">Submit Feedback</button><div class="form-status" id="formStatus"></div></form></div><footer>Thank you for reading</footer></section>
+</main>
+<script>
+  function trackEvent(name, parameters = {}) {
+    if (typeof window.gtag === "function") window.gtag("event", name, parameters);
+  }
+
+  const totalSeconds = 300;
+  let remaining = totalSeconds;
+  let timerId = null;
+  let timerStartTracked = false;
+  const timerTime = document.getElementById("timerTime");
+  const timerRing = document.getElementById("timerRing");
+  const phaseLabel = document.getElementById("phaseLabel");
+  const restPopup = document.getElementById("restPopup");
+  const cards = Array.from(document.querySelectorAll(".move-card"));
+  const schedule = [
+    { type: "move", card: 0, label: "Neck Release", duration: 52 },
+    { type: "rest", next: "Shoulder Rolls", duration: 10 },
+    { type: "move", card: 1, label: "Shoulder Rolls", duration: 52 },
+    { type: "rest", next: "Wrist Reset", duration: 10 },
+    { type: "move", card: 2, label: "Wrist Reset", duration: 52 },
+    { type: "rest", next: "Seated Twist", duration: 10 },
+    { type: "move", card: 3, label: "Seated Twist", duration: 52 },
+    { type: "rest", next: "Eye Break", duration: 10 },
+    { type: "move", card: 4, label: "Eye Break", duration: 52 }
+  ];
+  function currentPhase(elapsed) {
+    let cursor = 0;
+    for (const phase of schedule) {
+      if (elapsed < cursor + phase.duration) {
+        return { ...phase, remainingInPhase: cursor + phase.duration - elapsed };
+      }
+      cursor += phase.duration;
+    }
+    return { type: "done", remainingInPhase: 0 };
+  }
+  function renderTimer() {
+    const elapsed = totalSeconds - remaining;
+    const phase = currentPhase(elapsed);
+    const mins = String(Math.floor(remaining / 60)).padStart(2, "0");
+    const secs = String(remaining % 60).padStart(2, "0");
+    timerTime.textContent = `${mins}:${secs}`;
+    timerRing.style.setProperty("--progress", `${(elapsed / totalSeconds) * 360}deg`);
+    cards.forEach((card, index) => {
+      const isCurrent = phase.type === "move" && index === phase.card;
+      card.classList.toggle("active", isCurrent);
+      card.classList.toggle("is-animating", Boolean(timerId) && isCurrent);
+    });
+    if (phase.type === "rest") {
+      phaseLabel.textContent = `Rest: ${phase.remainingInPhase}s`;
+      restPopup.textContent = `10 sec rest - next: ${phase.next}`;
+      restPopup.classList.add("show");
+    } else if (phase.type === "move") {
+      phaseLabel.textContent = `${phase.label} - ${phase.remainingInPhase}s`;
+      restPopup.classList.remove("show");
+    } else {
+      phaseLabel.textContent = "Reset complete";
+      restPopup.textContent = "Well done. Return sharper.";
+      restPopup.classList.add("show");
+    }
+  }
+  function startTimer() {
+    if (timerId) return;
+    if (!timerStartTracked) {
+      trackEvent("wellbeing_timer_started");
+      timerStartTracked = true;
+    }
+    timerId = window.setInterval(() => {
+      remaining = Math.max(0, remaining - 1);
+      renderTimer();
+      if (remaining === 0) pauseTimer();
+    }, 1000);
+    renderTimer();
+  }
+  function pauseTimer() {
+    window.clearInterval(timerId);
+    timerId = null;
+    renderTimer();
+  }
+  function resetTimer() {
+    pauseTimer();
+    remaining = totalSeconds;
+    renderTimer();
+  }
+  document.getElementById("startTimer").addEventListener("click", startTimer);
+  document.getElementById("pauseTimer").addEventListener("click", pauseTimer);
+  document.getElementById("resetTimer").addEventListener("click", resetTimer);
+  document.querySelector(".pdf-link")?.addEventListener("click", () => {
+    trackEvent("pf_update_opened");
+  });
+  document.querySelectorAll(".reference-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      trackEvent("technology_reference_opened", { reference_host: new URL(link.href).hostname });
+    });
+  });
+  const viewedSections = new WeakSet();
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting || viewedSections.has(entry.target)) return;
+      viewedSections.add(entry.target);
+      const heading = entry.target.querySelector("h1, h2");
+      trackEvent("newsletter_section_viewed", {
+        section_name: heading ? heading.textContent.trim().replace(/\s+/g, " ") : "Newsletter section"
+      });
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll("main.deck > section").forEach((section) => sectionObserver.observe(section));
+  document.querySelectorAll(".answer-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const answer = button.nextElementSibling;
+      answer.classList.toggle("show");
+      button.textContent = answer.classList.contains("show") ? "Hide Answer" : "Reveal Answer";
+    });
+  });
+  const appreciationSection = document.querySelector(".appreciation-section");
+  const appreciationObserver = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    appreciationSection.classList.remove("in-view");
+    void appreciationSection.offsetWidth;
+    appreciationSection.classList.add("in-view");
+  }, { threshold: 0.3 });
+  appreciationObserver.observe(appreciationSection);
+  const articleObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove("in-view");
+      void entry.target.offsetWidth;
+      entry.target.classList.add("in-view");
+    });
+  }, { threshold: 0.28 });
+  document.querySelectorAll(".hr-article").forEach((section) => articleObserver.observe(section));
+  const habitStatus = document.getElementById("habitStatus");
+  document.querySelectorAll(".habit-card").forEach((habit) => {
+    habit.addEventListener("click", () => {
+      document.querySelectorAll(".habit-card").forEach((card) => card.classList.remove("selected"));
+      habit.classList.add("selected");
+      habitStatus.textContent = `Your four-week focus: ${habit.dataset.habit}.`;
+    });
+  });
+  document.querySelectorAll(".people-card").forEach((card) => {
+    card.setAttribute("tabindex", "0");
+    card.addEventListener("click", () => {
+      if (window.matchMedia("(hover: hover)").matches) return;
+      document.querySelectorAll(".people-card").forEach((item) => item.classList.remove("spotlight"));
+      card.classList.add("spotlight");
+    });
+  });
+  renderTimer();
+  const feedbackForm = document.getElementById("feedbackForm");
+  const formStatus = document.getElementById("formStatus");
+  feedbackForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    formStatus.textContent = "Recording your feedback...";
+    const data = new URLSearchParams(new FormData(feedbackForm));
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString()
+      });
+      if (!response.ok) throw new Error("Submit failed");
+      const rating = feedbackForm.querySelector('input[name="rating"]:checked')?.value.split(" ")[0];
+      trackEvent("feedback_submitted", rating ? { preference_rating: rating } : {});
+      feedbackForm.reset();
+      formStatus.textContent = "Thank you - your feedback has been recorded.";
+    } catch (error) {
+      formStatus.textContent = "Please try again after the site is uploaded to Netlify.";
+    }
+  });
+</script>
+</body>
+</html>
