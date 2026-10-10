@@ -44,9 +44,10 @@
       padding: 36px 0 48px;
       position: relative;
     }
+    header > .shell { position: relative; }
     .topbar {
       position: absolute;
-      inset: 28px 0 auto;
+      inset: 0 0 auto;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -163,7 +164,7 @@
     @media (max-width: 760px) {
       .shell { width: min(100% - 28px, 1180px); }
       header { min-height: 62vh; padding-top: 24px; }
-      .topbar { top: 20px; }
+      .topbar { top: 0; }
       .logo { width: 180px; }
       .intro { padding-top: 110px; }
       h1 { font-size: clamp(48px, 15vw, 70px); }
