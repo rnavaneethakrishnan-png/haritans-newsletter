@@ -187,7 +187,7 @@
     .teaser {
       display: flex;
       flex-direction: column;
-      min-height: 430px;
+      min-height: 500px;
       padding: 24px;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -195,23 +195,31 @@
       box-shadow: 0 16px 34px rgba(18,53,34,.08);
     }
     .visual { position: relative; height: 145px; margin-bottom: 22px; border-radius: 6px; background: var(--green-soft); overflow: hidden; }
-    .gear { position: absolute; top: 35px; border: 10px dashed currentColor; border-radius: 50%; animation: none; }
-    .gear::after { content: ""; position: absolute; inset: 30%; border-radius: 50%; background: var(--green-soft); }
-    .gear-a { left: 55px; width: 70px; aspect-ratio: 1; color: var(--green); }
-    .gear-b { left: 121px; top: 20px; width: 100px; aspect-ratio: 1; color: var(--gold); }
-    .axis-label { position: absolute; bottom: 8px; font-size: 12px; font-weight: 800; }
-    .axis-a { left: 57px; } .axis-b { left: 170px; }
-    .battery { position: absolute; left: 50%; top: 50%; width: 132px; height: 72px; border: 6px solid var(--green-dark); border-radius: 7px; transform: translate(-50%,-50%); }
-    .battery::before { content: ""; position: absolute; right: -16px; top: 20px; width: 11px; height: 24px; border-radius: 0 4px 4px 0; background: var(--green-dark); }
-    .battery::after { content: "60%"; position: absolute; inset: 7px 44% 7px 7px; display: grid; place-items: center; border-radius: 3px; background: var(--green); color: #fff; font-size: 15px; font-weight: 900; }
-    .wheel-track { position: absolute; left: 26px; right: 26px; bottom: 28px; height: 7px; border-radius: 8px; background: var(--green-dark); }
-    .quiz-wheel { position: absolute; left: 50%; top: 24px; width: 88px; aspect-ratio: 1; border: 12px solid var(--green); border-radius: 50%; transform: translateX(-50%); }
-    .quiz-wheel::after { content: "2 m"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--green-dark); font-weight: 900; }
+    .gear-symbol { position: absolute; line-height: 1; color: var(--green); font-family: "Arial Unicode MS", "Segoe UI Symbol", sans-serif; }
+    .gear-symbol.a { left: 16%; top: 33px; font-size: 76px; transform: rotate(-8deg); }
+    .gear-symbol.b { right: 13%; top: 12px; color: var(--gold); font-size: 112px; transform: rotate(10deg); }
+    .gear-label { position: absolute; bottom: 9px; font-size: 12px; font-weight: 900; }
+    .gear-label.a { left: 13%; } .gear-label.b { right: 10%; }
+    .aero-car { position: absolute; right: 12%; top: 51px; width: 45%; height: 44px; border-radius: 38px 54px 8px 8px; background: var(--green-dark); }
+    .aero-car::before { content: ""; position: absolute; left: 24%; top: -25px; width: 51%; height: 28px; border-radius: 32px 36px 0 0; background: var(--green); clip-path: polygon(18% 0, 80% 0, 100% 100%, 0 100%); }
+    .aero-car::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -13px; height: 22px; background: radial-gradient(circle at 16% 50%, #17231c 0 10px, transparent 11px), radial-gradient(circle at 84% 50%, #17231c 0 10px, transparent 11px); }
+    .air-line { position: absolute; left: 8%; width: 42%; height: 4px; border-radius: 5px; background: var(--gold); }
+    .air-line.one { top: 43px; } .air-line.two { top: 70px; width: 35%; } .air-line.three { top: 97px; width: 45%; }
+    .charging-strip { position: absolute; left: 8%; right: 8%; bottom: 25px; height: 36px; border-radius: 6px; background: #56625a; }
+    .charging-strip::after { content: ""; position: absolute; left: 8%; right: 8%; top: 15px; height: 4px; background: repeating-linear-gradient(90deg, #fff 0 26px, transparent 26px 43px); }
+    .charging-coil { position: absolute; bottom: 8px; width: 46px; aspect-ratio: 1; border: 7px double var(--gold); border-radius: 50%; background: rgba(255,255,255,.18); }
+    .charging-coil.one { left: 21%; } .charging-coil.two { left: 43%; } .charging-coil.three { right: 20%; }
+    .power-badge { position: absolute; left: 50%; top: 18px; padding: 9px 12px; border: 2px solid var(--green); background: #fff; color: var(--green-dark); font-size: 15px; font-weight: 900; transform: translateX(-50%); }
     .teaser h3 { margin: 0 0 10px; color: var(--green-dark); font-size: 25px; }
     .teaser p { margin: 0; color: var(--muted); line-height: 1.48; }
-    .answer-button { margin-top: auto; padding: 13px 16px; border: 0; border-radius: 6px; background: var(--green); color: var(--white); font-weight: 800; cursor: pointer; }
+    .choice-list { display: grid; gap: 9px; margin-top: 20px; }
+    .choice-button { width: 100%; padding: 12px 14px; border: 1px solid #b9d0c0; border-radius: 6px; background: #f8fbf9; color: var(--green-dark); text-align: left; font-weight: 800; cursor: pointer; transition: border-color .18s ease, background .18s ease, transform .18s ease; }
+    .choice-button:hover, .choice-button:focus-visible { border-color: var(--green); background: var(--green-soft); transform: translateY(-1px); }
+    .choice-button.correct { border-color: var(--green); background: #dff2e5; }
+    .choice-button.incorrect { border-color: var(--red); background: #fbe8e5; }
+    .choice-button:disabled { cursor: default; transform: none; opacity: 1; }
     .answer { display: none; margin-top: 14px; padding: 14px; border-left: 4px solid var(--gold); background: var(--gold-soft); line-height: 1.45; }
-    .teaser.open .answer { display: block; }
+    .teaser.answered .answer { display: block; }
     .draft-note { margin-top: 28px; padding: 18px 20px; border: 1px dashed #9db9a6; color: var(--muted); background: rgba(255,255,255,.7); }
     footer { padding: 28px 20px; text-align: center; color: #5e7164; font-size: 13px; }
     @media (max-width: 900px) {
@@ -219,7 +227,7 @@
       .loop { grid-template-columns: 1fr 1fr; }
       .loop-card:not(:last-child)::after { display: none; }
       .teaser-grid { grid-template-columns: 1fr; }
-      .teaser { min-height: 390px; }
+      .teaser { min-height: 470px; }
     }
     @media (max-width: 620px) {
       .page { min-height: auto; padding: 82px 0; }
@@ -311,28 +319,40 @@
     <div class="wrap">
       <span class="kicker">Think Before You Tap</span>
       <h2>Brain Lab</h2>
-      <p class="lede">Three quick challenges from the world of gears, regenerative braking and vehicle motion. Make a prediction before revealing each answer.</p>
+      <p class="lede">Three quick decisions from drivetrain, aerodynamics and charging engineering. Choose an answer first; the engineering behind it appears instantly.</p>
       <div class="teaser-grid">
         <article class="teaser">
-          <div class="visual"><span class="gear gear-a"></span><span class="gear gear-b"></span><span class="axis-label axis-a">A: 18 teeth</span><span class="axis-label axis-b">B: 54 teeth</span></div>
-          <h3>Torque Trade</h3>
-          <p>Gear A drives Gear B. If A rotates six times, how many turns does B make, and in which direction?</p>
-          <button class="answer-button" type="button">Reveal answer</button>
-          <div class="answer"><strong>Two turns, in the opposite direction.</strong> The 3:1 ratio reduces speed and increases available torque.</div>
+          <div class="visual" aria-hidden="true"><span class="gear-symbol a">&#9881;</span><span class="gear-symbol b">&#9881;</span><span class="gear-label a">A: 20 teeth</span><span class="gear-label b">B: 60 teeth</span></div>
+          <h3>Gearbox Decision</h3>
+          <p>Gear A drives Gear B at 900 rpm. What happens to Gear B?</p>
+          <div class="choice-list">
+            <button class="choice-button" type="button" data-correct="false">2,700 rpm, same direction</button>
+            <button class="choice-button" type="button" data-correct="true">300 rpm, opposite direction</button>
+            <button class="choice-button" type="button" data-correct="false">900 rpm, opposite direction</button>
+          </div>
+          <div class="answer"><strong>300 rpm, opposite direction.</strong> The driven gear has three times as many teeth, so its speed falls to one-third while available torque increases.</div>
         </article>
         <article class="teaser">
-          <div class="visual"><span class="battery"></span></div>
-          <h3>Energy Recovery</h3>
-          <p>An EV has 200 kJ of kinetic energy before braking. If regenerative braking recovers 60%, how much energy returns to the battery?</p>
-          <button class="answer-button" type="button">Reveal answer</button>
-          <div class="answer"><strong>120 kJ.</strong> Multiply 200 kJ by 0.60. The remaining energy is lost mainly through braking, tyre and aerodynamic effects.</div>
+          <div class="visual" aria-hidden="true"><span class="air-line one"></span><span class="air-line two"></span><span class="air-line three"></span><span class="aero-car"></span></div>
+          <h3>The Speed Penalty</h3>
+          <p>Under the same conditions, a car doubles its speed. Approximately how does aerodynamic drag force change?</p>
+          <div class="choice-list">
+            <button class="choice-button" type="button" data-correct="false">It doubles</button>
+            <button class="choice-button" type="button" data-correct="true">It becomes four times greater</button>
+            <button class="choice-button" type="button" data-correct="false">It remains nearly unchanged</button>
+          </div>
+          <div class="answer"><strong>Four times greater.</strong> Drag force rises approximately with the square of speed. This is why high-speed efficiency depends so heavily on aerodynamic design.</div>
         </article>
         <article class="teaser">
-          <div class="visual"><span class="quiz-wheel"></span><span class="wheel-track"></span></div>
-          <h3>Wheel Math</h3>
-          <p>A tyre travels 2 metres with each complete rotation. How many rotations does it make while the vehicle travels 120 metres?</p>
-          <button class="answer-button" type="button">Reveal answer</button>
-          <div class="answer"><strong>60 rotations.</strong> Divide the distance travelled, 120 metres, by 2 metres per rotation.</div>
+          <div class="visual" aria-hidden="true"><span class="power-badge">150 kW</span><span class="charging-strip"></span><span class="charging-coil one"></span><span class="charging-coil two"></span><span class="charging-coil three"></span></div>
+          <h3>Charging Lane</h3>
+          <p>A vehicle receives 150 kW continuously for 12 minutes. Ignoring losses, how much energy does it receive?</p>
+          <div class="choice-list">
+            <button class="choice-button" type="button" data-correct="false">12 kWh</button>
+            <button class="choice-button" type="button" data-correct="true">30 kWh</button>
+            <button class="choice-button" type="button" data-correct="false">75 kWh</button>
+          </div>
+          <div class="answer"><strong>30 kWh.</strong> Twelve minutes is 0.2 hours, so energy equals 150 kW x 0.2 h. Real systems deliver less after transfer and conversion losses.</div>
         </article>
       </div>
       <div class="draft-note"><strong>October draft:</strong> Internal stories, recognitions and employee updates can be added as separate sections without changing this editorial core.</div>
@@ -341,11 +361,16 @@
 
   <footer>Haritans Newsletter | October 2026 working draft | Not published to production</footer>
   <script>
-    document.querySelectorAll('.answer-button').forEach(function (button) {
+    document.querySelectorAll('.choice-button').forEach(function (button) {
       button.addEventListener('click', function () {
         var card = button.closest('.teaser');
-        var isOpen = card.classList.toggle('open');
-        button.textContent = isOpen ? 'Hide answer' : 'Reveal answer';
+        if (card.classList.contains('answered')) return;
+        card.classList.add('answered');
+        card.querySelectorAll('.choice-button').forEach(function (choice) {
+          choice.disabled = true;
+          if (choice.dataset.correct === 'true') choice.classList.add('correct');
+        });
+        if (button.dataset.correct !== 'true') button.classList.add('incorrect');
       });
     });
 
