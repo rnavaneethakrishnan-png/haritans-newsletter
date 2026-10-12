@@ -175,15 +175,17 @@
       box-shadow: 0 16px 34px rgba(18,53,34,.08);
     }
     .visual { position: relative; height: 145px; margin-bottom: 22px; border-radius: 6px; background: var(--green-soft); overflow: hidden; }
-    .race-track { position: absolute; inset: 18px 24px; display: grid; grid-template-rows: repeat(3, 1fr); gap: 8px; }
-    .race-lane { position: relative; border-bottom: 2px dashed #9ab8a3; }
-    .race-runner { position: absolute; top: 50%; width: 34px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: #fff; font-size: 13px; font-weight: 900; transform: translateY(-50%); }
-    .race-lane:nth-child(1) .race-runner { right: 8%; background: var(--gold); color: var(--green-dark); }
-    .race-lane:nth-child(2) .race-runner { right: 28%; }
-    .race-lane:nth-child(3) .race-runner { right: 50%; background: var(--green-dark); }
-    .padlock { position: absolute; left: 50%; top: 68%; width: 92px; height: 62px; border-radius: 7px; background: var(--green); transform: translate(-50%,-50%); }
-    .padlock::before { content: ""; position: absolute; left: 20px; top: -54px; width: 52px; height: 60px; border: 12px solid var(--green-dark); border-bottom: 0; border-radius: 34px 34px 0 0; }
-    .padlock::after { content: "* * * *"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-weight: 900; letter-spacing: 3px; }
+    .well { position: absolute; left: 50%; top: 14px; width: 124px; height: 118px; border: 12px solid var(--green-dark); border-top: 0; background: repeating-linear-gradient(0deg, transparent 0 22px, rgba(18,53,34,.11) 22px 24px); transform: translateX(-50%); }
+    .well::before { content: "30 ft"; position: absolute; right: -54px; top: 44px; color: var(--green-dark); font-size: 13px; font-weight: 900; }
+    .snail { position: absolute; left: 17px; bottom: 10px; width: 62px; height: 18px; border-radius: 14px 18px 8px 8px; background: var(--gold); }
+    .snail::before { content: ""; position: absolute; left: 18px; bottom: 5px; width: 36px; aspect-ratio: 1; border: 7px solid var(--green); border-radius: 50%; background: #f5d879; }
+    .snail::after { content: ""; position: absolute; right: -7px; top: -5px; width: 18px; aspect-ratio: 1; border-radius: 50%; background: var(--gold); }
+    .capture-line { position: absolute; left: 24px; right: 24px; bottom: 34px; height: 4px; background: var(--green-dark); }
+    .capture-dot { position: absolute; bottom: 25px; width: 22px; aspect-ratio: 1; display: grid; place-items: center; border: 3px solid var(--green); border-radius: 50%; background: #fff; color: var(--green-dark); font-size: 8px; font-weight: 900; transform: translateX(-50%); }
+    .capture-dot.one { left: 8%; } .capture-dot.two { left: 22%; } .capture-dot.three { left: 36%; } .capture-dot.four { left: 50%; } .capture-dot.five { left: 64%; } .capture-dot.six { left: 78%; } .capture-dot.seven { left: 92%; }
+    .camera { position: absolute; left: 50%; top: 18px; width: 74px; height: 50px; border-radius: 6px; background: var(--green-dark); transform: translateX(-50%); }
+    .camera::before { content: ""; position: absolute; left: 25px; top: 13px; width: 25px; aspect-ratio: 1; border: 5px solid var(--gold); border-radius: 50%; }
+    .camera::after { content: ""; position: absolute; left: 12px; top: -8px; width: 24px; height: 10px; border-radius: 3px 3px 0 0; background: var(--green); }
     .planet { position: absolute; left: 50%; top: 50%; width: 112px; aspect-ratio: 1; border-radius: 50%; background: repeating-linear-gradient(0deg, #d6a12a 0 12px, #f5d87f 12px 23px, #b66d33 23px 30px); box-shadow: inset -17px -8px 0 rgba(69,45,18,.18); transform: translate(-50%,-50%); }
     .planet::after { content: ""; position: absolute; left: 15px; top: 42px; width: 30px; height: 12px; border-radius: 50%; background: #9f4d2d; }
     .teaser h3 { margin: 0 0 10px; color: var(--green-dark); font-size: 25px; }
@@ -296,26 +298,26 @@
       <p class="lede">A quick mix of common sense, digital awareness and general knowledge. Trust your first answer, then check the reasoning.</p>
       <div class="teaser-grid">
         <article class="teaser">
-          <div class="visual" aria-hidden="true"><div class="race-track"><span class="race-lane"><i class="race-runner">1</i></span><span class="race-lane"><i class="race-runner">2</i></span><span class="race-lane"><i class="race-runner">3</i></span></div></div>
-          <h3>Think Before You Race</h3>
-          <p>You are running a race and overtake the person in second place. What position are you now in?</p>
+          <div class="visual" aria-hidden="true"><span class="well"><i class="snail"></i></span></div>
+          <h3>The Last Climb</h3>
+          <p>A snail is at the bottom of a 30-foot well. It climbs 3 feet each day and slides down 2 feet each night. On which day does it escape?</p>
           <div class="choice-list">
-            <button class="choice-button" type="button" data-correct="false">First place</button>
-            <button class="choice-button" type="button" data-correct="true">Second place</button>
-            <button class="choice-button" type="button" data-correct="false">Third place</button>
+            <button class="choice-button" type="button" data-correct="false">Day 27</button>
+            <button class="choice-button" type="button" data-correct="true">Day 28</button>
+            <button class="choice-button" type="button" data-correct="false">Day 30</button>
           </div>
-          <div class="answer"><strong>Second place.</strong> You take the position of the runner you passed; the person in first place is still ahead of you.</div>
+          <div class="answer"><strong>Day 28.</strong> After 27 nights the snail is at 27 feet. On Day 28 it climbs past 30 feet and escapes before another night-time slide.</div>
         </article>
         <article class="teaser">
-          <div class="visual" aria-hidden="true"><span class="padlock"></span></div>
-          <h3>Password Sense</h3>
-          <p>Which password choice is generally the strongest?</p>
+          <div class="visual" aria-hidden="true"><span class="camera"></span><span class="capture-line"></span><span class="capture-dot one">0</span><span class="capture-dot two">10</span><span class="capture-dot three">20</span><span class="capture-dot four">30</span><span class="capture-dot five">40</span><span class="capture-dot six">50</span><span class="capture-dot seven">60</span></div>
+          <h3>The Extra Frame</h3>
+          <p>A quality camera takes its first image at 0 seconds, then one image every 10 seconds. How many images has it taken by the 60-second mark?</p>
           <div class="choice-list">
-            <button class="choice-button" type="button" data-correct="false">Harita2026</button>
-            <button class="choice-button" type="button" data-correct="false">Password@123</button>
-            <button class="choice-button" type="button" data-correct="true">Mango-River-Clock-47</button>
+            <button class="choice-button" type="button" data-correct="false">6 images</button>
+            <button class="choice-button" type="button" data-correct="true">7 images</button>
+            <button class="choice-button" type="button" data-correct="false">10 images</button>
           </div>
-          <div class="answer"><strong>Mango-River-Clock-47.</strong> A longer, unique passphrase is harder to guess than a short password built from a company name or common pattern. Use a password manager and multi-factor authentication where available.</div>
+          <div class="answer"><strong>7 images.</strong> The camera captures at 0, 10, 20, 30, 40, 50 and 60 seconds. Counting both endpoints creates one more image than the number of ten-second intervals.</div>
         </article>
         <article class="teaser">
           <div class="visual" aria-hidden="true"><span class="planet"></span></div>
