@@ -121,30 +121,10 @@
       overflow: hidden;
       border: 1px solid #bcd4c3;
       border-radius: 8px;
-      background: linear-gradient(#dcefe4 0 48%, #515954 48% 100%);
+      background: #dcefe4;
     }
-    .charging-stage::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 18%;
-      height: 5px;
-      background: repeating-linear-gradient(90deg, #fff 0 52px, transparent 52px 94px);
-    }
-    .road-label { position: absolute; left: 7%; top: 8%; color: var(--green-dark); font-size: 13px; font-weight: 900; text-transform: uppercase; }
-    .car { position: absolute; left: 18%; bottom: 31%; width: 58%; height: 22%; border-radius: 58px 82px 14px 14px; background: var(--green); animation: road-drive 4.6s ease-in-out infinite; }
-    .car::before { content: ""; position: absolute; left: 24%; top: -52%; width: 48%; height: 62%; border-radius: 42px 54px 0 0; background: var(--green-dark); clip-path: polygon(18% 0, 78% 0, 100% 100%, 0 100%); }
-    .wheel { position: absolute; bottom: -25%; width: 22%; aspect-ratio: 1; border: 9px solid #17231c; border-radius: 50%; background: #cbd5ce; }
-    .wheel.front { right: 9%; } .wheel.rear { left: 9%; }
-    .receiver { position: absolute; left: 39%; bottom: -13%; width: 22%; height: 12px; border-radius: 6px; background: var(--gold); }
-    .road-coils { position: absolute; left: 8%; right: 8%; bottom: 4%; display: flex; justify-content: space-around; }
-    .road-coil { width: 52px; aspect-ratio: 1; border: 8px double #f2c34d; border-radius: 50%; opacity: .45; animation: charge-pulse 2s ease-in-out infinite; }
-    .road-coil:nth-child(2) { animation-delay: .35s; } .road-coil:nth-child(3) { animation-delay: .7s; } .road-coil:nth-child(4) { animation-delay: 1.05s; }
-    .energy-wave { position: absolute; left: 43%; bottom: 18%; width: 17%; height: 18%; border: 4px solid var(--gold); border-width: 4px 0; border-radius: 50%; opacity: .75; animation: energy-rise 1.4s ease-in-out infinite; }
-    @keyframes road-drive { 0%, 100% { transform: translateX(-3%); } 50% { transform: translateX(8%); } }
-    @keyframes charge-pulse { 0%, 100% { transform: scale(.82); opacity: .32; } 50% { transform: scale(1.08); opacity: .9; } }
-    @keyframes energy-rise { 0%, 100% { transform: translateY(8px) scale(.8); opacity: .35; } 50% { transform: translateY(-9px) scale(1.08); opacity: .9; } }
+    .charging-image { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; }
+    .road-label { position: absolute; left: 18px; top: 18px; padding: 9px 12px; border-radius: 4px; background: rgba(255,255,255,.9); color: var(--green-dark); font-size: 12px; font-weight: 900; text-transform: uppercase; }
     .story-card {
       padding: clamp(28px, 4vw, 50px);
       border-radius: 8px;
@@ -195,21 +175,17 @@
       box-shadow: 0 16px 34px rgba(18,53,34,.08);
     }
     .visual { position: relative; height: 145px; margin-bottom: 22px; border-radius: 6px; background: var(--green-soft); overflow: hidden; }
-    .gear-symbol { position: absolute; line-height: 1; color: var(--green); font-family: "Arial Unicode MS", "Segoe UI Symbol", sans-serif; }
-    .gear-symbol.a { left: 16%; top: 33px; font-size: 76px; transform: rotate(-8deg); }
-    .gear-symbol.b { right: 13%; top: 12px; color: var(--gold); font-size: 112px; transform: rotate(10deg); }
-    .gear-label { position: absolute; bottom: 9px; font-size: 12px; font-weight: 900; }
-    .gear-label.a { left: 13%; } .gear-label.b { right: 10%; }
-    .aero-car { position: absolute; right: 12%; top: 51px; width: 45%; height: 44px; border-radius: 38px 54px 8px 8px; background: var(--green-dark); }
-    .aero-car::before { content: ""; position: absolute; left: 24%; top: -25px; width: 51%; height: 28px; border-radius: 32px 36px 0 0; background: var(--green); clip-path: polygon(18% 0, 80% 0, 100% 100%, 0 100%); }
-    .aero-car::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -13px; height: 22px; background: radial-gradient(circle at 16% 50%, #17231c 0 10px, transparent 11px), radial-gradient(circle at 84% 50%, #17231c 0 10px, transparent 11px); }
-    .air-line { position: absolute; left: 8%; width: 42%; height: 4px; border-radius: 5px; background: var(--gold); }
-    .air-line.one { top: 43px; } .air-line.two { top: 70px; width: 35%; } .air-line.three { top: 97px; width: 45%; }
-    .charging-strip { position: absolute; left: 8%; right: 8%; bottom: 25px; height: 36px; border-radius: 6px; background: #56625a; }
-    .charging-strip::after { content: ""; position: absolute; left: 8%; right: 8%; top: 15px; height: 4px; background: repeating-linear-gradient(90deg, #fff 0 26px, transparent 26px 43px); }
-    .charging-coil { position: absolute; bottom: 8px; width: 46px; aspect-ratio: 1; border: 7px double var(--gold); border-radius: 50%; background: rgba(255,255,255,.18); }
-    .charging-coil.one { left: 21%; } .charging-coil.two { left: 43%; } .charging-coil.three { right: 20%; }
-    .power-badge { position: absolute; left: 50%; top: 18px; padding: 9px 12px; border: 2px solid var(--green); background: #fff; color: var(--green-dark); font-size: 15px; font-weight: 900; transform: translateX(-50%); }
+    .race-track { position: absolute; inset: 18px 24px; display: grid; grid-template-rows: repeat(3, 1fr); gap: 8px; }
+    .race-lane { position: relative; border-bottom: 2px dashed #9ab8a3; }
+    .race-runner { position: absolute; top: 50%; width: 34px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--green); color: #fff; font-size: 13px; font-weight: 900; transform: translateY(-50%); }
+    .race-lane:nth-child(1) .race-runner { right: 8%; background: var(--gold); color: var(--green-dark); }
+    .race-lane:nth-child(2) .race-runner { right: 28%; }
+    .race-lane:nth-child(3) .race-runner { right: 50%; background: var(--green-dark); }
+    .padlock { position: absolute; left: 50%; top: 68%; width: 92px; height: 62px; border-radius: 7px; background: var(--green); transform: translate(-50%,-50%); }
+    .padlock::before { content: ""; position: absolute; left: 20px; top: -54px; width: 52px; height: 60px; border: 12px solid var(--green-dark); border-bottom: 0; border-radius: 34px 34px 0 0; }
+    .padlock::after { content: "* * * *"; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-weight: 900; letter-spacing: 3px; }
+    .planet { position: absolute; left: 50%; top: 50%; width: 112px; aspect-ratio: 1; border-radius: 50%; background: repeating-linear-gradient(0deg, #d6a12a 0 12px, #f5d87f 12px 23px, #b66d33 23px 30px); box-shadow: inset -17px -8px 0 rgba(69,45,18,.18); transform: translate(-50%,-50%); }
+    .planet::after { content: ""; position: absolute; left: 15px; top: 42px; width: 30px; height: 12px; border-radius: 50%; background: #9f4d2d; }
     .teaser h3 { margin: 0 0 10px; color: var(--green-dark); font-size: 25px; }
     .teaser p { margin: 0; color: var(--muted); line-height: 1.48; }
     .choice-list { display: grid; gap: 9px; margin-top: 20px; }
@@ -263,11 +239,9 @@
       <h2>What if the road could charge the vehicle?</h2>
       <p class="lede">Honda's 5 October announcement turns a familiar stretch of pavement into an active part of the electric powertrain.</p>
       <div class="signal-grid">
-        <div class="charging-stage" role="img" aria-label="Animated electric vehicle receiving wireless power from coils embedded in the road">
+        <div class="charging-stage">
           <div class="road-label">Dynamic wireless power transfer</div>
-          <div class="car"><span class="wheel rear"></span><span class="wheel front"></span><span class="receiver"></span></div>
-          <span class="energy-wave"></span>
-          <div class="road-coils"><span class="road-coil"></span><span class="road-coil"></span><span class="road-coil"></span><span class="road-coil"></span></div>
+          <img class="charging-image" src="assets/wireless-charging-ev.jpg" alt="Modern electric car receiving wireless power from charging coils embedded beneath the road">
         </div>
         <article class="story-card">
           <span class="story-date">5 October 2026 | Automobile Engineering</span>
@@ -319,40 +293,40 @@
     <div class="wrap">
       <span class="kicker">Think Before You Tap</span>
       <h2>Brain Lab</h2>
-      <p class="lede">Three light challenges mixing observation, logic and everyday automobile technology. Choose what feels right, then discover the engineering behind it.</p>
+      <p class="lede">A quick mix of common sense, digital awareness and general knowledge. Trust your first answer, then check the reasoning.</p>
       <div class="teaser-grid">
         <article class="teaser">
-          <div class="visual" aria-hidden="true"><span class="gear-symbol a">&#9881;</span><span class="gear-symbol b">&#9881;</span><span class="gear-label a">A: 20 teeth</span><span class="gear-label b">B: 60 teeth</span></div>
-          <h3>Gear Logic</h3>
-          <p>The small green gear turns clockwise and drives the larger gold gear. How will the gold gear move?</p>
+          <div class="visual" aria-hidden="true"><div class="race-track"><span class="race-lane"><i class="race-runner">1</i></span><span class="race-lane"><i class="race-runner">2</i></span><span class="race-lane"><i class="race-runner">3</i></span></div></div>
+          <h3>Think Before You Race</h3>
+          <p>You are running a race and overtake the person in second place. What position are you now in?</p>
           <div class="choice-list">
-            <button class="choice-button" type="button" data-correct="false">Faster and clockwise</button>
-            <button class="choice-button" type="button" data-correct="true">Slower and anticlockwise</button>
-            <button class="choice-button" type="button" data-correct="false">At the same speed and clockwise</button>
+            <button class="choice-button" type="button" data-correct="false">First place</button>
+            <button class="choice-button" type="button" data-correct="true">Second place</button>
+            <button class="choice-button" type="button" data-correct="false">Third place</button>
           </div>
-          <div class="answer"><strong>Slower and anticlockwise.</strong> Meshing gears rotate in opposite directions. The larger gear takes more time to complete one turn, trading speed for greater turning force.</div>
+          <div class="answer"><strong>Second place.</strong> You take the position of the runner you passed; the person in first place is still ahead of you.</div>
         </article>
         <article class="teaser">
-          <div class="visual" aria-hidden="true"><span class="air-line one"></span><span class="air-line two"></span><span class="air-line three"></span><span class="aero-car"></span></div>
-          <h3>Shape Matters</h3>
-          <p>Which change most directly helps a car use less energy while pushing through the air?</p>
+          <div class="visual" aria-hidden="true"><span class="padlock"></span></div>
+          <h3>Password Sense</h3>
+          <p>Which password choice is generally the strongest?</p>
           <div class="choice-list">
-            <button class="choice-button" type="button" data-correct="true">A smoother, more streamlined body</button>
-            <button class="choice-button" type="button" data-correct="false">A larger entertainment screen</button>
-            <button class="choice-button" type="button" data-correct="false">Heavier decorative wheels</button>
+            <button class="choice-button" type="button" data-correct="false">Harita2026</button>
+            <button class="choice-button" type="button" data-correct="false">Password@123</button>
+            <button class="choice-button" type="button" data-correct="true">Mango-River-Clock-47</button>
           </div>
-          <div class="answer"><strong>A smoother, more streamlined body.</strong> Good airflow reduces aerodynamic drag, so the powertrain needs less energy to maintain speed.</div>
+          <div class="answer"><strong>Mango-River-Clock-47.</strong> A longer, unique passphrase is harder to guess than a short password built from a company name or common pattern. Use a password manager and multi-factor authentication where available.</div>
         </article>
         <article class="teaser">
-          <div class="visual" aria-hidden="true"><span class="power-badge">+10 km / 5 min</span><span class="charging-strip"></span><span class="charging-coil one"></span><span class="charging-coil two"></span><span class="charging-coil three"></span></div>
-          <h3>Quick Charge</h3>
-          <p>A charging lane adds 10 km of driving range every 5 minutes. How much range could it add in 15 minutes?</p>
+          <div class="visual" aria-hidden="true"><span class="planet"></span></div>
+          <h3>A Day Beyond Earth</h3>
+          <p>Which planet has the shortest day because it completes one rotation the fastest?</p>
           <div class="choice-list">
-            <button class="choice-button" type="button" data-correct="false">15 km</button>
-            <button class="choice-button" type="button" data-correct="true">30 km</button>
-            <button class="choice-button" type="button" data-correct="false">50 km</button>
+            <button class="choice-button" type="button" data-correct="false">Earth</button>
+            <button class="choice-button" type="button" data-correct="true">Jupiter</button>
+            <button class="choice-button" type="button" data-correct="false">Mars</button>
           </div>
-          <div class="answer"><strong>30 km.</strong> Fifteen minutes contains three five-minute intervals, so the added range is 3 x 10 km. Actual charging performance varies by vehicle and conditions.</div>
+          <div class="answer"><strong>Jupiter.</strong> Despite being the largest planet, it completes a rotation in roughly ten hours, giving it the shortest day in our solar system.</div>
         </article>
       </div>
       <div class="draft-note"><strong>October draft:</strong> Internal stories, recognitions and employee updates can be added as separate sections without changing this editorial core.</div>
