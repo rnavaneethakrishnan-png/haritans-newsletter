@@ -115,40 +115,36 @@
       gap: 28px;
       align-items: stretch;
     }
-    .machine-stage {
+    .charging-stage {
       position: relative;
       min-height: 430px;
       overflow: hidden;
       border: 1px solid #bcd4c3;
       border-radius: 8px;
-      background:
-        linear-gradient(rgba(18,53,34,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(18,53,34,.06) 1px, transparent 1px),
-        #f3faf5;
-      background-size: 32px 32px;
+      background: linear-gradient(#dcefe4 0 48%, #515954 48% 100%);
     }
-    .robot-base { position: absolute; left: 15%; bottom: 13%; width: 28%; height: 12%; border-radius: 5px; background: var(--green-dark); }
-    .robot-joint { position: absolute; width: 62px; aspect-ratio: 1; border: 13px solid var(--gold); border-radius: 50%; background: var(--paper); }
-    .robot-joint.one { left: 25%; bottom: 23%; }
-    .robot-joint.two { left: 46%; bottom: 53%; }
-    .robot-arm { position: absolute; height: 26px; border-radius: 20px; background: var(--green); transform-origin: left center; }
-    .robot-arm.one { left: 31%; bottom: 35%; width: 31%; transform: rotate(-52deg); }
-    .robot-arm.two { left: 50%; bottom: 59%; width: 25%; transform: rotate(28deg); }
-    .weld-tip { position: absolute; left: 70%; bottom: 48%; width: 74px; height: 18px; border-radius: 4px; background: #27362d; transform: rotate(28deg); }
-    .weld-spark { position: absolute; left: 77%; bottom: 43%; width: 16px; aspect-ratio: 1; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(216,161,38,.65); animation: spark 1.4s infinite; }
-    .edge-chip {
+    .charging-stage::before {
+      content: "";
       position: absolute;
-      left: 9%;
-      top: 10%;
-      padding: 12px 15px;
-      border: 2px solid var(--green);
-      background: var(--white);
-      color: var(--green-dark);
-      font-size: 13px;
-      font-weight: 800;
+      left: 0;
+      right: 0;
+      bottom: 18%;
+      height: 5px;
+      background: repeating-linear-gradient(90deg, #fff 0 52px, transparent 52px 94px);
     }
-    .edge-chip::after { content: "AI at the machine"; display: block; margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: 600; }
-    @keyframes spark { 70% { box-shadow: 0 0 0 0 rgba(216,161,38,.55); } 100% { box-shadow: 0 0 0 34px rgba(216,161,38,0); } }
+    .road-label { position: absolute; left: 7%; top: 8%; color: var(--green-dark); font-size: 13px; font-weight: 900; text-transform: uppercase; }
+    .car { position: absolute; left: 18%; bottom: 31%; width: 58%; height: 22%; border-radius: 58px 82px 14px 14px; background: var(--green); animation: road-drive 4.6s ease-in-out infinite; }
+    .car::before { content: ""; position: absolute; left: 24%; top: -52%; width: 48%; height: 62%; border-radius: 42px 54px 0 0; background: var(--green-dark); clip-path: polygon(18% 0, 78% 0, 100% 100%, 0 100%); }
+    .wheel { position: absolute; bottom: -25%; width: 22%; aspect-ratio: 1; border: 9px solid #17231c; border-radius: 50%; background: #cbd5ce; }
+    .wheel.front { right: 9%; } .wheel.rear { left: 9%; }
+    .receiver { position: absolute; left: 39%; bottom: -13%; width: 22%; height: 12px; border-radius: 6px; background: var(--gold); }
+    .road-coils { position: absolute; left: 8%; right: 8%; bottom: 4%; display: flex; justify-content: space-around; }
+    .road-coil { width: 52px; aspect-ratio: 1; border: 8px double #f2c34d; border-radius: 50%; opacity: .45; animation: charge-pulse 2s ease-in-out infinite; }
+    .road-coil:nth-child(2) { animation-delay: .35s; } .road-coil:nth-child(3) { animation-delay: .7s; } .road-coil:nth-child(4) { animation-delay: 1.05s; }
+    .energy-wave { position: absolute; left: 43%; bottom: 18%; width: 17%; height: 18%; border: 4px solid var(--gold); border-width: 4px 0; border-radius: 50%; opacity: .75; animation: energy-rise 1.4s ease-in-out infinite; }
+    @keyframes road-drive { 0%, 100% { transform: translateX(-3%); } 50% { transform: translateX(8%); } }
+    @keyframes charge-pulse { 0%, 100% { transform: scale(.82); opacity: .32; } 50% { transform: scale(1.08); opacity: .9; } }
+    @keyframes energy-rise { 0%, 100% { transform: translateY(8px) scale(.8); opacity: .35; } 50% { transform: translateY(-9px) scale(1.08); opacity: .9; } }
     .story-card {
       padding: clamp(28px, 4vw, 50px);
       border-radius: 8px;
@@ -205,12 +201,12 @@
     .gear-b { left: 121px; top: 20px; width: 100px; aspect-ratio: 1; color: var(--gold); }
     .axis-label { position: absolute; bottom: 8px; font-size: 12px; font-weight: 800; }
     .axis-a { left: 57px; } .axis-b { left: 170px; }
-    .sensor { position: absolute; left: 50%; top: 50%; width: 110px; height: 66px; border: 5px solid var(--green-dark); border-radius: 50%; transform: translate(-50%,-50%); }
-    .sensor::after { content: ""; position: absolute; left: 50%; top: 50%; width: 20px; aspect-ratio: 1; border-radius: 50%; background: var(--green); transform: translate(-50%,-50%); }
-    .sensor-wave { position: absolute; inset: 18px 46px; border: 2px solid var(--gold); border-radius: 50%; }
-    .path { position: absolute; left: 28px; right: 28px; top: 68px; height: 8px; border-radius: 10px; background: var(--green-dark); }
-    .path::before, .path::after { content: ""; position: absolute; top: -11px; width: 28px; aspect-ratio: 1; border-radius: 50%; background: var(--gold); }
-    .path::before { left: 24%; } .path::after { right: 12%; }
+    .battery { position: absolute; left: 50%; top: 50%; width: 132px; height: 72px; border: 6px solid var(--green-dark); border-radius: 7px; transform: translate(-50%,-50%); }
+    .battery::before { content: ""; position: absolute; right: -16px; top: 20px; width: 11px; height: 24px; border-radius: 0 4px 4px 0; background: var(--green-dark); }
+    .battery::after { content: "60%"; position: absolute; inset: 7px 44% 7px 7px; display: grid; place-items: center; border-radius: 3px; background: var(--green); color: #fff; font-size: 15px; font-weight: 900; }
+    .wheel-track { position: absolute; left: 26px; right: 26px; bottom: 28px; height: 7px; border-radius: 8px; background: var(--green-dark); }
+    .quiz-wheel { position: absolute; left: 50%; top: 24px; width: 88px; aspect-ratio: 1; border: 12px solid var(--green); border-radius: 50%; transform: translateX(-50%); }
+    .quiz-wheel::after { content: "2 m"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--green-dark); font-weight: 900; }
     .teaser h3 { margin: 0 0 10px; color: var(--green-dark); font-size: 25px; }
     .teaser p { margin: 0; color: var(--muted); line-height: 1.48; }
     .answer-button { margin-top: auto; padding: 13px 16px; border: 0; border-radius: 6px; background: var(--green); color: var(--white); font-weight: 800; cursor: pointer; }
@@ -233,7 +229,7 @@
       .cover { min-height: 100svh; padding-top: 150px; }
       h1 { font-size: clamp(52px, 17vw, 76px); }
       .loop, .human-impact { grid-template-columns: 1fr; }
-      .machine-stage { min-height: 330px; }
+      .charging-stage { min-height: 330px; }
       .story-card { padding: 26px; }
       .word-name { font-size: clamp(46px, 14vw, 72px); }
     }
@@ -248,7 +244,7 @@
     <div class="wrap">
       <span class="kicker">Harita Techserv | Internal Circulation</span>
       <h1>HARITANS<br>OCTOBER'26</h1>
-      <p class="cover-copy"><strong>Intelligence at the Edge</strong> - where mechanics, software and human judgement learn to work as one system.</p>
+      <p class="cover-copy"><strong>The Road Becomes the Powertrain</strong> - where automobile engineering meets energy, infrastructure and mechanical endurance.</p>
       <div class="tag-row"><span class="tag">Edition 08</span><span class="tag">Working Draft</span><span class="tag">12 October 2026</span></div>
     </div>
   </section>
@@ -256,21 +252,22 @@
   <section class="page">
     <div class="wrap">
       <span class="kicker">October Tech Signal</span>
-      <h2>The robot is learning to decide where the work happens</h2>
-      <p class="lede">A 6 October announcement puts Physical AI directly into two demanding factory problems: collaborative robotics and intelligent welding.</p>
+      <h2>What if the road could charge the vehicle?</h2>
+      <p class="lede">Honda's 5 October announcement turns a familiar stretch of pavement into an active part of the electric powertrain.</p>
       <div class="signal-grid">
-        <div class="machine-stage" role="img" aria-label="Animated robot arm using on-device AI for intelligent welding">
-          <div class="edge-chip">ON-DEVICE</div>
-          <span class="robot-base"></span><span class="robot-arm one"></span><span class="robot-joint one"></span>
-          <span class="robot-arm two"></span><span class="robot-joint two"></span><span class="weld-tip"></span><span class="weld-spark"></span>
+        <div class="charging-stage" role="img" aria-label="Animated electric vehicle receiving wireless power from coils embedded in the road">
+          <div class="road-label">Dynamic wireless power transfer</div>
+          <div class="car"><span class="wheel rear"></span><span class="wheel front"></span><span class="receiver"></span></div>
+          <span class="energy-wave"></span>
+          <div class="road-coils"><span class="road-coil"></span><span class="road-coil"></span><span class="road-coil"></span><span class="road-coil"></span></div>
         </div>
         <article class="story-card">
-          <span class="story-date">6 October 2026 | Physical AI</span>
-          <h3>From programmed motion to local judgement</h3>
-          <p>Doosan Robotics was selected for two Korean government-backed R&amp;D projects: a next-generation collaborative robot using on-device AI semiconductors, and an intelligent welding system for complex industrial work.</p>
-          <p>The ambition is important: perception, decision-making and control move closer to the robot instead of depending entirely on a distant cloud.</p>
-          <p class="pov"><strong>Our POV:</strong> the next productivity leap will not come from making machines move faster. It will come from helping them understand variation while engineers define the boundaries of safe action.</p>
-          <a class="source-link" href="https://www.doosan.com/en/media-center/press-release_view?id=20172825&amp;page=2" target="_blank" rel="noopener">Reference: Doosan Group press release</a>
+          <span class="story-date">5 October 2026 | Automobile Engineering</span>
+          <h3>Charging without stopping</h3>
+          <p>Honda R&amp;D, Taisei and Taisei Rotec have developed the underlying technology for a magnetic-coupling wireless power-transfer road. Transmitter units sit inside the pavement while a receiver beneath the vehicle collects power in motion.</p>
+          <p>The system is being engineered for passenger EVs and large commercial vehicles, with pavement designed to endure heavy traffic and future testing planned at power levels up to 150 kW.</p>
+          <p class="pov"><strong>Our POV:</strong> this changes the question from “How much battery can a vehicle carry?” to “How intelligently can the vehicle, road and grid share energy?” The breakthrough is not one component; it is the integration of automotive, electrical and civil engineering.</p>
+          <a class="source-link" href="https://global.honda/en/topics/2026/c_2026-10-05beng.html" target="_blank" rel="noopener">Reference: Honda Global, 5 October 2026</a>
         </article>
       </div>
     </div>
@@ -279,17 +276,17 @@
   <section class="page explainer">
     <div class="wrap">
       <span class="kicker">Engineering Explainer</span>
-      <h2>Why intelligence at the edge changes the factory</h2>
-      <p class="lede">A robot that can sense and respond locally gains something factories value deeply: useful speed without waiting for a round trip to the cloud.</p>
+      <h2>The road becomes an engineering system</h2>
+      <p class="lede">Moving energy into a vehicle at speed demands more than a charging coil. Power electronics, pavement, vehicle packaging and durability must work as one machine.</p>
       <div class="loop">
-        <article class="loop-card"><span class="loop-number">01</span><h3>Sense</h3><p>Vision, force and position sensors capture what is actually happening, not what the plan assumed.</p></article>
-        <article class="loop-card"><span class="loop-number">02</span><h3>Interpret</h3><p>An on-device model identifies the weld seam, component variation or unexpected obstruction.</p></article>
-        <article class="loop-card"><span class="loop-number">03</span><h3>Decide</h3><p>The controller selects an approved response within safety and quality limits defined by engineers.</p></article>
-        <article class="loop-card"><span class="loop-number">04</span><h3>Act</h3><p>The machine adjusts its path or pauses immediately, while valuable learning can still be shared upstream.</p></article>
+        <article class="loop-card"><span class="loop-number">01</span><h3>Supply</h3><p>A high-response DC power system delivers stable energy to the charging section of road.</p></article>
+        <article class="loop-card"><span class="loop-number">02</span><h3>Transmit</h3><p>Integrated inverter-and-coil units embedded in the pavement create the magnetic field.</p></article>
+        <article class="loop-card"><span class="loop-number">03</span><h3>Receive</h3><p>A vehicle-mounted unit captures power across the air gap without a physical connector.</p></article>
+        <article class="loop-card"><span class="loop-number">04</span><h3>Endure</h3><p>The pavement and embedded hardware must survive weather, renewal work and repeated heavy-vehicle loads.</p></article>
       </div>
       <div class="human-impact">
-        <div class="impact-panel"><strong>What changes for engineers?</strong>More time moves from repeating adjustments to designing constraints, validating edge cases and improving the system.</div>
-        <div class="impact-panel"><strong>What changes for people?</strong>Hazardous and repetitive work can shift toward machines while human expertise remains responsible for intent, judgement and escalation.</div>
+        <div class="impact-panel"><strong>Mechanical greatness</strong>The road must remain a road first: strong, repairable and durable under commercial vehicles of roughly 20 tonnes, even with power electronics embedded beneath the surface.</div>
+        <div class="impact-panel"><strong>How lives could change</strong>If demonstrated at scale, charging lanes could reduce stationary charging interruptions for buses and logistics fleets. That potential still depends on cost, standards, safety and maintainability.</div>
       </div>
     </div>
   </section>
@@ -298,14 +295,14 @@
     <div class="wrap word-layout">
       <div>
         <span class="kicker" style="color:#f4c85d">Word of the Month</span>
-        <h2 class="word-name">Affordance</h2>
-        <div class="pronunciation">uh-FOR-dns</div>
-        <button class="speak-button" type="button" id="speakWord" aria-label="Hear the pronunciation of affordance">Listen to pronunciation</button>
+        <h2 class="word-name">Tribology</h2>
+        <div class="pronunciation">try-BOL-uh-jee</div>
+        <button class="speak-button" type="button" id="speakWord" aria-label="Hear the pronunciation of tribology">Listen to pronunciation</button>
       </div>
       <div class="definition">
-        <article class="definition-card"><strong>Meaning</strong><p>A quality of an object or environment that suggests what actions are possible: a handle affords pulling; a button affords pressing.</p></article>
-        <article class="definition-card"><strong>In engineering</strong><p>“The cobot recognised the handle's affordance and selected a safe gripping motion.”</p></article>
-        <article class="definition-card"><strong>Why it matters</strong><p>Physical AI must learn more than object names. It must infer what can be done, where, and under which constraints.</p></article>
+        <article class="definition-card"><strong>Meaning</strong><p>The science of friction, wear and lubrication between surfaces moving against one another.</p></article>
+        <article class="definition-card"><strong>In engineering</strong><p>“Better tribology in bearings, gears and seals reduces heat, wear and energy loss across the vehicle.”</p></article>
+        <article class="definition-card"><strong>Why it matters</strong><p>A small improvement at each contact surface can quietly extend component life, improve efficiency and reduce maintenance across an entire machine.</p></article>
       </div>
     </div>
   </section>
@@ -314,7 +311,7 @@
     <div class="wrap">
       <span class="kicker">Think Before You Tap</span>
       <h2>Brain Lab</h2>
-      <p class="lede">Three short challenges built around ratios, sensor confidence and efficient motion. Make a prediction before revealing each answer.</p>
+      <p class="lede">Three quick challenges from the world of gears, regenerative braking and vehicle motion. Make a prediction before revealing each answer.</p>
       <div class="teaser-grid">
         <article class="teaser">
           <div class="visual"><span class="gear gear-a"></span><span class="gear gear-b"></span><span class="axis-label axis-a">A: 18 teeth</span><span class="axis-label axis-b">B: 54 teeth</span></div>
@@ -324,18 +321,18 @@
           <div class="answer"><strong>Two turns, in the opposite direction.</strong> The 3:1 ratio reduces speed and increases available torque.</div>
         </article>
         <article class="teaser">
-          <div class="visual"><span class="sensor"></span><span class="sensor-wave"></span></div>
-          <h3>Sensor Vote</h3>
-          <p>Three independent sensors report SAFE, SAFE and UNSAFE. A two-out-of-three rule is used. What does the controller decide?</p>
+          <div class="visual"><span class="battery"></span></div>
+          <h3>Energy Recovery</h3>
+          <p>An EV has 200 kJ of kinetic energy before braking. If regenerative braking recovers 60%, how much energy returns to the battery?</p>
           <button class="answer-button" type="button">Reveal answer</button>
-          <div class="answer"><strong>SAFE.</strong> The majority rule tolerates one conflicting reading, though a safety-critical system may still log or investigate it.</div>
+          <div class="answer"><strong>120 kJ.</strong> Multiply 200 kJ by 0.60. The remaining energy is lost mainly through braking, tyre and aerodynamic effects.</div>
         </article>
         <article class="teaser">
-          <div class="visual"><span class="path"></span></div>
-          <h3>Weld Path</h3>
-          <p>A robot completes four equal welds. Each weld takes 18 seconds and each reposition takes 4 seconds. How long from the first weld start to the last weld finish?</p>
+          <div class="visual"><span class="quiz-wheel"></span><span class="wheel-track"></span></div>
+          <h3>Wheel Math</h3>
+          <p>A tyre travels 2 metres with each complete rotation. How many rotations does it make while the vehicle travels 120 metres?</p>
           <button class="answer-button" type="button">Reveal answer</button>
-          <div class="answer"><strong>84 seconds.</strong> Four welds take 72 seconds, with three reposition moves adding 12 seconds.</div>
+          <div class="answer"><strong>60 rotations.</strong> Divide the distance travelled, 120 metres, by 2 metres per rotation.</div>
         </article>
       </div>
       <div class="draft-note"><strong>October draft:</strong> Internal stories, recognitions and employee updates can be added as separate sections without changing this editorial core.</div>
@@ -355,7 +352,7 @@
     document.getElementById('speakWord').addEventListener('click', function () {
       if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
-      var utterance = new SpeechSynthesisUtterance('affordance');
+      var utterance = new SpeechSynthesisUtterance('tribology');
       utterance.rate = 0.78;
       window.speechSynthesis.speak(utterance);
     });
