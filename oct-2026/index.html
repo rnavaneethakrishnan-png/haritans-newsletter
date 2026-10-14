@@ -151,6 +151,42 @@
     .human-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
     .impact-panel { padding: 24px; border-left: 5px solid var(--green); background: var(--green-soft); }
     .impact-panel strong { display: block; margin-bottom: 8px; color: var(--green-dark); font-size: 19px; }
+    .stress-page { background: #fff; }
+    .hr-byline { display: flex; align-items: center; gap: 18px; margin-bottom: 30px; }
+    .hr-avatar { width: 118px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; border: 5px solid var(--green-soft); }
+    .hr-credit { display: block; margin-bottom: 6px; color: var(--green); font-size: 13px; font-weight: 900; text-transform: uppercase; }
+    .hr-byline strong { display: block; color: var(--green-dark); font-size: 22px; }
+    .hr-byline span:last-child { color: var(--muted); font-size: 14px; }
+    .stress-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 38px; align-items: start; }
+    .stress-copy p { color: var(--muted); font-size: 19px; line-height: 1.55; }
+    .stress-quote { margin: 28px 0 0; padding-left: 20px; border-left: 5px solid var(--gold); color: var(--green-dark); font-size: clamp(23px, 2.5vw, 34px); font-weight: 800; line-height: 1.25; }
+    .signal-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .stress-signal { min-height: 175px; padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: #f7fbf8; }
+    .stress-signal span { display: block; margin-bottom: 28px; color: var(--gold); font-size: 13px; font-weight: 900; text-transform: uppercase; }
+    .stress-signal strong { display: block; margin-bottom: 8px; color: var(--green-dark); font-size: 24px; }
+    .stress-signal p { margin: 0; color: var(--muted); line-height: 1.45; }
+    .reset-page { background: linear-gradient(145deg, #eef7f1, #fffaf0); }
+    .reset-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 26px; align-items: stretch; }
+    .reset-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .reset-option { min-height: 126px; padding: 18px; border: 1px solid #bcd4c3; border-radius: 8px; background: #fff; color: var(--green-dark); text-align: left; cursor: pointer; }
+    .reset-option span { display: block; margin-bottom: 16px; color: var(--gold); font-size: 12px; font-weight: 900; text-transform: uppercase; }
+    .reset-option strong { display: block; font-size: 20px; }
+    .reset-option:hover, .reset-option:focus-visible, .reset-option.active { border-color: var(--green); background: var(--green-soft); }
+    .reset-stage { position: relative; min-height: 420px; overflow: hidden; padding: clamp(28px, 4vw, 48px); border-radius: 8px; background: var(--green-dark); color: #fff; }
+    .reset-stage h3 { max-width: 480px; margin: 0 0 12px; font-size: clamp(30px, 3.5vw, 46px); }
+    .reset-stage p { max-width: 520px; color: #dbe9df; font-size: 18px; line-height: 1.5; }
+    .reset-guide { display: grid; grid-template-columns: 142px 1fr; gap: 24px; align-items: center; margin-top: 28px; }
+    .calm-orb { width: 138px; aspect-ratio: 1; display: grid; place-items: center; border: 8px solid rgba(255,255,255,.25); border-radius: 50%; background: var(--gold); color: var(--green-dark); font-size: 27px; font-weight: 900; transition: transform 1s ease, background .5s ease; }
+    .reset-stage.inhale .calm-orb { transform: scale(1.1); background: #f4cf76; }
+    .reset-stage.hold .calm-orb { transform: scale(1.1); background: #fff1c9; }
+    .reset-stage.exhale .calm-orb { transform: scale(.88); background: #d8a126; }
+    .calm-phase { min-height: 52px; color: #f4cf76; font-size: 20px; font-weight: 900; line-height: 1.3; }
+    .reset-controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .reset-controls button { padding: 12px 16px; border: 1px solid #8eb69d; border-radius: 6px; font-weight: 900; cursor: pointer; }
+    .reset-start { background: var(--gold); color: var(--green-dark); }
+    .reset-stop { background: transparent; color: #fff; }
+    .support-note { margin-top: 24px; color: var(--muted); line-height: 1.5; }
+    .support-note strong { color: var(--green-dark); }
     .word-page { background: linear-gradient(135deg, #123522 0%, #0a5a31 100%); color: var(--white); }
     .word-page h2 { color: var(--white); }
     .word-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 42px; align-items: center; }
@@ -201,7 +237,7 @@
     .draft-note { margin-top: 28px; padding: 18px 20px; border: 1px dashed #9db9a6; color: var(--muted); background: rgba(255,255,255,.7); }
     footer { padding: 28px 20px; text-align: center; color: #5e7164; font-size: 13px; }
     @media (max-width: 900px) {
-      .signal-grid, .word-layout { grid-template-columns: 1fr; }
+      .signal-grid, .word-layout, .stress-layout, .reset-layout { grid-template-columns: 1fr; }
       .loop { grid-template-columns: 1fr 1fr; }
       .loop-card:not(:last-child)::after { display: none; }
       .teaser-grid { grid-template-columns: 1fr; }
@@ -213,11 +249,15 @@
       .masthead { top: 18px; }
       .logo { width: 165px; }
       .cover { min-height: 100svh; padding-top: 150px; }
-      h1 { font-size: clamp(52px, 17vw, 76px); }
+      h1 { font-size: clamp(44px, 12.5vw, 58px); }
       .loop, .human-impact { grid-template-columns: 1fr; }
       .charging-stage { min-height: 330px; }
       .story-card { padding: 26px; }
       .word-name { font-size: clamp(42px, 12.5vw, 62px); }
+      .signal-cards, .reset-options { grid-template-columns: 1fr; }
+      .hr-avatar { width: 92px; }
+      .reset-guide { grid-template-columns: 1fr; }
+      .calm-orb { width: 122px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; }
@@ -272,6 +312,58 @@
         <div class="impact-panel"><strong>Mechanical greatness</strong>The road must remain a road first: strong, repairable and durable under commercial vehicles of roughly 20 tonnes, even with power electronics embedded beneath the surface.</div>
         <div class="impact-panel"><strong>How lives could change</strong>If demonstrated at scale, charging lanes could reduce stationary charging interruptions for buses and logistics fleets. That potential still depends on cost, standards, safety and maintainability.</div>
       </div>
+    </div>
+  </section>
+
+  <section class="page stress-page" id="keeping-calm">
+    <div class="wrap">
+      <div class="hr-byline">
+        <img class="hr-avatar" src="../assets_sep_2026/parasuraman_s_head_hr.png" alt="Parasuraman S, Head - HR">
+        <div><span class="hr-credit">From the desk of our Head - HR</span><strong>Parasuraman S</strong><span>10 October 2026</span></div>
+      </div>
+      <div class="stress-layout">
+        <article class="stress-copy">
+          <span class="kicker">Wellbeing Perspective</span>
+          <h2>Keeping Calm</h2>
+          <p>A little pressure can keep us alert and help us meet a challenge. The difficulty begins when pressure becomes constant and the body gets no opportunity to recover.</p>
+          <p>Stress rarely arrives with one clear warning. It often appears first as a small change in how we feel, think or behave. Recognising those signs early gives us a chance to respond before they begin directing the day.</p>
+          <blockquote class="stress-quote">Noticing stress early is the first step to managing it before it manages you.</blockquote>
+        </article>
+        <div class="signal-cards" aria-label="Common warning signs of stress">
+          <article class="stress-signal"><span>01</span><strong>Body</strong><p>Headaches, tight shoulders, poor sleep or frequent tiredness.</p></article>
+          <article class="stress-signal"><span>02</span><strong>Mind</strong><p>Trouble concentrating, forgetfulness or thoughts that keep racing.</p></article>
+          <article class="stress-signal"><span>03</span><strong>Mood</strong><p>Irritability, worry, feeling overwhelmed or unusually low.</p></article>
+          <article class="stress-signal"><span>04</span><strong>Habits</strong><p>Skipping meals, relying on more caffeine or withdrawing from people.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page reset-page" id="choose-your-reset">
+    <div class="wrap">
+      <span class="kicker">One Minute for Yourself</span>
+      <h2>Choose Your Reset</h2>
+      <p class="lede">Select what you need most right now. Each option turns one practical idea from the article into a guided 60-second pause.</p>
+      <div class="reset-layout">
+        <div class="reset-options" role="group" aria-label="Choose a wellbeing reset">
+          <button class="reset-option active" type="button" data-reset="breathe"><span>Slow the body</span><strong>Pause and breathe</strong></button>
+          <button class="reset-option" type="button" data-reset="move"><span>Release tension</span><strong>Move for a minute</strong></button>
+          <button class="reset-option" type="button" data-reset="task"><span>Reduce overwhelm</span><strong>Find the next step</strong></button>
+          <button class="reset-option" type="button" data-reset="quiet"><span>Protect attention</span><strong>Quiet the pings</strong></button>
+        </div>
+        <div class="reset-stage" id="resetStage">
+          <h3 id="resetTitle">Pause and breathe</h3>
+          <p id="resetText">Follow a gentle 4-4-6 rhythm: breathe in for four counts, hold for four, and breathe out for six.</p>
+          <div class="reset-guide">
+            <div class="calm-orb" id="calmTime">01:00</div>
+            <div>
+              <div class="calm-phase" id="calmPhase" aria-live="polite">Ready when you are</div>
+              <div class="reset-controls"><button class="reset-start" id="startReset" type="button">Start 60-second reset</button><button class="reset-stop" id="stopReset" type="button">Reset</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="support-note"><strong>When more support is needed:</strong> If stress feels persistent or overwhelming, speak with your manager, the HR team, a doctor or a counsellor. Asking for help is a practical step, not a weakness.</p>
     </div>
   </section>
 
@@ -337,6 +429,99 @@
 
   <footer>Haritans Newsletter | October 2026 working draft | Not published to production</footer>
   <script>
+    var resetData = {
+      breathe: {
+        title: 'Pause and breathe',
+        text: 'Follow a gentle 4-4-6 rhythm: breathe in for four counts, hold for four, and breathe out for six.',
+        phases: ['Breathe in slowly', 'Hold gently', 'Breathe out slowly']
+      },
+      move: {
+        title: 'Move for a minute',
+        text: 'Gentle movement can release physical tension and create a clean break in a demanding day.',
+        phases: ['Stand and lengthen your spine', 'Roll your shoulders slowly', 'Stretch your arms and hands', 'Walk a few comfortable steps']
+      },
+      task: {
+        title: 'Find the next step',
+        text: 'A large task feels lighter when it becomes a short sequence. Use this minute to make the work visible.',
+        phases: ['Name the task clearly', 'Break it into three small steps', 'Choose only the first step', 'Decide when you will begin']
+      },
+      quiet: {
+        title: 'Quiet the pings',
+        text: 'Protect a small pocket of attention instead of reacting to every notification as it arrives.',
+        phases: ['Mute non-urgent notifications', 'Close unused tabs and windows', 'Choose your next message check-in', 'Return to one priority']
+      }
+    };
+    var activeReset = 'breathe';
+    var resetSeconds = 60;
+    var resetTimer = null;
+    var resetStage = document.getElementById('resetStage');
+    var calmTime = document.getElementById('calmTime');
+    var calmPhase = document.getElementById('calmPhase');
+
+    function stopResetTimer() {
+      if (resetTimer) window.clearInterval(resetTimer);
+      resetTimer = null;
+      resetStage.classList.remove('inhale', 'hold', 'exhale');
+    }
+
+    function showResetTime() {
+      var minutes = Math.floor(resetSeconds / 60);
+      var seconds = resetSeconds % 60;
+      calmTime.textContent = String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+    }
+
+    function updateResetPhase() {
+      var elapsed = 60 - resetSeconds;
+      var data = resetData[activeReset];
+      resetStage.classList.remove('inhale', 'hold', 'exhale');
+      if (activeReset === 'breathe') {
+        var point = elapsed % 14;
+        if (point < 4) { calmPhase.textContent = data.phases[0]; resetStage.classList.add('inhale'); }
+        else if (point < 8) { calmPhase.textContent = data.phases[1]; resetStage.classList.add('hold'); }
+        else { calmPhase.textContent = data.phases[2]; resetStage.classList.add('exhale'); }
+      } else {
+        calmPhase.textContent = data.phases[Math.min(3, Math.floor(elapsed / 15))];
+      }
+    }
+
+    function resetWellbeing() {
+      stopResetTimer();
+      resetSeconds = 60;
+      showResetTime();
+      calmPhase.textContent = 'Ready when you are';
+      document.getElementById('startReset').textContent = 'Start 60-second reset';
+    }
+
+    document.querySelectorAll('.reset-option').forEach(function (button) {
+      button.addEventListener('click', function () {
+        activeReset = button.dataset.reset;
+        document.querySelectorAll('.reset-option').forEach(function (option) { option.classList.toggle('active', option === button); });
+        document.getElementById('resetTitle').textContent = resetData[activeReset].title;
+        document.getElementById('resetText').textContent = resetData[activeReset].text;
+        resetWellbeing();
+      });
+    });
+
+    document.getElementById('startReset').addEventListener('click', function () {
+      if (resetTimer) return;
+      if (resetSeconds <= 0) resetWellbeing();
+      updateResetPhase();
+      this.textContent = 'Reset in progress';
+      resetTimer = window.setInterval(function () {
+        resetSeconds -= 1;
+        showResetTime();
+        if (resetSeconds <= 0) {
+          stopResetTimer();
+          calmPhase.textContent = 'Reset complete. Carry the calm forward.';
+          document.getElementById('startReset').textContent = 'Start again';
+          return;
+        }
+        updateResetPhase();
+      }, 1000);
+    });
+
+    document.getElementById('stopReset').addEventListener('click', resetWellbeing);
+
     document.querySelectorAll('.choice-button').forEach(function (button) {
       button.addEventListener('click', function () {
         var card = button.closest('.teaser');
@@ -357,6 +542,13 @@
       utterance.rate = 0.78;
       window.speechSynthesis.speak(utterance);
     });
+
+    if (window.location.hash) {
+      window.requestAnimationFrame(function () {
+        var target = document.querySelector(window.location.hash);
+        if (target) target.scrollIntoView();
+      });
+    }
   </script>
 </body>
 </html>
