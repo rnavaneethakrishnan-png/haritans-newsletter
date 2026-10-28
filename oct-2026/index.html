@@ -159,6 +159,33 @@
     .human-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
     .impact-panel { padding: 24px; border-left: 5px solid var(--green); background: var(--green-soft); }
     .impact-panel strong { display: block; margin-bottom: 8px; color: var(--green-dark); font-size: 19px; }
+    .event-page { align-items: flex-start; background: #fff; }
+    .event-heading { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr); gap: 42px; align-items: end; }
+    .event-heading .lede { margin-bottom: 0; }
+    .event-note { padding: 22px; border-left: 5px solid var(--gold); background: var(--gold-soft); color: #4a3a13; font-size: 17px; line-height: 1.5; }
+    .event-hero { margin: 34px 0 0; overflow: hidden; border-radius: 8px; background: #e8eee9; }
+    .event-hero img { width: 100%; height: auto; display: block; transition: transform .55s ease; }
+    .event-hero:hover img { transform: scale(1.012); }
+    .event-caption { display: flex; justify-content: space-between; gap: 20px; padding: 15px 18px; background: var(--green-dark); color: #e8f3eb; font-size: 14px; line-height: 1.45; }
+    .event-caption strong { color: #f4cf76; }
+    .event-gallery { display: grid; grid-template-columns: 1.2fr 1.2fr .8fr; gap: 12px; margin-top: 12px; }
+    .event-photo { min-height: 250px; margin: 0; overflow: hidden; border-radius: 8px; background: #e8eee9; }
+    .event-photo img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease, filter .45s ease; }
+    .event-photo:hover img { transform: scale(1.025); filter: contrast(1.03); }
+    .event-photo.team { grid-column: span 2; aspect-ratio: 3 / 2; }
+    .event-photo.awards { aspect-ratio: 4 / 5; }
+    .event-photo.moment { aspect-ratio: 3 / 2; }
+    .appreciation-page { align-items: flex-start; background: var(--green-dark); color: #fff; }
+    .appreciation-page h2 { color: #fff; }
+    .appreciation-page .lede { color: #dbe9df; }
+    .appreciation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .appreciation-card { margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: #fff; color: var(--green-dark); transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+    .appreciation-card:hover, .appreciation-card:focus-within { transform: translateY(-7px); border-color: var(--gold); box-shadow: 0 22px 44px rgba(0,0,0,.28); }
+    .appreciation-card img { width: 100%; aspect-ratio: 4 / 5; display: block; object-fit: cover; object-position: center top; transition: transform .35s ease; }
+    .appreciation-card:hover img, .appreciation-card:focus-within img { transform: scale(1.025); }
+    .appreciation-card figcaption { min-height: 92px; padding: 20px; border-top: 4px solid var(--gold); }
+    .appreciation-card strong { display: block; font-size: 23px; line-height: 1.2; }
+    .recognition-line { margin-top: 30px; padding: 22px 24px; border-left: 5px solid var(--gold); background: rgba(255,255,255,.08); color: #e6f0e9; font-size: 18px; line-height: 1.55; }
     .stress-page { background: #fff; }
     .hr-byline { display: flex; align-items: center; gap: 18px; margin-bottom: 30px; }
     .hr-avatar { width: 118px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; border: 5px solid var(--green-soft); }
@@ -260,11 +287,13 @@
     .draft-note { margin-top: 28px; padding: 18px 20px; border: 1px dashed #9db9a6; color: var(--muted); background: rgba(255,255,255,.7); }
     footer { padding: 28px 20px; text-align: center; color: #5e7164; font-size: 13px; }
     @media (max-width: 900px) {
-      .signal-grid, .word-layout, .stress-layout, .reset-layout { grid-template-columns: 1fr; }
+      .signal-grid, .word-layout, .stress-layout, .reset-layout, .event-heading { grid-template-columns: 1fr; }
       .loop { grid-template-columns: 1fr 1fr; }
       .loop-card:not(:last-child)::after { display: none; }
       .teaser-grid { grid-template-columns: 1fr; }
       .teaser { min-height: 470px; }
+      .event-gallery { grid-template-columns: 1fr 1fr; }
+      .event-photo.team { grid-column: span 2; }
     }
     @media (max-width: 620px) {
       .page { min-height: auto; padding: 82px 0; }
@@ -278,6 +307,10 @@
       .story-card { padding: 26px; }
       .word-name { font-size: clamp(42px, 12.5vw, 62px); }
       .signal-cards, .reset-options { grid-template-columns: 1fr; }
+      .event-caption { flex-direction: column; }
+      .event-gallery, .appreciation-grid { grid-template-columns: 1fr; }
+      .event-photo.team { grid-column: auto; }
+      .event-photo, .event-photo.team, .event-photo.awards, .event-photo.moment { min-height: 0; aspect-ratio: 3 / 2; }
       .hr-avatar { width: 92px; }
       .reset-guide { grid-template-columns: 1fr; }
       .calm-orb { width: 122px; }
@@ -294,7 +327,7 @@
       <span class="kicker">Harita Techserv | Internal Circulation</span>
       <h1>HARITANS<br>OCTOBER'26</h1>
       <p class="cover-copy"><strong>The Road Becomes the Powertrain</strong> - where automobile engineering meets energy, infrastructure and mechanical endurance.</p>
-      <div class="tag-row"><span class="tag">Edition 08</span><span class="tag">Working Draft</span><span class="tag">12 October 2026</span></div>
+      <div class="tag-row"><span class="tag">Edition 08</span><span class="tag">Working Draft</span><span class="tag">October 2026</span></div>
     </div>
   </section>
 
@@ -335,6 +368,55 @@
         <div class="impact-panel"><strong>Mechanical greatness</strong>The road must remain a road first: strong, repairable and durable under commercial vehicles of roughly 20 tonnes, even with power electronics embedded beneath the surface.</div>
         <div class="impact-panel"><strong>How lives could change</strong>If demonstrated at scale, charging lanes could reduce stationary charging interruptions for buses and logistics fleets. That potential still depends on cost, standards, safety and maintainability.</div>
       </div>
+    </div>
+  </section>
+
+  <section class="page event-page" id="offshore-event">
+    <div class="wrap">
+      <div class="event-heading">
+        <div>
+          <span class="kicker">17 October 2026 | Bengaluru</span>
+          <h2>Hard Work, Recognised. Time Well Earned.</h2>
+          <p class="lede">The Bengaluru Offshore Team stepped away from delivery schedules for a day centred on recognition, connection and a well-earned pause together.</p>
+        </div>
+        <aside class="event-note"><strong>Why it mattered:</strong> the event celebrated the people behind demanding offshore programmes, recognised standout contributions and created space for teams and leaders to reconnect beyond everyday work.</aside>
+      </div>
+
+      <figure class="event-hero">
+        <img src="assets/offshore-event/team-portrait-a.webp" alt="Bengaluru Offshore Team gathered for the recognition event on 17 October 2026">
+        <figcaption class="event-caption"><strong>Bengaluru Offshore Team</strong><span>Recognition, shared pride and a moment to recharge together.</span></figcaption>
+      </figure>
+
+      <div class="event-gallery" aria-label="Highlights from the Bengaluru Offshore Team event">
+        <figure class="event-photo team"><img loading="lazy" src="assets/offshore-event/team-portrait-b.webp" alt="A second group portrait of the Bengaluru Offshore Team"></figure>
+        <figure class="event-photo awards"><img loading="lazy" src="assets/offshore-event/awards.webp" alt="Star Performer trophies prepared for the October 2026 recognition"></figure>
+        <figure class="event-photo moment"><img loading="lazy" src="assets/offshore-event/audience-a.webp" alt="Colleagues listening during the Offshore Team event"></figure>
+        <figure class="event-photo moment"><img loading="lazy" src="assets/offshore-event/audience-b.webp" alt="Leaders and team members sharing a lighter moment at the event"></figure>
+        <figure class="event-photo team"><img loading="lazy" src="assets/offshore-event/team-portrait-c.webp" alt="The Bengaluru Offshore Team together after the recognition programme"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="page appreciation-page" id="customer-appreciation">
+    <div class="wrap">
+      <span class="kicker" style="color:#f4cf76">Customer Appreciation</span>
+      <h2>Work That Customers Notice</h2>
+      <p class="lede">Congratulations to our colleagues whose ownership, responsiveness and consistent quality earned appreciation from customers this month.</p>
+      <div class="appreciation-grid">
+        <figure class="appreciation-card" tabindex="0">
+          <img loading="lazy" src="assets/customer-appreciation/savitha-pandiyappa.webp" alt="Savitha Pandiyappa">
+          <figcaption><strong>Savitha Pandiyappa</strong></figcaption>
+        </figure>
+        <figure class="appreciation-card" tabindex="0">
+          <img loading="lazy" src="assets/customer-appreciation/vijaysingh-rajput.webp" alt="Vijaysingh Rajput">
+          <figcaption><strong>Vijaysingh Rajput</strong></figcaption>
+        </figure>
+        <figure class="appreciation-card" tabindex="0">
+          <img loading="lazy" src="assets/customer-appreciation/vigneshwaran-p.webp" alt="Vigneshwaran P">
+          <figcaption><strong>Vigneshwaran P</strong></figcaption>
+        </figure>
+      </div>
+      <p class="recognition-line">Customer appreciation reflects more than a successful task. It recognises the trust created when technical capability is matched by accountability, timely communication and care for the customer’s outcome.</p>
     </div>
   </section>
 
@@ -446,7 +528,6 @@
           <div class="answer"><strong>Jupiter.</strong> Despite being the largest planet, it completes a rotation in roughly ten hours, giving it the shortest day in our solar system.</div>
         </article>
       </div>
-      <div class="draft-note"><strong>October draft:</strong> Internal stories, recognitions and employee updates can be added as separate sections without changing this editorial core.</div>
     </div>
   </section>
 
@@ -473,6 +554,8 @@
         <select id="usefulSection" name="useful_section" required>
           <option value="">Choose a section</option>
           <option>Automobile technology</option>
+          <option>Offshore Team event</option>
+          <option>Customer appreciation</option>
           <option>Keeping Calm</option>
           <option>Choose Your Reset</option>
           <option>Word of the Month</option>
