@@ -176,6 +176,15 @@
   </style>
 </head>
 <body>
+  <!-- Root declaration ensures Netlify registers the shared feedback form for every edition. -->
+  <form name="interactive-newsletter-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="interactive-newsletter-feedback">
+    <input name="edition">
+    <input name="rating">
+    <input name="useful_section">
+    <textarea name="comments"></textarea>
+    <input name="bot-field">
+  </form>
   <header>
     <div class="shell">
       <div class="topbar"><img class="logo" src="assets_sep_2026/harita_logo_cropped.png" alt="Harita Techserv"></div>
