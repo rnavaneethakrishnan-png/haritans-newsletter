@@ -283,6 +283,17 @@
     .feedback-submit { padding: 13px 18px; border: 0; border-radius: 6px; background: var(--green); color: #fff; font-weight: 900; cursor: pointer; }
     .feedback-submit:hover, .feedback-submit:focus-visible { background: #05692d; }
     .form-status { min-height: 24px; margin-top: 16px; color: var(--green-dark); font-weight: 800; }
+    .edition-nav { padding: 34px 20px; background: var(--green-dark); color: #fff; }
+    .edition-nav-inner { width: min(1180px, 100%); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .75fr); gap: 34px; align-items: end; }
+    .edition-nav h2 { margin: 4px 0 8px; color: #fff; font-size: clamp(28px, 3vw, 42px); }
+    .edition-nav p { margin: 0; color: #dbe9df; line-height: 1.5; }
+    .edition-controls label { display: block; margin-bottom: 8px; color: #f4cf76; font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+    .edition-action { display: flex; gap: 10px; }
+    .edition-action select { min-width: 0; flex: 1; padding: 12px 14px; border: 1px solid #89a995; border-radius: 6px; background: #fff; color: var(--green-dark); font: inherit; }
+    .edition-action button { padding: 12px 18px; border: 1px solid var(--gold); border-radius: 6px; background: var(--gold); color: #173521; font-weight: 900; cursor: pointer; }
+    .edition-action button:hover, .edition-action button:focus-visible { background: #f0c95f; }
+    .archive-link { display: inline-block; margin-top: 12px; color: #fff; font-weight: 800; text-underline-offset: 3px; }
+    .edition-status { min-height: 20px; margin-top: 8px; color: #f4cf76; font-size: 14px; font-weight: 800; }
     .draft-note { margin-top: 28px; padding: 18px 20px; border: 1px dashed #9db9a6; color: var(--muted); background: rgba(255,255,255,.7); }
     footer { padding: 28px 20px; text-align: center; color: #5e7164; font-size: 13px; }
     @media (max-width: 900px) {
@@ -309,6 +320,9 @@
       .hr-avatar { width: 92px; }
       .reset-guide { grid-template-columns: 1fr; }
       .calm-orb { width: 122px; }
+      .edition-nav-inner { grid-template-columns: 1fr; gap: 22px; }
+      .edition-action { flex-direction: column; }
+      .edition-action button { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; }
@@ -563,6 +577,28 @@
     </div>
   </section>
 
+  <section class="edition-nav" aria-labelledby="editionNavHeading">
+    <div class="edition-nav-inner">
+      <div>
+        <span class="kicker">Newsletter Archive</span>
+        <h2 id="editionNavHeading">Missed a previous issue?</h2>
+        <p>Revisit earlier Haritans stories, engineering perspectives and interactive features.</p>
+      </div>
+      <div class="edition-controls">
+        <label for="editionSelect">Choose an edition</label>
+        <div class="edition-action">
+          <select id="editionSelect">
+            <option value="">Select a previous newsletter</option>
+            <option value="../sep-2026/">September 2026</option>
+          </select>
+          <button type="button" id="openEdition">Open newsletter</button>
+        </div>
+        <a class="archive-link" href="../">View all newsletters</a>
+        <div class="edition-status" id="editionStatus" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
   <footer>Haritans Newsletter | October 2026 | For Internal Circulation Only</footer>
   <script>
     var resetData = {
@@ -683,6 +719,23 @@
       } catch (error) {
         formStatus.textContent = 'We could not record your feedback. Please try again in a moment.';
       }
+    });
+
+    var editionSelect = document.getElementById('editionSelect');
+    var editionStatus = document.getElementById('editionStatus');
+    document.getElementById('openEdition').addEventListener('click', function () {
+      if (!editionSelect.value) {
+        editionStatus.textContent = 'Please choose a newsletter edition.';
+        editionSelect.focus();
+        return;
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'archive_issue_opened', { issue_path: editionSelect.value });
+      }
+      window.location.href = editionSelect.value;
+    });
+    editionSelect.addEventListener('change', function () {
+      editionStatus.textContent = '';
     });
 
     document.querySelectorAll('.choice-button').forEach(function (button) {
