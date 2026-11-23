@@ -98,6 +98,7 @@
     .sequence-tab strong { font-size: 1.08rem; }
     .sequence-tab:hover, .sequence-tab.active { transform: translateX(6px); border-color: var(--gold); background: rgba(245,198,68,.13); }
     .sequence-panel { min-height: 365px; padding: clamp(1.8rem, 5vw, 4rem); border-radius: 28px; display: grid; align-content: center; background: linear-gradient(140deg, rgba(255,255,255,.12), rgba(255,255,255,.045)); border: 1px solid rgba(255,255,255,.16); }
+    .sequence-photo { width: 100%; height: 190px; margin-bottom: 1.3rem; border-radius: 18px; object-fit: cover; object-position: center 62%; }
     .sequence-panel .step { color: var(--gold); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
     .sequence-panel p { max-width: 680px; color: rgba(255,255,255,.72); font-size: 1.08rem; }
     .meter { margin-top: 1.1rem; height: 12px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.1); }
@@ -266,7 +267,7 @@
     <div class="wrap">
       <span class="kicker">Harita Techserv | Internal Circulation</span>
       <h1>Haritans<br>November ’26</h1>
-      <p class="cover-copy"><strong>Printing the Engine for India’s Next Launch Vehicle</strong> — how additive manufacturing, cryogenic fluid mechanics and Indian engineering are shaping the future of space propulsion.</p>
+      <p class="cover-copy"><strong>Engineering a Stronger Return to Flight</strong> — how ISRO revisited design margins, interfaces, materials, assembly and inspection to strengthen the PSLV third stage.</p>
       <div class="tag-row"><span class="tag">Edition 09</span><span class="tag">GitHub Preview</span><span class="tag">November 2026</span></div>
     </div>
   </section>
@@ -274,21 +275,21 @@
   <section class="page feature" id="main-feature">
     <div class="wrap">
       <span class="kicker">Indian Engineering</span>
-      <h2>Printing the engine for India’s next launch vehicle</h2>
-      <p class="lede">ISRO’s LME1100 programme brings additive manufacturing, high-speed turbomachinery and methane propulsion together for India’s Next Generation Launch Vehicle.</p>
+      <h2>Engineering a stronger return to flight</h2>
+      <p class="lede">After anomalies in two missions, ISRO revisited the PSLV third stage as a complete engineering system—and successfully ground-tested the strengthened configuration on 12 Nov 2026.</p>
       <div class="feature-grid">
         <figure class="engine-stage reveal">
-          <img class="engine-photo" src="assets/isro-thrust-chamber-test.webp" alt="ISRO sub-scale thrust chamber hot test for liquid oxygen and methane propulsion">
-          <figcaption class="engine-label"><span>Sub-scale thrust-chamber hot test</span><span>Image: ISRO</span></figcaption>
+          <img class="engine-photo" src="assets/pslv-ps3-static-test.webp" alt="Successful ground static test of the strengthened PSLV third stage at SDSC SHAR">
+          <figcaption class="engine-label"><span>Strengthened PS3 ground static test</span><span>Image: ISRO</span></figcaption>
         </figure>
         <article class="story-card reveal">
-          <span class="story-date">16 Oct 2026 | Indian Propulsion Engineering</span>
-          <h3>Designed here. Printed differently. Tested to fly.</h3>
-          <p>India’s next generation of launch vehicles will require engines that are powerful, reusable and practical to manufacture. ISRO’s answer is the LME1100—an indigenous liquid-oxygen and methane engine being developed for the Next Generation Launch Vehicle.</p>
-          <p>More than 70% of its components have been realised through additive manufacturing with Indian industry. The programme includes an additively manufactured gas generator, a 3D-printed liquid-oxygen pump impeller, Indian-made bearings and dynamic seals, spark-torch igniters and a laser-based ignition system.</p>
-          <p>On 09 Oct 2026, ISRO successfully completed the first ignition test of the full-scale gas generator. The integrated engine is targeted to be ready for hot testing in 2027.</p>
-          <p class="pov"><strong>Our perspective:</strong> printing changes how a part is made—not what it must survive. Cryogenic temperatures, extreme pressure, rapid ignition, vibration and high rotational speed still decide whether the hardware can fly.</p>
-          <a class="source-link" href="https://new1.isro.gov.in/LOX_Methane_engine.html" target="_blank" rel="noopener">Reference: ISRO, 16 Oct 2026</a>
+          <span class="story-date">12 Nov 2026 | Reliability Engineering</span>
+          <h3>Recovery begins by questioning the whole system</h3>
+          <p>Following anomalies in the third stage during PSLV-C61/EOS-09 and PSLV-C62/EOS-N1, ISRO comprehensively revisited the PS3 configuration—not only the affected hardware, but also its design margins, raw-material acceptance, assembly procedures and quality controls.</p>
+          <p>The nozzle configuration was improved to provide greater design margin. Mechanical interfaces were strengthened, redundancy was added to sealing systems, and updated non-destructive testing was introduced across integration and transportation.</p>
+          <p>The resulting new version of the PS3 solid-motor stage was successfully tested at the Static Test Facility, Satish Dhawan Space Centre, Sriharikota. ISRO will analyse the data in detail before conducting further planned tests.</p>
+          <p class="pov"><strong>Our perspective:</strong> a stronger return is rarely one dramatic fix. It comes from converting evidence into better margins, clearer procedures, redundant protection and verification at every interface.</p>
+          <a class="source-link" href="https://www.isro.gov.in/Ground_test_of_third_stage_of_PSLV_PS3.html" target="_blank" rel="noopener">Reference: ISRO, 12 Nov 2026</a>
         </article>
       </div>
     </div>
@@ -297,25 +298,26 @@
   <section class="page sequence">
     <div class="wrap">
       <span class="kicker">Interactive Explainer</span>
-      <h2>Follow the engine’s operating sequence</h2>
-      <p class="lede">Select each stage to see how stored propellants become controlled thrust.</p>
+      <h2>From anomaly to stronger hardware</h2>
+      <p class="lede">Select each step to see how engineering evidence becomes a safer, more robust configuration.</p>
       <div class="sequence-grid">
-        <div class="sequence-tabs" role="tablist" aria-label="Rocket engine operating sequence">
-          <button class="sequence-tab active" type="button" data-step="0"><span>Stage 01</span><strong>Store</strong></button>
-          <button class="sequence-tab" type="button" data-step="1"><span>Stage 02</span><strong>Pressurise</strong></button>
-          <button class="sequence-tab" type="button" data-step="2"><span>Stage 03</span><strong>Mix</strong></button>
-          <button class="sequence-tab" type="button" data-step="3"><span>Stage 04</span><strong>Ignite</strong></button>
-          <button class="sequence-tab" type="button" data-step="4"><span>Stage 05</span><strong>Accelerate</strong></button>
+        <div class="sequence-tabs" role="tablist" aria-label="PSLV stage strengthening sequence">
+          <button class="sequence-tab active" type="button" data-step="0"><span>Step 01</span><strong>Review</strong></button>
+          <button class="sequence-tab" type="button" data-step="1"><span>Step 02</span><strong>Strengthen</strong></button>
+          <button class="sequence-tab" type="button" data-step="2"><span>Step 03</span><strong>Add redundancy</strong></button>
+          <button class="sequence-tab" type="button" data-step="3"><span>Step 04</span><strong>Verify</strong></button>
+          <button class="sequence-tab" type="button" data-step="4"><span>Step 05</span><strong>Test</strong></button>
         </div>
         <article class="sequence-panel" aria-live="polite">
-          <span class="step" id="stepLabel">Stage 01 · Store</span>
-          <h3 id="stepTitle">Propellants wait in cryogenic tanks</h3>
-          <p id="stepText">Liquid oxygen and liquid methane are kept at extremely low temperatures. Tank pressure, insulation and material behaviour must remain predictable before the engine is started.</p>
+          <img class="sequence-photo" src="assets/pslv-ps3-test-facility.webp" alt="PSLV third-stage solid motor installed at the SDSC SHAR Static Test Facility">
+          <span class="step" id="stepLabel">Step 01 · Review</span>
+          <h3 id="stepTitle">Revisit the complete configuration</h3>
+          <p id="stepText">Start with evidence from the mission anomalies and examine the stage as a system: design margins, material acceptance, assembly practices and the quality checks used throughout realisation.</p>
           <div class="meter" aria-hidden="true"><i id="stepMeter"></i></div>
         </article>
       </div>
-      <div class="mini-process" aria-label="Additive manufacturing development cycle">
-        <span><strong>01</strong>Design</span><span><strong>02</strong>Simulate</span><span><strong>03</strong>Print</span><span><strong>04</strong>Inspect</span><span><strong>05</strong>Test</span><span><strong>06</strong>Improve</span>
+      <div class="mini-process" aria-label="Reliability improvement cycle">
+        <span><strong>01</strong>Evidence</span><span><strong>02</strong>Review</span><span><strong>03</strong>Redesign</span><span><strong>04</strong>Inspect</span><span><strong>05</strong>Test</span><span><strong>06</strong>Learn</span>
       </div>
     </div>
   </section>
@@ -493,11 +495,11 @@
 
   <script>
     const steps = [
-      ['Stage 01 · Store','Propellants wait in cryogenic tanks','Liquid oxygen and liquid methane are kept at extremely low temperatures. Tank pressure, insulation and material behaviour must remain predictable before the engine is started.','20%'],
-      ['Stage 02 · Pressurise','Turbopumps build pressure and flow','High-speed pumps move both propellants toward the injector. Bearings, seals, shafts and impellers must remain stable under cryogenic conditions and intense rotational loading.','40%'],
-      ['Stage 03 · Mix','The injector prepares stable combustion','Injector elements divide and mix oxygen and methane in controlled proportions. Uniform distribution helps prevent destructive hot spots and unstable pressure oscillations.','60%'],
-      ['Stage 04 · Ignite','A precise sequence starts the fire','Spark-torch or laser ignition begins combustion at the planned moment. Valves, flow rates and ignition timing must work in the correct sequence to avoid a hard start.','80%'],
-      ['Stage 05 · Accelerate','The nozzle converts heat into thrust','Hot gas expands through the nozzle and accelerates to very high velocity. The reaction force pushes the launch vehicle in the opposite direction.','100%']
+      ['Step 01 · Review','Revisit the complete configuration','Start with evidence from the mission anomalies and examine the stage as a system: design margins, material acceptance, assembly practices and the quality checks used throughout realisation.','20%'],
+      ['Step 02 · Strengthen','Increase margin where it matters','Improve the nozzle configuration and verify that structural and mechanical interfaces have adequate design margin for the loads they must withstand.','40%'],
+      ['Step 03 · Add redundancy','Protect critical sealing interfaces','Strengthen mechanical interfaces and add redundancy to sealing systems so that one vulnerable path does not determine the reliability of the complete stage.','60%'],
+      ['Step 04 · Verify','Improve inspection and control','Update raw-material acceptance, assembly procedures and non-destructive tests during integration and transportation to catch variation before it reaches flight hardware.','80%'],
+      ['Step 05 · Test','Prove the new configuration on the ground','Fire the realised stage under controlled conditions, analyse the test data in detail and use the evidence to plan further qualification tests.','100%']
     ];
     document.querySelectorAll('.sequence-tab').forEach((tab) => tab.addEventListener('click', () => {
       document.querySelectorAll('.sequence-tab').forEach((item) => item.classList.remove('active'));
