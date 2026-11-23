@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Haritans November 2026 interactive newsletter working preview.">
+  <title>Haritans Newsletter | November 2026 Preview</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT90273SEF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NT90273SEF');
+  </script>
+  <style>
+    :root {
+      --ink: #092c21;
+      --forest: #0d4934;
+      --green: #0b7a45;
+      --mint: #dff1e6;
+      --paper: #f5f8f5;
+      --white: #fff;
+      --gold: #f5c644;
+      --orange: #f08732;
+      --line: rgba(9,44,33,.16);
+      --shadow: 0 24px 60px rgba(6,38,27,.14);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+    button, select, textarea { font: inherit; }
+    button, a, select { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    .page { position: relative; overflow: hidden; padding: clamp(4.5rem, 9vw, 8rem) 0; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1160px, calc(100% - 2.2rem)); margin: 0 auto; position: relative; z-index: 2; }
+    .kicker { display: inline-flex; align-items: center; gap: .6rem; color: var(--green); font-size: .82rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .kicker::before { content: ""; width: 1.9rem; height: 3px; border-radius: 9px; background: var(--gold); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 1.2rem; font-size: clamp(3.5rem, 9.4vw, 8.6rem); line-height: .83; letter-spacing: -.075em; text-transform: uppercase; }
+    h2 { margin: .8rem 0 1rem; max-width: 940px; font-size: clamp(2.35rem, 5vw, 5.3rem); line-height: .96; letter-spacing: -.055em; }
+    h3 { font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.12; letter-spacing: -.025em; }
+    .lede { max-width: 820px; font-size: clamp(1.08rem, 1.65vw, 1.35rem); color: rgba(9,44,33,.78); }
+    .masthead { position: absolute; top: clamp(1rem, 3vw, 2.3rem); right: clamp(1.1rem, 4vw, 4rem); z-index: 4; }
+    .logo { width: clamp(110px, 12vw, 165px); display: block; }
+
+    .cover { min-height: 100svh; display: grid; align-items: end; color: var(--white); background: radial-gradient(circle at 78% 28%, rgba(245,198,68,.2), transparent 22%), linear-gradient(145deg, #08271e 0%, #0c4c35 62%, #096b40 100%); }
+    .cover::before { content: ""; position: absolute; inset: 0; opacity: .14; background-image: linear-gradient(120deg, transparent 0 48%, rgba(255,255,255,.25) 48.2% 48.5%, transparent 48.7%), linear-gradient(30deg, transparent 0 68%, rgba(245,198,68,.24) 68.2% 68.45%, transparent 68.7%); background-size: 180px 180px, 230px 230px; }
+    .cover .wrap { padding-bottom: clamp(4rem, 8vw, 7rem); }
+    .cover .kicker { color: #ddf4e6; }
+    .cover-copy { max-width: 800px; margin-bottom: 1.8rem; color: rgba(255,255,255,.82); font-size: clamp(1.15rem, 2vw, 1.55rem); }
+    .cover-copy strong { color: var(--gold); }
+    .tag-row { display: flex; gap: .65rem; flex-wrap: wrap; }
+    .tag { padding: .55rem .85rem; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; color: rgba(255,255,255,.82); font-size: .84rem; font-weight: 750; }
+    .preview-ribbon { position: absolute; top: 0; left: 0; padding: .65rem 1.1rem; background: var(--gold); color: var(--ink); font-weight: 900; letter-spacing: .08em; text-transform: uppercase; font-size: .72rem; z-index: 6; }
+
+    .feature { background: linear-gradient(180deg, #fff 0%, #eef7f1 100%); }
+    .feature-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(2rem, 5vw, 5.5rem); align-items: center; margin-top: 3rem; }
+    .engine-stage { min-height: 520px; display: grid; place-items: center; border-radius: 34px; color: #fff; background: linear-gradient(160deg, #08271e, #0d5138); box-shadow: var(--shadow); overflow: hidden; position: relative; }
+    .engine-stage::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom, #000, transparent 80%); }
+    .engine { position: relative; width: 78%; height: 390px; }
+    .tank { position: absolute; top: 15px; width: 31%; height: 105px; border: 3px solid rgba(255,255,255,.75); border-radius: 55px 55px 18px 18px; }
+    .tank.fuel { left: 10%; background: rgba(64,190,130,.25); }
+    .tank.oxygen { right: 10%; background: rgba(80,166,225,.24); }
+    .tank span { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-size: .7rem; font-weight: 900; letter-spacing: .09em; text-align: center; }
+    .pipe { position: absolute; top: 117px; width: 3px; height: 95px; background: rgba(255,255,255,.62); }
+    .pipe.left { left: 25.5%; }
+    .pipe.right { right: 25.5%; }
+    .pump { position: absolute; top: 174px; width: 68px; height: 68px; border: 3px solid var(--gold); border-radius: 50%; background: #123f30; }
+    .pump::before, .pump::after { content: ""; position: absolute; left: 50%; top: 50%; width: 36px; height: 8px; border-radius: 8px; background: var(--gold); transform: translate(-50%,-50%) rotate(45deg); }
+    .pump::after { transform: translate(-50%,-50%) rotate(-45deg); }
+    .pump.left { left: calc(25.5% - 34px); }
+    .pump.right { right: calc(25.5% - 34px); }
+    .chamber { position: absolute; top: 230px; left: 50%; width: 120px; height: 112px; transform: translateX(-50%); border: 4px solid rgba(255,255,255,.86); border-radius: 28px 28px 52px 52px; background: radial-gradient(circle at 50% 76%, #ffdc66, #f08732 34%, #8f2e17 65%, #143c2e 66%); }
+    .chamber::before { content: ""; position: absolute; left: 50%; top: -35px; width: 100px; height: 36px; border: 3px solid rgba(255,255,255,.72); border-bottom: 0; border-radius: 18px 18px 0 0; transform: translateX(-50%); }
+    .nozzle { position: absolute; top: 329px; left: 50%; width: 160px; height: 62px; transform: translateX(-50%); background: linear-gradient(90deg, transparent 0 12%, rgba(255,255,255,.83) 12% 15%, rgba(255,255,255,.08) 15% 85%, rgba(255,255,255,.83) 85% 88%, transparent 88%); clip-path: polygon(30% 0,70% 0,100% 100%,0 100%); }
+    .plume { position: absolute; top: 382px; left: 50%; width: 94px; height: 115px; transform: translateX(-50%); background: linear-gradient(to bottom, #fff6c8, var(--gold) 25%, var(--orange) 58%, transparent); clip-path: polygon(25% 0,75% 0,100% 100%,50% 74%,0 100%); filter: drop-shadow(0 0 14px rgba(245,198,68,.65)); animation: breathe .9s ease-in-out infinite alternate; }
+    .flow-dot { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 9px var(--gold); animation: flow 2.1s linear infinite; }
+    .flow-dot.a { left: calc(25.5% - 3px); top: 110px; }
+    .flow-dot.b { right: calc(25.5% - 3px); top: 110px; animation-delay: -1s; background: #68c9ff; box-shadow: 0 0 9px #68c9ff; }
+    .engine-label { position: absolute; bottom: 1.1rem; left: 1.2rem; right: 1.2rem; display: flex; justify-content: space-between; gap: .5rem; color: rgba(255,255,255,.7); font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    @keyframes breathe { to { transform: translateX(-50%) scaleX(.84) scaleY(1.1); opacity: .82; } }
+    @keyframes flow { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(180px); opacity: 0; } }
+    .story-card { padding: clamp(1.6rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: 28px; background: rgba(255,255,255,.82); box-shadow: 0 14px 40px rgba(8,56,38,.08); }
+    .story-date { display: block; margin-bottom: .8rem; color: var(--green); font-size: .78rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .story-card p { color: rgba(9,44,33,.8); }
+    .pov { padding: 1.15rem 1.25rem; border-left: 4px solid var(--gold); background: var(--mint); border-radius: 0 14px 14px 0; }
+    .source-link { display: inline-block; margin-top: .4rem; color: var(--green); font-weight: 850; text-underline-offset: 4px; }
+
+    .sequence { color: #fff; background: var(--ink); }
+    .sequence .kicker { color: #b9ebce; }
+    .sequence .lede { color: rgba(255,255,255,.7); }
+    .sequence-grid { margin-top: 2.5rem; display: grid; grid-template-columns: .72fr 1.28fr; gap: 1.3rem; }
+    .sequence-tabs { display: grid; gap: .65rem; align-content: start; }
+    .sequence-tab { width: 100%; padding: 1rem 1.15rem; border: 1px solid rgba(255,255,255,.18); border-radius: 16px; color: #fff; background: rgba(255,255,255,.05); text-align: left; cursor: pointer; transition: .22s ease; }
+    .sequence-tab span { display: block; color: rgba(255,255,255,.55); font-size: .74rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .sequence-tab strong { font-size: 1.08rem; }
+    .sequence-tab:hover, .sequence-tab.active { transform: translateX(6px); border-color: var(--gold); background: rgba(245,198,68,.13); }
+    .sequence-panel { min-height: 365px; padding: clamp(1.8rem, 5vw, 4rem); border-radius: 28px; display: grid; align-content: center; background: linear-gradient(140deg, rgba(255,255,255,.12), rgba(255,255,255,.045)); border: 1px solid rgba(255,255,255,.16); }
+    .sequence-panel .step { color: var(--gold); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
+    .sequence-panel p { max-width: 680px; color: rgba(255,255,255,.72); font-size: 1.08rem; }
+    .meter { margin-top: 1.1rem; height: 12px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.1); }
+    .meter i { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--gold), var(--orange)); transition: width .35s ease; }
+
+    .snapshot { background: #edf6f0; }
+    .process { display: grid; grid-template-columns: repeat(6, 1fr); gap: .8rem; margin-top: 2.4rem; }
+    .process-card { min-height: 190px; padding: 1.2rem; border-radius: 20px; border: 1px solid var(--line); background: #fff; transition: transform .22s ease, box-shadow .22s ease; }
+    .process-card:hover { transform: translateY(-7px); box-shadow: 0 14px 35px rgba(8,56,38,.12); }
+    .process-card span { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 2rem; border-radius: 50%; background: var(--mint); color: var(--green); font-weight: 950; }
+    .process-card strong { display: block; margin-bottom: .45rem; font-size: 1.05rem; }
+    .process-card p { margin-bottom: 0; color: rgba(9,44,33,.65); font-size: .9rem; }
+    .engineering-note { margin-top: 1.4rem; padding: 1.3rem 1.5rem; border-radius: 18px; color: #fff; background: var(--forest); font-size: 1.05rem; }
+
+    .wellbeing { background: #fff; }
+    .well-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.4rem; }
+    .article-card, .focus-card { border: 1px solid var(--line); border-radius: 28px; padding: clamp(1.5rem, 4vw, 3rem); }
+    .article-card p { color: rgba(9,44,33,.76); font-size: 1.05rem; }
+    .habits { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; margin-top: 1.5rem; }
+    .habit { padding: .9rem 1rem; border-radius: 14px; background: #edf6f0; font-weight: 750; }
+    .focus-card { display: grid; align-content: center; text-align: center; color: #fff; background: linear-gradient(145deg, #0b392a, #0c6c43); }
+    .timer { margin: 1rem auto 1.4rem; display: grid; place-items: center; width: 190px; aspect-ratio: 1; border-radius: 50%; border: 8px solid rgba(255,255,255,.15); box-shadow: inset 0 0 0 8px rgba(245,198,68,.12); color: var(--gold); font-size: 3rem; font-weight: 900; letter-spacing: -.06em; }
+    .timer-controls { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
+    .primary, .secondary { min-height: 48px; padding: .75rem 1rem; border-radius: 12px; font-weight: 850; cursor: pointer; }
+    .primary { border: 0; background: var(--gold); color: var(--ink); }
+    .secondary { border: 1px solid rgba(255,255,255,.35); color: #fff; background: transparent; }
+
+    .word { color: #fff; background: linear-gradient(135deg, #0a3024, #0b573a); }
+    .word-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 3rem; align-items: center; }
+    .word .kicker { color: #bfe9cf; }
+    .word-name { margin-bottom: .4rem; color: #fff; overflow-wrap: anywhere; }
+    .pronunciation { color: var(--gold); font-size: 1.2rem; }
+    .speak { margin-top: 1.4rem; padding: .75rem 1rem; border: 1px solid rgba(255,255,255,.28); border-radius: 12px; color: #fff; background: transparent; font-weight: 800; cursor: pointer; }
+    .definitions { display: grid; gap: .8rem; }
+    .definition { padding: 1.2rem 1.3rem; border: 1px solid rgba(255,255,255,.15); border-radius: 18px; background: rgba(255,255,255,.075); }
+    .definition strong { color: var(--gold); text-transform: uppercase; font-size: .78rem; letter-spacing: .08em; }
+    .definition p { margin: .45rem 0 0; color: rgba(255,255,255,.78); }
+
+    .brain { background: #f2f6f3; }
+    .quiz-grid { margin-top: 2.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .quiz { padding: 1.5rem; border-radius: 24px; border: 1px solid var(--line); background: #fff; box-shadow: 0 12px 30px rgba(8,56,38,.06); }
+    .quiz-badge { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; margin-bottom: 1.1rem; color: var(--ink); background: var(--gold); font-weight: 950; }
+    .quiz p { color: rgba(9,44,33,.74); }
+    .choices { display: grid; gap: .55rem; }
+    .choice { padding: .8rem .85rem; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: #f8faf8; text-align: left; font-weight: 750; cursor: pointer; }
+    .choice:hover { border-color: var(--green); }
+    .choice.correct { color: #fff; border-color: var(--green); background: var(--green); }
+    .choice.wrong { border-color: #bd493e; background: #fff0ee; }
+    .answer { display: none; margin-top: .8rem; padding: .9rem; border-radius: 12px; background: var(--mint); font-size: .9rem; }
+    .answer.show { display: block; }
+
+    .highlights { color: #fff; background: #0b3024; }
+    .highlights .kicker { color: #bfe9cf; }
+    .highlight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.1rem; }
+    .highlight-card { min-height: 220px; padding: 1.5rem; border: 1px dashed rgba(255,255,255,.3); border-radius: 24px; background: rgba(255,255,255,.055); }
+    .highlight-card span { color: var(--gold); font-size: .78rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .highlight-card p { color: rgba(255,255,255,.65); }
+
+    .feedback { background: #fff; }
+    .feedback-card { margin-top: 2rem; max-width: 860px; padding: clamp(1.4rem, 4vw, 2.8rem); border: 1px solid var(--line); border-radius: 24px; background: #f7faf8; }
+    .rating { display: flex; gap: .6rem; flex-wrap: wrap; margin: .75rem 0 1.4rem; }
+    .rating label { position: relative; }
+    .rating input { position: absolute; opacity: 0; }
+    .rating span { display: grid; place-items: center; width: 54px; height: 54px; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-weight: 900; cursor: pointer; }
+    .rating input:checked + span { color: #fff; border-color: var(--green); background: var(--green); }
+    textarea, select { width: 100%; border: 1px solid rgba(9,44,33,.25); border-radius: 12px; background: #fff; color: var(--ink); }
+    textarea { min-height: 120px; padding: .9rem; resize: vertical; }
+    select { min-height: 50px; padding: .75rem 3rem .75rem .9rem; appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 20px) 21px, calc(100% - 15px) 21px; background-size: 5px 5px; background-repeat: no-repeat; }
+    .field-label { display: block; margin: 1.2rem 0 .45rem; font-weight: 850; }
+    .submit { margin-top: 1rem; min-height: 50px; padding: .75rem 1.2rem; border: 0; border-radius: 12px; color: #fff; background: var(--green); font-weight: 900; cursor: pointer; }
+    .form-status { margin: .8rem 0 0; color: rgba(9,44,33,.7); font-weight: 700; }
+
+    .archive { padding: 3rem 0; background: #e6f1e9; }
+    .archive-box { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: end; }
+    .archive-actions { display: flex; gap: .65rem; align-items: center; }
+    .archive-actions select { min-width: 230px; }
+    .open-issue { min-height: 50px; padding: .75rem 1rem; border: 0; border-radius: 12px; color: #fff; background: var(--forest); font-weight: 850; cursor: pointer; white-space: nowrap; }
+    footer { padding: 1.5rem 1rem; color: rgba(255,255,255,.72); background: #071f18; text-align: center; font-size: .86rem; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .feature-grid, .sequence-grid, .well-grid, .word-layout { grid-template-columns: 1fr; }
+      .process { grid-template-columns: repeat(3, 1fr); }
+      .quiz-grid, .highlight-grid { grid-template-columns: 1fr; }
+      .engine-stage { min-height: 480px; }
+      .sequence-tabs { grid-template-columns: repeat(2, 1fr); }
+      .sequence-tab:hover, .sequence-tab.active { transform: translateY(-3px); }
+    }
+    @media (max-width: 600px) {
+      .page { padding: 4.5rem 0; }
+      .masthead { top: 3.1rem; right: 1rem; }
+      .logo { width: 105px; }
+      .cover .wrap { padding-bottom: 3.5rem; }
+      .engine-stage { min-height: 430px; border-radius: 24px; }
+      .engine { width: 94%; transform: scale(.88); }
+      .process { grid-template-columns: repeat(2, 1fr); }
+      .process-card { min-height: 170px; }
+      .habits, .sequence-tabs { grid-template-columns: 1fr; }
+      .archive-box { grid-template-columns: 1fr; }
+      .archive-actions { align-items: stretch; flex-direction: column; }
+      .archive-actions select { min-width: 0; }
+      .open-issue { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <section class="page cover">
+    <div class="preview-ribbon">Working preview</div>
+    <div class="masthead"><img class="logo" src="../assets_sep_2026/harita_logo_cropped.png" alt="Harita Techserv"></div>
+    <div class="wrap">
+      <span class="kicker">Harita Techserv | Internal Circulation</span>
+      <h1>Haritans<br>November ’26</h1>
+      <p class="cover-copy"><strong>Printing the Engine for India’s Next Launch Vehicle</strong> — how additive manufacturing, cryogenic fluid mechanics and Indian engineering are shaping the future of space propulsion.</p>
+      <div class="tag-row"><span class="tag">Edition 09</span><span class="tag">GitHub Preview</span><span class="tag">November 2026</span></div>
+    </div>
+  </section>
+
+  <section class="page feature" id="main-feature">
+    <div class="wrap">
+      <span class="kicker">Indian Engineering</span>
+      <h2>Printing the engine for India’s next launch vehicle</h2>
+      <p class="lede">ISRO’s LME1100 programme brings additive manufacturing, high-speed turbomachinery and methane propulsion together for India’s Next Generation Launch Vehicle.</p>
+      <div class="feature-grid">
+        <div class="engine-stage reveal" aria-label="Animated schematic of a liquid oxygen and methane rocket engine">
+          <div class="engine" aria-hidden="true">
+            <div class="tank fuel"><span>LIQUID<br>METHANE</span></div>
+            <div class="tank oxygen"><span>LIQUID<br>OXYGEN</span></div>
+            <div class="pipe left"></div><div class="pipe right"></div>
+            <div class="flow-dot a"></div><div class="flow-dot b"></div>
+            <div class="pump left"></div><div class="pump right"></div>
+            <div class="chamber"></div><div class="nozzle"></div><div class="plume"></div>
+          </div>
+          <div class="engine-label"><span>LME1100 concept flow</span><span>1100 kN class</span></div>
+        </div>
+        <article class="story-card reveal">
+          <span class="story-date">16 Oct 2026 | Indian Propulsion Engineering</span>
+          <h3>Designed here. Printed differently. Tested to fly.</h3>
+          <p>India’s next generation of launch vehicles will require engines that are powerful, reusable and practical to manufacture. ISRO’s answer is the LME1100—an indigenous liquid-oxygen and methane engine being developed for the Next Generation Launch Vehicle.</p>
+          <p>More than 70% of its components have been realised through additive manufacturing with Indian industry. The programme includes an additively manufactured gas generator, a 3D-printed liquid-oxygen pump impeller, Indian-made bearings and dynamic seals, spark-torch igniters and a laser-based ignition system.</p>
+          <p>On 09 Oct 2026, ISRO successfully completed the first ignition test of the full-scale gas generator. The integrated engine is targeted to be ready for hot testing in 2027.</p>
+          <p class="pov"><strong>Our perspective:</strong> printing changes how a part is made—not what it must survive. Cryogenic temperatures, extreme pressure, rapid ignition, vibration and high rotational speed still decide whether the hardware can fly.</p>
+          <a class="source-link" href="https://new1.isro.gov.in/LOX_Methane_engine.html" target="_blank" rel="noopener">Reference: ISRO, 16 Oct 2026</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page sequence">
+    <div class="wrap">
+      <span class="kicker">Interactive Explainer</span>
+      <h2>Follow the engine’s operating sequence</h2>
+      <p class="lede">Select each stage to see how stored propellants become controlled thrust.</p>
+      <div class="sequence-grid">
+        <div class="sequence-tabs" role="tablist" aria-label="Rocket engine operating sequence">
+          <button class="sequence-tab active" type="button" data-step="0"><span>Stage 01</span><strong>Store</strong></button>
+          <button class="sequence-tab" type="button" data-step="1"><span>Stage 02</span><strong>Pressurise</strong></button>
+          <button class="sequence-tab" type="button" data-step="2"><span>Stage 03</span><strong>Mix</strong></button>
+          <button class="sequence-tab" type="button" data-step="3"><span>Stage 04</span><strong>Ignite</strong></button>
+          <button class="sequence-tab" type="button" data-step="4"><span>Stage 05</span><strong>Accelerate</strong></button>
+        </div>
+        <article class="sequence-panel" aria-live="polite">
+          <span class="step" id="stepLabel">Stage 01 · Store</span>
+          <h3 id="stepTitle">Propellants wait in cryogenic tanks</h3>
+          <p id="stepText">Liquid oxygen and liquid methane are kept at extremely low temperatures. Tank pressure, insulation and material behaviour must remain predictable before the engine is started.</p>
+          <div class="meter" aria-hidden="true"><i id="stepMeter"></i></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page snapshot">
+    <div class="wrap">
+      <span class="kicker">Indian Engineering Snapshot</span>
+      <h2>From a digital model to flight-ready hardware</h2>
+      <p class="lede">Additive manufacturing creates new geometries, but disciplined inspection and physical testing turn those geometries into trusted components.</p>
+      <div class="process">
+        <article class="process-card reveal"><span>01</span><strong>Design</strong><p>Create integrated passages and component geometry.</p></article>
+        <article class="process-card reveal"><span>02</span><strong>Simulate</strong><p>Study flow, stress, heat and rotor behaviour.</p></article>
+        <article class="process-card reveal"><span>03</span><strong>Print</strong><p>Build complex hardware layer by layer.</p></article>
+        <article class="process-card reveal"><span>04</span><strong>Inspect</strong><p>Check dimensions, density and hidden defects.</p></article>
+        <article class="process-card reveal"><span>05</span><strong>Test</strong><p>Validate ignition, pressure and operating limits.</p></article>
+        <article class="process-card reveal"><span>06</span><strong>Improve</strong><p>Use test evidence to refine the next build.</p></article>
+      </div>
+      <div class="engineering-note"><strong>Mechanical greatness:</strong> design freedom only creates value when materials, manufacturing tolerances, surface finish and repeatable testing are engineered as one system.</div>
+    </div>
+  </section>
+
+  <section class="page wellbeing">
+    <div class="wrap">
+      <span class="kicker">Wellbeing Perspective</span>
+      <h2>Protect your attention</h2>
+      <p class="lede">A busy day does not always mean a productive day. Constant switching makes the mind repeatedly stop, remember and restart.</p>
+      <div class="well-grid">
+        <article class="article-card reveal">
+          <h3>Create space for thoughtful work</h3>
+          <p>Messages, meetings and unfinished tasks compete for attention throughout the day. Frequent switching can make simple work feel tiring, increase the chance of missing details and leave us with activity but little sense of completion.</p>
+          <p>Protecting attention is not about becoming unavailable. It is about creating enough uninterrupted space to do accurate, meaningful work.</p>
+          <div class="habits">
+            <div class="habit">Choose one priority first</div>
+            <div class="habit">Group similar tasks</div>
+            <div class="habit">Quiet nonessential alerts</div>
+            <div class="habit">Note tomorrow’s first action</div>
+          </div>
+        </article>
+        <aside class="focus-card reveal">
+          <span class="kicker" style="color:#d9f0e2;justify-content:center">Monthly Challenge</span>
+          <h3>One focused block</h3>
+          <p>Keep only the required application open and complete one clearly defined task.</p>
+          <div class="timer" id="focusTime" aria-live="polite">25:00</div>
+          <div class="timer-controls"><button class="primary" id="startFocus" type="button">Start focus</button><button class="secondary" id="resetFocus" type="button">Reset</button></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="page word">
+    <div class="wrap word-layout">
+      <div>
+        <span class="kicker">Word of the Month</span>
+        <h2 class="word-name">Turbopump</h2>
+        <div class="pronunciation">TUR-boh-pump</div>
+        <button class="speak" id="speakWord" type="button">Listen to pronunciation</button>
+      </div>
+      <div class="definitions">
+        <article class="definition"><strong>Meaning</strong><p>A high-speed rotating machine in which a turbine drives a pump.</p></article>
+        <article class="definition"><strong>In rocket engineering</strong><p>The turbine powers pumps that force fuel and oxidiser into the combustion chamber at very high pressure.</p></article>
+        <article class="definition"><strong>Why it matters</strong><p>Without controlled pressure and flow, even a full propellant tank cannot produce stable thrust. The turbopump is the mechanical heart that keeps the engine fed.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page brain">
+    <div class="wrap">
+      <span class="kicker">Think Before You Tap</span>
+      <h2>Brain Lab</h2>
+      <p class="lede">Three compact challenges in deduction, time and code-breaking. Choose an answer before revealing the reasoning.</p>
+      <div class="quiz-grid">
+        <article class="quiz reveal">
+          <span class="quiz-badge">A/O</span><h3>Every label is wrong</h3>
+          <p>Boxes are labelled Apples, Oranges and Mixed. Every label is wrong. You may draw one fruit from one box. Which box do you choose?</p>
+          <div class="choices"><button class="choice" data-correct="false">Apples</button><button class="choice" data-correct="false">Oranges</button><button class="choice" data-correct="true">Mixed</button></div>
+          <div class="answer"><strong>Mixed.</strong> Because its label is wrong, that box contains only one fruit type. One draw identifies it, and the other boxes follow by elimination.</div>
+        </article>
+        <article class="quiz reveal">
+          <span class="quiz-badge">45</span><h3>The uneven ropes</h3>
+          <p>Two ropes each take exactly 60 minutes to burn, but neither burns uniformly. How can you measure exactly 45 minutes?</p>
+          <div class="choices"><button class="choice" data-correct="true">Light one at both ends</button><button class="choice" data-correct="false">Cut both ropes in half</button><button class="choice" data-correct="false">Light both at one end</button></div>
+          <div class="answer"><strong>Light rope one at both ends and rope two at one end.</strong> Rope one ends after 30 minutes. Then light the other end of rope two; its remainder takes 15 minutes.</div>
+        </article>
+        <article class="quiz reveal">
+          <span class="quiz-badge">#</span><h3>Crack the code</h3>
+          <p>682: one correct and placed. 614: one correct but misplaced. 206: two correct but misplaced. 738: none correct. 780: one correct but misplaced.</p>
+          <div class="choices"><button class="choice" data-correct="false">062</button><button class="choice" data-correct="true">042</button><button class="choice" data-correct="false">420</button></div>
+          <div class="answer"><strong>042.</strong> The clues eliminate 7, 3 and 8, establish 0 and 2 as valid but misplaced, and identify 4 as the remaining digit.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page highlights">
+    <div class="wrap">
+      <span class="kicker">November Inputs</span>
+      <h2>Harita Highlights</h2>
+      <p class="lede">These panels are reserved for November’s confirmed company updates and photographs.</p>
+      <div class="highlight-grid">
+        <article class="highlight-card"><span>Project milestones</span><h3>Delivery and technical achievements</h3><p>Awaiting approved November update and supporting image.</p></article>
+        <article class="highlight-card"><span>People and recognition</span><h3>Work that customers notice</h3><p>Awaiting employee names, appreciation details and photographs.</p></article>
+        <article class="highlight-card"><span>Learning and community</span><h3>Growing together</h3><p>Awaiting training, event, CSR or engagement highlights.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page feedback">
+    <div class="wrap">
+      <span class="kicker">Help Shape the Edition</span>
+      <h2>Preview feedback</h2>
+      <p class="lede">The production feedback form will activate when this edition is approved and published on Netlify.</p>
+      <form class="feedback-card" name="interactive-newsletter-feedback" method="POST" data-netlify="true" id="feedbackForm">
+        <input type="hidden" name="form-name" value="interactive-newsletter-feedback">
+        <input type="hidden" name="edition" value="November 2026">
+        <strong>How would you rate this working preview?</strong>
+        <div class="rating" role="radiogroup" aria-label="Preview rating">
+          <label><input type="radio" name="rating" value="1"><span>1</span></label><label><input type="radio" name="rating" value="2"><span>2</span></label><label><input type="radio" name="rating" value="3"><span>3</span></label><label><input type="radio" name="rating" value="4"><span>4</span></label><label><input type="radio" name="rating" value="5"><span>5</span></label>
+        </div>
+        <label class="field-label" for="improve">What should we improve or include next?</label>
+        <textarea id="improve" name="improvement" placeholder="Share your suggestion"></textarea>
+        <button class="submit" type="submit">Submit feedback</button>
+        <p class="form-status" id="formStatus">GitHub preview mode — submissions are disabled here.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="archive">
+    <div class="wrap archive-box">
+      <div><span class="kicker">Newsletter Archive</span><h3 style="margin:.45rem 0 0">Visit a previous edition</h3></div>
+      <div class="archive-actions"><select id="editionSelect" aria-label="Choose a previous newsletter"><option value="">Choose an edition</option><option value="../oct-2026/">October 2026</option><option value="../sep-2026/">September 2026</option></select><button class="open-issue" id="openEdition" type="button">Open newsletter</button></div>
+    </div>
+  </section>
+
+  <footer>Haritans Newsletter | November 2026 Working Preview | Not Published to Production</footer>
+
+  <script>
+    const steps = [
+      ['Stage 01 · Store','Propellants wait in cryogenic tanks','Liquid oxygen and liquid methane are kept at extremely low temperatures. Tank pressure, insulation and material behaviour must remain predictable before the engine is started.','20%'],
+      ['Stage 02 · Pressurise','Turbopumps build pressure and flow','High-speed pumps move both propellants toward the injector. Bearings, seals, shafts and impellers must remain stable under cryogenic conditions and intense rotational loading.','40%'],
+      ['Stage 03 · Mix','The injector prepares stable combustion','Injector elements divide and mix oxygen and methane in controlled proportions. Uniform distribution helps prevent destructive hot spots and unstable pressure oscillations.','60%'],
+      ['Stage 04 · Ignite','A precise sequence starts the fire','Spark-torch or laser ignition begins combustion at the planned moment. Valves, flow rates and ignition timing must work in the correct sequence to avoid a hard start.','80%'],
+      ['Stage 05 · Accelerate','The nozzle converts heat into thrust','Hot gas expands through the nozzle and accelerates to very high velocity. The reaction force pushes the launch vehicle in the opposite direction.','100%']
+    ];
+    document.querySelectorAll('.sequence-tab').forEach((tab) => tab.addEventListener('click', () => {
+      document.querySelectorAll('.sequence-tab').forEach((item) => item.classList.remove('active'));
+      tab.classList.add('active');
+      const data = steps[Number(tab.dataset.step)];
+      document.getElementById('stepLabel').textContent = data[0];
+      document.getElementById('stepTitle').textContent = data[1];
+      document.getElementById('stepText').textContent = data[2];
+      document.getElementById('stepMeter').style.width = data[3];
+    }));
+
+    let focusSeconds = 1500;
+    let focusTimer = null;
+    const focusTime = document.getElementById('focusTime');
+    const renderFocus = () => { const m = String(Math.floor(focusSeconds / 60)).padStart(2,'0'); const s = String(focusSeconds % 60).padStart(2,'0'); focusTime.textContent = `${m}:${s}`; };
+    document.getElementById('startFocus').addEventListener('click', (event) => {
+      if (focusTimer) { clearInterval(focusTimer); focusTimer = null; event.currentTarget.textContent = 'Resume'; return; }
+      event.currentTarget.textContent = 'Pause';
+      focusTimer = setInterval(() => { focusSeconds -= 1; renderFocus(); if (focusSeconds <= 0) { clearInterval(focusTimer); focusTimer = null; event.currentTarget.textContent = 'Start again'; focusSeconds = 1500; } }, 1000);
+    });
+    document.getElementById('resetFocus').addEventListener('click', () => { clearInterval(focusTimer); focusTimer = null; focusSeconds = 1500; renderFocus(); document.getElementById('startFocus').textContent = 'Start focus'; });
+
+    document.getElementById('speakWord').addEventListener('click', () => { if ('speechSynthesis' in window) { speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance('turbopump'); utterance.rate = .75; speechSynthesis.speak(utterance); } });
+    document.querySelectorAll('.quiz').forEach((quiz) => quiz.querySelectorAll('.choice').forEach((choice) => choice.addEventListener('click', () => {
+      quiz.querySelectorAll('.choice').forEach((item) => item.classList.remove('correct','wrong'));
+      choice.classList.add(choice.dataset.correct === 'true' ? 'correct' : 'wrong');
+      quiz.querySelector('.answer').classList.add('show');
+    })));
+
+    document.getElementById('feedbackForm').addEventListener('submit', (event) => { if (!location.hostname.endsWith('netlify.app')) { event.preventDefault(); document.getElementById('formStatus').textContent = 'This GitHub preview does not collect submissions. The form will activate on the approved production edition.'; } });
+    document.getElementById('openEdition').addEventListener('click', () => { const select = document.getElementById('editionSelect'); if (select.value) { if (typeof gtag === 'function') gtag('event','archive_issue_opened',{edition:select.options[select.selectedIndex].text}); location.href = select.value; } });
+
+    if ('IntersectionObserver' in window) { const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach((item) => observer.observe(item)); } else { document.querySelectorAll('.reveal').forEach((item) => item.classList.add('visible')); }
+  </script>
+</body>
+</html>
