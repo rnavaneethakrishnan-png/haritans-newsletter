@@ -57,7 +57,8 @@
     .feature { background: linear-gradient(180deg, #fff 0%, #eef7f1 100%); }
     .feature-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(2rem, 5vw, 5.5rem); align-items: center; margin-top: 3rem; }
     .engine-stage { min-height: 520px; display: grid; place-items: center; border-radius: 34px; color: #fff; background: linear-gradient(160deg, #08271e, #0d5138); box-shadow: var(--shadow); overflow: hidden; position: relative; }
-    .engine-stage::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(to bottom, #000, transparent 80%); }
+    .engine-stage::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(to top, rgba(4,28,20,.82), transparent 46%); pointer-events: none; }
+    .engine-photo { width: 100%; height: 100%; min-height: 520px; display: block; object-fit: cover; }
     .engine { position: relative; width: 78%; height: 390px; }
     .tank { position: absolute; top: 15px; width: 31%; height: 105px; border: 3px solid rgba(255,255,255,.75); border-radius: 55px 55px 18px 18px; }
     .tank.fuel { left: 10%; background: rgba(64,190,130,.25); }
@@ -78,7 +79,7 @@
     .flow-dot { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 9px var(--gold); animation: flow 2.1s linear infinite; }
     .flow-dot.a { left: calc(25.5% - 3px); top: 110px; }
     .flow-dot.b { right: calc(25.5% - 3px); top: 110px; animation-delay: -1s; background: #68c9ff; box-shadow: 0 0 9px #68c9ff; }
-    .engine-label { position: absolute; bottom: 1.1rem; left: 1.2rem; right: 1.2rem; display: flex; justify-content: space-between; gap: .5rem; color: rgba(255,255,255,.7); font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .engine-label { position: absolute; z-index: 2; bottom: 1.1rem; left: 1.2rem; right: 1.2rem; display: flex; justify-content: space-between; gap: .5rem; color: rgba(255,255,255,.82); font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     @keyframes breathe { to { transform: translateX(-50%) scaleX(.84) scaleY(1.1); opacity: .82; } }
     @keyframes flow { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(180px); opacity: 0; } }
     .story-card { padding: clamp(1.6rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: 28px; background: rgba(255,255,255,.82); box-shadow: 0 14px 40px rgba(8,56,38,.08); }
@@ -101,6 +102,9 @@
     .sequence-panel p { max-width: 680px; color: rgba(255,255,255,.72); font-size: 1.08rem; }
     .meter { margin-top: 1.1rem; height: 12px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.1); }
     .meter i { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--gold), var(--orange)); transition: width .35s ease; }
+    .mini-process { display: grid; grid-template-columns: repeat(6, 1fr); gap: .55rem; margin-top: 1rem; }
+    .mini-process span { padding: .8rem .55rem; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; color: rgba(255,255,255,.72); background: rgba(255,255,255,.05); text-align: center; font-size: .82rem; font-weight: 800; }
+    .mini-process strong { display: block; margin-bottom: .15rem; color: var(--gold); font-size: .7rem; letter-spacing: .08em; }
 
     .snapshot { background: #edf6f0; }
     .process { display: grid; grid-template-columns: repeat(6, 1fr); gap: .8rem; margin-top: 2.4rem; }
@@ -112,17 +116,31 @@
     .engineering-note { margin-top: 1.4rem; padding: 1.3rem 1.5rem; border-radius: 18px; color: #fff; background: var(--forest); font-size: 1.05rem; }
 
     .wellbeing { background: #fff; }
-    .well-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.4rem; }
-    .article-card, .focus-card { border: 1px solid var(--line); border-radius: 28px; padding: clamp(1.5rem, 4vw, 3rem); }
+    .hr-byline { margin-top: 1.6rem; display: flex; align-items: center; gap: .85rem; }
+    .hr-initials { display: grid; place-items: center; width: 54px; aspect-ratio: 1; border-radius: 50%; color: #fff; background: var(--forest); font-weight: 950; }
+    .hr-byline strong, .hr-byline span { display: block; }
+    .hr-byline span { color: rgba(9,44,33,.62); font-size: .88rem; }
+    .well-grid { margin-top: 2rem; display: grid; grid-template-columns: 1.22fr .78fr; gap: 1.4rem; }
+    .article-card, .curiosity-quote { border: 1px solid var(--line); border-radius: 28px; padding: clamp(1.5rem, 4vw, 3rem); }
     .article-card p { color: rgba(9,44,33,.76); font-size: 1.05rem; }
-    .habits { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; margin-top: 1.5rem; }
-    .habit { padding: .9rem 1rem; border-radius: 14px; background: #edf6f0; font-weight: 750; }
-    .focus-card { display: grid; align-content: center; text-align: center; color: #fff; background: linear-gradient(145deg, #0b392a, #0c6c43); }
-    .timer { margin: 1rem auto 1.4rem; display: grid; place-items: center; width: 190px; aspect-ratio: 1; border-radius: 50%; border: 8px solid rgba(255,255,255,.15); box-shadow: inset 0 0 0 8px rgba(245,198,68,.12); color: var(--gold); font-size: 3rem; font-weight: 900; letter-spacing: -.06em; }
-    .timer-controls { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
-    .primary, .secondary { min-height: 48px; padding: .75rem 1rem; border-radius: 12px; font-weight: 850; cursor: pointer; }
-    .primary { border: 0; background: var(--gold); color: var(--ink); }
-    .secondary { border: 1px solid rgba(255,255,255,.35); color: #fff; background: transparent; }
+    .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; margin-top: 1.5rem; }
+    .benefit { padding: 1rem; border-radius: 14px; background: #edf6f0; }
+    .benefit strong { display: block; margin-bottom: .25rem; }
+    .benefit span { color: rgba(9,44,33,.66); font-size: .9rem; }
+    .curiosity-quote { display: grid; align-content: center; color: #fff; background: linear-gradient(145deg, #0b392a, #0c6c43); }
+    .curiosity-quote blockquote { margin: 0 0 1.3rem; color: var(--gold); font-size: clamp(1.65rem, 3vw, 2.45rem); font-weight: 850; line-height: 1.12; letter-spacing: -.035em; }
+    .curiosity-quote p { margin-bottom: 0; color: rgba(255,255,255,.76); }
+    .why-heading { margin: 3rem 0 1rem; display: flex; justify-content: space-between; align-items: end; gap: 1rem; }
+    .why-heading h3 { margin-bottom: 0; }
+    .why-heading span { color: var(--green); font-weight: 850; }
+    .why-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .75rem; }
+    .why-card { border: 1px solid var(--line); border-radius: 18px; background: #f6faf7; overflow: hidden; }
+    .why-card summary { min-height: 170px; padding: 1.1rem; display: grid; align-content: space-between; list-style: none; cursor: pointer; font-weight: 850; }
+    .why-card summary::-webkit-details-marker { display: none; }
+    .why-card summary span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--ink); background: var(--gold); font-size: 1.15rem; }
+    .why-card[open] { border-color: var(--green); box-shadow: 0 12px 28px rgba(8,56,38,.1); }
+    .why-answer { padding: 0 1.1rem 1.15rem; color: rgba(9,44,33,.7); font-size: .9rem; }
+    .weekly-challenge { margin-top: 1.2rem; padding: 1.1rem 1.25rem; border-left: 4px solid var(--gold); border-radius: 0 14px 14px 0; background: var(--mint); font-size: 1.03rem; }
 
     .word { color: #fff; background: linear-gradient(135deg, #0a3024, #0b573a); }
     .word-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 3rem; align-items: center; }
@@ -182,7 +200,9 @@
       .feature-grid, .sequence-grid, .well-grid, .word-layout { grid-template-columns: 1fr; }
       .process { grid-template-columns: repeat(3, 1fr); }
       .quiz-grid, .highlight-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
       .engine-stage { min-height: 480px; }
+      .mini-process { grid-template-columns: repeat(3, 1fr); }
       .sequence-tabs { grid-template-columns: repeat(2, 1fr); }
       .sequence-tab:hover, .sequence-tab.active { transform: translateY(-3px); }
     }
@@ -192,10 +212,12 @@
       .logo { width: 105px; }
       .cover .wrap { padding-bottom: 3.5rem; }
       .engine-stage { min-height: 430px; border-radius: 24px; }
-      .engine { width: 94%; transform: scale(.88); }
+      .engine-photo { min-height: 430px; }
+      .mini-process { grid-template-columns: repeat(2, 1fr); }
       .process { grid-template-columns: repeat(2, 1fr); }
       .process-card { min-height: 170px; }
-      .habits, .sequence-tabs { grid-template-columns: 1fr; }
+      .benefits, .sequence-tabs, .why-grid { grid-template-columns: 1fr; }
+      .why-card summary { min-height: 120px; }
       .archive-box { grid-template-columns: 1fr; }
       .archive-actions { align-items: stretch; flex-direction: column; }
       .archive-actions select { min-width: 0; }
@@ -225,17 +247,10 @@
       <h2>Printing the engine for India’s next launch vehicle</h2>
       <p class="lede">ISRO’s LME1100 programme brings additive manufacturing, high-speed turbomachinery and methane propulsion together for India’s Next Generation Launch Vehicle.</p>
       <div class="feature-grid">
-        <div class="engine-stage reveal" aria-label="Animated schematic of a liquid oxygen and methane rocket engine">
-          <div class="engine" aria-hidden="true">
-            <div class="tank fuel"><span>LIQUID<br>METHANE</span></div>
-            <div class="tank oxygen"><span>LIQUID<br>OXYGEN</span></div>
-            <div class="pipe left"></div><div class="pipe right"></div>
-            <div class="flow-dot a"></div><div class="flow-dot b"></div>
-            <div class="pump left"></div><div class="pump right"></div>
-            <div class="chamber"></div><div class="nozzle"></div><div class="plume"></div>
-          </div>
-          <div class="engine-label"><span>LME1100 concept flow</span><span>1100 kN class</span></div>
-        </div>
+        <figure class="engine-stage reveal">
+          <img class="engine-photo" src="assets/isro-thrust-chamber-test.webp" alt="ISRO sub-scale thrust chamber hot test for liquid oxygen and methane propulsion">
+          <figcaption class="engine-label"><span>Sub-scale thrust-chamber hot test</span><span>Image: ISRO</span></figcaption>
+        </figure>
         <article class="story-card reveal">
           <span class="story-date">16 Oct 2026 | Indian Propulsion Engineering</span>
           <h3>Designed here. Printed differently. Tested to fly.</h3>
@@ -269,51 +284,43 @@
           <div class="meter" aria-hidden="true"><i id="stepMeter"></i></div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="page snapshot">
-    <div class="wrap">
-      <span class="kicker">Indian Engineering Snapshot</span>
-      <h2>From a digital model to flight-ready hardware</h2>
-      <p class="lede">Additive manufacturing creates new geometries, but disciplined inspection and physical testing turn those geometries into trusted components.</p>
-      <div class="process">
-        <article class="process-card reveal"><span>01</span><strong>Design</strong><p>Create integrated passages and component geometry.</p></article>
-        <article class="process-card reveal"><span>02</span><strong>Simulate</strong><p>Study flow, stress, heat and rotor behaviour.</p></article>
-        <article class="process-card reveal"><span>03</span><strong>Print</strong><p>Build complex hardware layer by layer.</p></article>
-        <article class="process-card reveal"><span>04</span><strong>Inspect</strong><p>Check dimensions, density and hidden defects.</p></article>
-        <article class="process-card reveal"><span>05</span><strong>Test</strong><p>Validate ignition, pressure and operating limits.</p></article>
-        <article class="process-card reveal"><span>06</span><strong>Improve</strong><p>Use test evidence to refine the next build.</p></article>
+      <div class="mini-process" aria-label="Additive manufacturing development cycle">
+        <span><strong>01</strong>Design</span><span><strong>02</strong>Simulate</span><span><strong>03</strong>Print</span><span><strong>04</strong>Inspect</span><span><strong>05</strong>Test</span><span><strong>06</strong>Improve</span>
       </div>
-      <div class="engineering-note"><strong>Mechanical greatness:</strong> design freedom only creates value when materials, manufacturing tolerances, surface finish and repeatable testing are engineered as one system.</div>
     </div>
   </section>
 
   <section class="page wellbeing">
     <div class="wrap">
-      <span class="kicker">Wellbeing Perspective</span>
-      <h2>Protect your attention</h2>
-      <p class="lede">A busy day does not always mean a productive day. Constant switching makes the mind repeatedly stop, remember and restart.</p>
+      <span class="kicker">From the HR Team</span>
+      <h2>Curiosity is a skill, not a personality trait</h2>
+      <p class="lede">Curiosity is not something you either have or do not have. Like any skill, it becomes stronger when we practise it.</p>
+      <div class="hr-byline"><div class="hr-initials">NK</div><div><strong>Navaneeth</strong><span>HR Team</span></div></div>
       <div class="well-grid">
         <article class="article-card reveal">
-          <h3>Create space for thoughtful work</h3>
-          <p>Messages, meetings and unfinished tasks compete for attention throughout the day. Frequent switching can make simple work feel tiring, increase the chance of missing details and leave us with activity but little sense of completion.</p>
-          <p>Protecting attention is not about becoming unavailable. It is about creating enough uninterrupted space to do accurate, meaningful work.</p>
-          <div class="habits">
-            <div class="habit">Choose one priority first</div>
-            <div class="habit">Group similar tasks</div>
-            <div class="habit">Quiet nonessential alerts</div>
-            <div class="habit">Note tomorrow’s first action</div>
+          <h3>What curiosity does for you</h3>
+          <p>People who keep asking “why?” and “how?” often reach beyond the surface of a problem. Their questions reveal assumptions, invite other perspectives and turn an everyday moment into an opportunity to learn.</p>
+          <div class="benefits">
+            <div class="benefit"><strong>Solves the real problem</strong><span>Dig past the symptom to a root cause, so the solution lasts.</span></div>
+            <div class="benefit"><strong>Strengthens teams</strong><span>A thoughtful question shows that another person’s view matters.</span></div>
+            <div class="benefit"><strong>Keeps you learning</strong><span>Genuine interest keeps skills fresh without waiting to be pushed.</span></div>
+            <div class="benefit"><strong>Eases change</strong><span>“Help me understand” creates more progress than immediate resistance.</span></div>
           </div>
         </article>
-        <aside class="focus-card reveal">
-          <span class="kicker" style="color:#d9f0e2;justify-content:center">Monthly Challenge</span>
-          <h3>One focused block</h3>
-          <p>Keep only the required application open and complete one clearly defined task.</p>
-          <div class="timer" id="focusTime" aria-live="polite">25:00</div>
-          <div class="timer-controls"><button class="primary" id="startFocus" type="button">Start focus</button><button class="secondary" id="resetFocus" type="button">Reset</button></div>
+        <aside class="curiosity-quote reveal">
+          <blockquote>“Stay hungry. Stay foolish. Stay curious.”</blockquote>
+          <p>Building on Steve Jobs’ timeless words: hunger fuels ambition, foolishness gives us the courage to challenge convention, and curiosity keeps us questioning the ordinary until we discover something extraordinary.</p>
         </aside>
       </div>
+      <div class="why-heading"><h3>Five questions to kindle your curiosity</h3><span>Tap a question to discover why</span></div>
+      <div class="why-grid">
+        <details class="why-card reveal"><summary><span>?</span>Why do most motorcycles shift 1–N–2–3 instead of N–1–2–3?</summary><div class="why-answer">First gear must be easy to reach positively from a stop. Placing neutral as a half-step between first and second also makes it less likely that a rider will accidentally select neutral while shifting through the driving gears.</div></details>
+        <details class="why-card reveal"><summary><span>?</span>Why does milk boil over while water usually does not?</summary><div class="why-answer">Milk’s proteins and fats form a film at the surface. Steam becomes trapped beneath it, lifts the film and pushes the liquid over the rim. Water releases its bubbles more freely.</div></details>
+        <details class="why-card reveal"><summary><span>?</span>How does a fuel nozzle know when the tank is full?</summary><div class="why-answer">A small sensing port near the nozzle tip draws in air while fuel flows. When rising fuel covers that port, the pressure changes and a mechanical diaphragm trips the shut-off valve—no electronic sensor inside the tank is required.</div></details>
+        <details class="why-card reveal"><summary><span>?</span>Why are manhole covers usually round?</summary><div class="why-answer">A round cover cannot fall through its own circular opening, regardless of how it is turned. It can also be rolled into position and does not require alignment with corners.</div></details>
+        <details class="why-card reveal"><summary><span>?</span>Why do elevators often have mirrors?</summary><div class="why-answer">Mirrors make a small enclosure feel larger, reduce discomfort while waiting, help passengers see movement around them and assist wheelchair users when entering or reversing out.</div></details>
+      </div>
+      <p class="weekly-challenge"><strong>This week:</strong> ask one more question than you normally would—and see where it leads. After all, every great discovery begins with a simple question: <strong>“Why?”</strong></p>
     </div>
   </section>
 
@@ -321,14 +328,14 @@
     <div class="wrap word-layout">
       <div>
         <span class="kicker">Word of the Month</span>
-        <h2 class="word-name">Turbopump</h2>
-        <div class="pronunciation">TUR-boh-pump</div>
+        <h2 class="word-name">Chilldown</h2>
+        <div class="pronunciation">CHILL-down</div>
         <button class="speak" id="speakWord" type="button">Listen to pronunciation</button>
       </div>
       <div class="definitions">
-        <article class="definition"><strong>Meaning</strong><p>A high-speed rotating machine in which a turbine drives a pump.</p></article>
-        <article class="definition"><strong>In rocket engineering</strong><p>The turbine powers pumps that force fuel and oxidiser into the combustion chamber at very high pressure.</p></article>
-        <article class="definition"><strong>Why it matters</strong><p>Without controlled pressure and flow, even a full propellant tank cannot produce stable thrust. The turbopump is the mechanical heart that keeps the engine fed.</p></article>
+        <article class="definition"><strong>Meaning</strong><p>The controlled cooling of pipes, valves, pumps and other hardware before a cryogenic fluid begins its full operating flow.</p></article>
+        <article class="definition"><strong>In rocket engineering</strong><p>A small initial flow of very cold propellant absorbs heat from warmer engine components, bringing them closer to the propellant’s operating temperature.</p></article>
+        <article class="definition"><strong>Why it matters</strong><p>Proper chilldown reduces unwanted boiling, stabilises flow and limits sudden thermal stress before ignition. It prepares the engine to handle cryogenic propellants predictably.</p></article>
       </div>
     </div>
   </section>
@@ -421,18 +428,7 @@
       document.getElementById('stepMeter').style.width = data[3];
     }));
 
-    let focusSeconds = 1500;
-    let focusTimer = null;
-    const focusTime = document.getElementById('focusTime');
-    const renderFocus = () => { const m = String(Math.floor(focusSeconds / 60)).padStart(2,'0'); const s = String(focusSeconds % 60).padStart(2,'0'); focusTime.textContent = `${m}:${s}`; };
-    document.getElementById('startFocus').addEventListener('click', (event) => {
-      if (focusTimer) { clearInterval(focusTimer); focusTimer = null; event.currentTarget.textContent = 'Resume'; return; }
-      event.currentTarget.textContent = 'Pause';
-      focusTimer = setInterval(() => { focusSeconds -= 1; renderFocus(); if (focusSeconds <= 0) { clearInterval(focusTimer); focusTimer = null; event.currentTarget.textContent = 'Start again'; focusSeconds = 1500; } }, 1000);
-    });
-    document.getElementById('resetFocus').addEventListener('click', () => { clearInterval(focusTimer); focusTimer = null; focusSeconds = 1500; renderFocus(); document.getElementById('startFocus').textContent = 'Start focus'; });
-
-    document.getElementById('speakWord').addEventListener('click', () => { if ('speechSynthesis' in window) { speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance('turbopump'); utterance.rate = .75; speechSynthesis.speak(utterance); } });
+    document.getElementById('speakWord').addEventListener('click', () => { if ('speechSynthesis' in window) { speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance('chilldown'); utterance.rate = .75; speechSynthesis.speak(utterance); } });
     document.querySelectorAll('.quiz').forEach((quiz) => quiz.querySelectorAll('.choice').forEach((choice) => choice.addEventListener('click', () => {
       quiz.querySelectorAll('.choice').forEach((item) => item.classList.remove('correct','wrong'));
       choice.classList.add(choice.dataset.correct === 'true' ? 'correct' : 'wrong');
