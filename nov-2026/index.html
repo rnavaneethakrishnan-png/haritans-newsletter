@@ -195,10 +195,21 @@
 
     .highlights { color: #fff; background: #0b3024; }
     .highlights .kicker { color: #bfe9cf; }
+    .highlights .lede { color: rgba(255,255,255,.74); }
     .highlight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.1rem; }
-    .highlight-card { min-height: 220px; padding: 1.5rem; border: 1px dashed rgba(255,255,255,.3); border-radius: 24px; background: rgba(255,255,255,.055); }
-    .highlight-card span { color: var(--gold); font-size: .78rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
-    .highlight-card p { color: rgba(255,255,255,.65); }
+    .highlight-card { position: relative; min-width: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.18); border-radius: 26px; background: #124632; box-shadow: 0 18px 44px rgba(0,0,0,.18); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+    .highlight-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 rgba(245,198,68,0); pointer-events: none; transition: box-shadow .28s ease; }
+    .highlight-card:hover, .highlight-card:focus-within { transform: translateY(-8px); border-color: rgba(245,198,68,.72); box-shadow: 0 26px 58px rgba(0,0,0,.28); }
+    .highlight-card:hover::after, .highlight-card:focus-within::after { box-shadow: inset 0 0 0 3px rgba(245,198,68,.62); }
+    .highlight-photo { position: relative; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; background: linear-gradient(145deg, #d9eee1, #f7fbf8); }
+    .highlight-photo img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease, filter .45s ease; }
+    .highlight-card:hover .highlight-photo img { transform: scale(1.035); filter: saturate(1.04) contrast(1.03); }
+    .highlight-card.ganapathi .highlight-photo img { object-position: center 38%; }
+    .highlight-card.judson .highlight-photo img { object-position: center 24%; }
+    .highlight-card.monika .highlight-photo img { object-position: center 20%; }
+    .highlight-name { min-height: 98px; display: grid; align-content: center; padding: 1.2rem 1.35rem 1.3rem; background: linear-gradient(140deg, #114531, #0a3728); }
+    .highlight-name span { color: var(--gold); font-size: .76rem; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+    .highlight-name h3 { margin: .35rem 0 0; color: #fff; font-size: clamp(1.35rem, 2vw, 1.75rem); }
 
     .feedback { background: #fff; }
     .feedback-card { margin-top: 2rem; max-width: 860px; padding: clamp(1.4rem, 4vw, 2.8rem); border: 1px solid var(--line); border-radius: 24px; background: #f7faf8; }
@@ -453,13 +464,22 @@
 
   <section class="page highlights">
     <div class="wrap">
-      <span class="kicker">November Inputs</span>
-      <h2>Harita Highlights</h2>
-      <p class="lede">These panels are reserved for November’s confirmed company updates and photographs.</p>
+      <span class="kicker">Recognition</span>
+      <h2>Client Appreciations</h2>
+      <p class="lede">Celebrating colleagues whose commitment, quality and contribution earned appreciation from our clients.</p>
       <div class="highlight-grid">
-        <article class="highlight-card"><span>Project milestones</span><h3>Delivery and technical achievements</h3><p>Awaiting approved November update and supporting image.</p></article>
-        <article class="highlight-card"><span>People and recognition</span><h3>Work that customers notice</h3><p>Awaiting employee names, appreciation details and photographs.</p></article>
-        <article class="highlight-card"><span>Learning and community</span><h3>Growing together</h3><p>Awaiting training, event, CSR or engagement highlights.</p></article>
+        <article class="highlight-card ganapathi reveal">
+          <figure class="highlight-photo"><img src="assets/ganapathi-d.png" alt="Portrait of Ganapathi D"></figure>
+          <div class="highlight-name"><span>Recognised by our client</span><h3>Ganapathi D</h3></div>
+        </article>
+        <article class="highlight-card judson reveal">
+          <figure class="highlight-photo"><img src="assets/judson-c-h.png" alt="Portrait of Judson C H"></figure>
+          <div class="highlight-name"><span>Recognised by our client</span><h3>Judson C H</h3></div>
+        </article>
+        <article class="highlight-card monika reveal">
+          <figure class="highlight-photo"><img src="assets/monika-m.png" alt="Portrait of Monika M"></figure>
+          <div class="highlight-name"><span>Recognised by our client</span><h3>Monika M</h3></div>
+        </article>
       </div>
     </div>
   </section>
