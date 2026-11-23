@@ -193,6 +193,16 @@
     .answer { display: none; margin-top: .8rem; padding: .9rem; border-radius: 12px; background: var(--mint); font-size: .9rem; }
     .answer.show { display: block; }
 
+    .event-highlight { background: linear-gradient(180deg, #edf6f0 0%, #fff 100%); }
+    .event-frame { position: relative; margin: 2.2rem 0 0; overflow: hidden; border-radius: 30px; background: #082b20; box-shadow: var(--shadow); }
+    .event-frame img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; object-position: center 68%; transition: transform .5s ease, filter .5s ease; }
+    .event-frame:hover img { transform: scale(1.015); filter: contrast(1.03) saturate(1.04); }
+    .event-caption { position: absolute; inset: auto 0 0; display: flex; justify-content: space-between; align-items: end; gap: 1rem; padding: clamp(4rem, 9vw, 7.5rem) clamp(1.2rem, 4vw, 2.8rem) clamp(1.3rem, 3vw, 2.2rem); background: linear-gradient(transparent, rgba(4,30,22,.92)); color: #fff; }
+    .event-caption span { display: block; color: var(--gold); font-size: .78rem; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+    .event-caption h3 { max-width: 760px; margin: .35rem 0 0; font-size: clamp(1.8rem, 4vw, 3.6rem); }
+    .event-view { flex: 0 0 auto; padding: .75rem 1rem; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; color: #fff; font-size: .85rem; font-weight: 850; text-decoration: none; background: rgba(255,255,255,.1); backdrop-filter: blur(8px); }
+    .event-view:hover { border-color: var(--gold); background: rgba(245,198,68,.18); }
+
     .highlights { color: #fff; background: #0b3024; }
     .highlights .kicker { color: #bfe9cf; }
     .highlights .lede { color: rgba(255,255,255,.74); }
@@ -256,6 +266,9 @@
       .process { grid-template-columns: repeat(2, 1fr); }
       .process-card { min-height: 170px; }
       .benefits, .sequence-tabs, .why-grid { grid-template-columns: 1fr; }
+      .event-frame img { aspect-ratio: 4 / 3; object-position: center; }
+      .event-caption { position: static; align-items: stretch; flex-direction: column; padding: 1.25rem; background: #0a3728; }
+      .event-view { align-self: flex-start; }
       .highlight-grid { max-width: 420px; grid-template-columns: 1fr; margin-left: auto; margin-right: auto; }
       .why-card summary { min-height: 120px; }
       .archive-box { grid-template-columns: 1fr; }
@@ -460,6 +473,21 @@
           <div class="answer"><strong>042.</strong> The clues eliminate 7, 3 and 8, establish 0 and 2 as valid but misplaced, and identify 4 as the remaining digit.</div>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="page event-highlight">
+    <div class="wrap">
+      <span class="kicker">Team Recognition</span>
+      <h2>Coimbatore Offshore R&amp;R Event</h2>
+      <p class="lede">A moment to recognise contribution, celebrate teamwork and spend meaningful time together beyond the usual workday.</p>
+      <figure class="event-frame reveal">
+        <img src="assets/coimbatore-offshore-rr.jpg" alt="Coimbatore offshore team gathered for the R and R event" loading="lazy">
+        <figcaption class="event-caption">
+          <div><span>Coimbatore Offshore Team</span><h3>Recognising effort. Celebrating together.</h3></div>
+          <a class="event-view" href="assets/coimbatore-offshore-rr.jpg" target="_blank" rel="noopener">View full photograph</a>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
