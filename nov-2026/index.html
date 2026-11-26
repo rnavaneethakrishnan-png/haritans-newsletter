@@ -306,7 +306,7 @@
       <span class="kicker">Harita Techserv | Internal Circulation</span>
       <h1>Haritans<br>November ’26</h1>
       <p class="cover-copy"><strong>Engineering a Stronger Return to Flight</strong> — how ISRO revisited design margins, interfaces, materials, assembly and inspection to strengthen the PSLV third stage.</p>
-      <div class="tag-row"><span class="tag">Edition 09</span><span class="tag">GitHub Preview</span><span class="tag">November 2026</span></div>
+      <div class="tag-row"><span class="tag">Edition 09</span><span class="tag" id="githubPreviewTag">GitHub Preview</span><span class="tag">November 2026</span></div>
     </div>
   </section>
 
@@ -583,6 +583,7 @@
     const isProductionHost = location.hostname === 'haritans-newsletter.netlify.app';
     if (isProductionHost) {
       document.getElementById('previewRibbon').hidden = true;
+      document.getElementById('githubPreviewTag').hidden = true;
     } else {
       document.getElementById('formStatus').textContent = 'GitHub preview mode — submissions are disabled here.';
     }
