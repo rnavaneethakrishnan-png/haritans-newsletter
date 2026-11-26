@@ -223,8 +223,10 @@
     .highlight-name span { color: var(--gold); font-size: .76rem; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
     .highlight-name h3 { margin: .35rem 0 0; color: #fff; font-size: clamp(1.35rem, 2vw, 1.75rem); }
 
-    .feedback { background: #fff; }
-    .feedback-card { margin-top: 2rem; max-width: 860px; padding: clamp(1.4rem, 4vw, 2.8rem); border: 1px solid var(--line); border-radius: 24px; background: #f7faf8; }
+    .feedback { color: #fff; background: linear-gradient(145deg, #082d21, #0b6440); }
+    .feedback .kicker { color: #c9efd6; }
+    .feedback .lede { color: rgba(255,255,255,.8); }
+    .feedback-card { margin-top: 2rem; max-width: 860px; padding: clamp(1.4rem, 4vw, 2.8rem); border: 1px solid rgba(255,255,255,.18); border-radius: 24px; color: var(--ink); background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,.16); }
     .rating { display: flex; gap: .6rem; flex-wrap: wrap; margin: .75rem 0 1.4rem; }
     .rating label { position: relative; }
     .rating input { position: absolute; opacity: 0; }
@@ -236,6 +238,14 @@
     .field-label { display: block; margin: 1.2rem 0 .45rem; font-weight: 850; }
     .submit { margin-top: 1rem; min-height: 50px; padding: .75rem 1.2rem; border: 0; border-radius: 12px; color: #fff; background: var(--green); font-weight: 900; cursor: pointer; }
     .form-status { margin: .8rem 0 0; color: rgba(9,44,33,.7); font-weight: 700; }
+    .leave-dialog { width: min(460px, calc(100% - 2rem)); padding: 0; border: 1px solid var(--line); border-radius: 22px; color: var(--ink); background: #fff; box-shadow: 0 24px 80px rgba(6,38,27,.3); }
+    .leave-dialog::backdrop { background: rgba(4,24,17,.58); backdrop-filter: blur(3px); }
+    .leave-dialog-inner { padding: 1.6rem; }
+    .leave-dialog h2 { margin: 0 0 .6rem; font-size: 1.65rem; line-height: 1.1; }
+    .leave-dialog p { margin-bottom: 1.2rem; color: rgba(9,44,33,.72); }
+    .leave-actions { display: flex; justify-content: flex-end; gap: .65rem; flex-wrap: wrap; }
+    .leave-actions button { min-height: 46px; padding: .65rem 1rem; border: 1px solid var(--line); border-radius: 11px; color: var(--ink); background: #fff; font-weight: 850; cursor: pointer; }
+    .leave-actions .leave-submit { border-color: var(--green); color: #fff; background: var(--green); }
 
     .archive { padding: 3rem 0; background: #e6f1e9; }
     .archive-box { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: end; }
