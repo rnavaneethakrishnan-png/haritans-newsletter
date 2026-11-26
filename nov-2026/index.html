@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../favicon-mark.png">
   <meta name="description" content="Haritans November 2026 interactive newsletter working preview.">
   <title>Haritans Newsletter | November 2026 Preview</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT90273SEF"></script>
@@ -534,7 +534,7 @@
       <form class="feedback-card" name="interactive-newsletter-feedback" method="POST" data-netlify="true" id="feedbackForm">
         <input type="hidden" name="form-name" value="interactive-newsletter-feedback">
         <input type="hidden" name="edition" value="November 2026">
-        <strong>How would you rate this working preview?</strong>
+        <strong>How would you rate this edition?</strong>
         <div class="rating" role="radiogroup" aria-label="Preview rating">
           <label><input type="radio" name="rating" value="1"><span>1</span></label><label><input type="radio" name="rating" value="2"><span>2</span></label><label><input type="radio" name="rating" value="3"><span>3</span></label><label><input type="radio" name="rating" value="4"><span>4</span></label><label><input type="radio" name="rating" value="5"><span>5</span></label>
         </div>
@@ -586,7 +586,21 @@
     } else {
       document.getElementById('formStatus').textContent = 'GitHub preview mode — submissions are disabled here.';
     }
-    document.getElementById('feedbackForm').addEventListener('submit', (event) => { if (!isProductionHost) { event.preventDefault(); document.getElementById('formStatus').textContent = 'This GitHub preview does not collect submissions. Submit feedback on the live newsletter edition.'; } });
+    document.getElementById('feedbackForm').addEventListener('submit', (event) => {
+      const ratingSelected = Boolean(document.querySelector('input[name="rating"]:checked'));
+      const commentEntered = Boolean(document.getElementById('improve').value.trim());
+      if (!ratingSelected && !commentEntered) {
+        event.preventDefault();
+        document.getElementById('formStatus').textContent = 'Please choose a rating or add a comment before submitting.';
+        if (!isProductionHost) document.getElementById('formStatus').textContent += ' GitHub preview submissions are disabled.';
+        document.querySelector('.rating input').focus();
+        return;
+      }
+      if (!isProductionHost) {
+        event.preventDefault();
+        document.getElementById('formStatus').textContent = 'This GitHub preview does not collect submissions. Submit feedback on the live newsletter edition.';
+      }
+    });
     document.getElementById('openEdition').addEventListener('click', () => { const select = document.getElementById('editionSelect'); if (select.value) { if (typeof gtag === 'function') gtag('event','archive_issue_opened',{edition:select.options[select.selectedIndex].text}); location.href = select.value; } });
 
     const masthead = document.querySelector('.masthead');
