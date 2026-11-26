@@ -299,7 +299,7 @@
 </head>
 <body>
   <section class="page cover">
-    <div class="preview-ribbon">Working preview</div>
+    <div class="preview-ribbon" id="previewRibbon">Working preview</div>
     <div class="masthead"><img class="logo" src="../assets_sep_2026/harita_logo_cropped.png" alt="Harita Techserv"></div>
     <div class="wrap">
       <span class="kicker">Harita Techserv | Internal Circulation</span>
@@ -528,8 +528,8 @@
   <section class="page feedback">
     <div class="wrap">
       <span class="kicker">Help Shape the Edition</span>
-      <h2>Preview feedback</h2>
-      <p class="lede">The production feedback form will activate when this edition is approved and published on Netlify.</p>
+      <h2>Share your feedback</h2>
+      <p class="lede">Tell us what you enjoyed and what you’d like to see in the next edition. Your feedback helps us keep improving.</p>
       <form class="feedback-card" name="interactive-newsletter-feedback" method="POST" data-netlify="true" id="feedbackForm">
         <input type="hidden" name="form-name" value="interactive-newsletter-feedback">
         <input type="hidden" name="edition" value="November 2026">
@@ -540,7 +540,7 @@
         <label class="field-label" for="improve">What should we improve or include next?</label>
         <textarea id="improve" name="improvement" placeholder="Share your suggestion"></textarea>
         <button class="submit" type="submit">Submit feedback</button>
-        <p class="form-status" id="formStatus">GitHub preview mode — submissions are disabled here.</p>
+        <p class="form-status" id="formStatus">Your feedback is welcome. Thank you for helping shape future editions.</p>
       </form>
     </div>
   </section>
@@ -552,7 +552,7 @@
     </div>
   </section>
 
-  <footer>Haritans Newsletter | November 2026 Working Preview | Not Published to Production</footer>
+  <footer>Haritans Newsletter | November 2026</footer>
 
   <script>
     const steps = [
@@ -579,7 +579,13 @@
       quiz.querySelector('.answer').classList.add('show');
     })));
 
-    document.getElementById('feedbackForm').addEventListener('submit', (event) => { if (!location.hostname.endsWith('netlify.app')) { event.preventDefault(); document.getElementById('formStatus').textContent = 'This GitHub preview does not collect submissions. The form will activate on the approved production edition.'; } });
+    const isProductionHost = location.hostname === 'haritans-newsletter.netlify.app';
+    if (isProductionHost) {
+      document.getElementById('previewRibbon').hidden = true;
+    } else {
+      document.getElementById('formStatus').textContent = 'GitHub preview mode — submissions are disabled here.';
+    }
+    document.getElementById('feedbackForm').addEventListener('submit', (event) => { if (!isProductionHost) { event.preventDefault(); document.getElementById('formStatus').textContent = 'This GitHub preview does not collect submissions. Submit feedback on the live newsletter edition.'; } });
     document.getElementById('openEdition').addEventListener('click', () => { const select = document.getElementById('editionSelect'); if (select.value) { if (typeof gtag === 'function') gtag('event','archive_issue_opened',{edition:select.options[select.selectedIndex].text}); location.href = select.value; } });
 
     const masthead = document.querySelector('.masthead');
